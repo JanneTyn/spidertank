@@ -909,6 +909,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 02a9c05482ef78844a2b847fcfb43024,
         type: 3}
+    - target: {fileID: 3327513163349197155, guid: 1c2642f439a1fb94392201895f0b1774,
+        type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327513163349197155, guid: 1c2642f439a1fb94392201895f0b1774,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3832340324722751915, guid: 1c2642f439a1fb94392201895f0b1774,
         type: 3}
       propertyPath: speed
@@ -1296,6 +1306,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   worldInputMovement: {x: 0, y: 0, z: 0}
   playerXrotation: 0
+  velocity: {x: 0, y: 0, z: 0}
   cineCamera: {fileID: 2094674504}
 --- !u!1 &1214584231
 GameObject:
