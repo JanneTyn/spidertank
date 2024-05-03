@@ -20,7 +20,7 @@ public class ThirdPersonCam : MonoBehaviour
         //var transposer = GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineOrbitalTransposer>();
         //float XRotation = transposer.m_XAxis.Value;
         float XRotation = camera.m_XAxis.Value;
-        Debug.Log("rotation: " + XRotation);
+        //Debug.Log("rotation: " + XRotation);
 
     }
 }

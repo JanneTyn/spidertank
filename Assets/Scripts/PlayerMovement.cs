@@ -7,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float speed = 100f; // Speed variable
+    public float jumpspeed = 100f; // Speed variable
     public Rigidbody rb; // Set the variable 'rb' as Rigibody
     public Vector3 movement; // Set the variable 'movement' as a Vector3 (x,y,z)
     public Vector3 worldInputMovement; // Set the variable 'movement' as a Vector3 (x,y,z)
     public float playerXrotation;
+    private bool onGround = false;
+    private bool jump = false;
+    float timer = 0;
     public CinemachineFreeLook cineCamera;
 
 
@@ -20,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // find the Rigidbody of this game object and add it to the variable 'rb'
         rb = this.GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
@@ -31,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
         // We only get the input of x and z, y is left at 0 as it's not required
         // 'Normalized' diagonals to prevent faster movement when two inputs are used together
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        if (onGround && Input.GetKeyDown(KeyCode.Space))
+        {
+            playerJump();
+        }
         worldInputMovement = transform.TransformDirection(movement);
     }
 
@@ -53,6 +62,27 @@ public class PlayerMovement : MonoBehaviour
         // We multiply the 'speed' variable to the Rigidbody's velocity...
         // and also multiply 'Time.fixedDeltaTime' to keep the movement consistant on all devices
         rb.velocity = direction * speed * Time.fixedDeltaTime;
+
     }
 
+    void playerJump()
+    {
+        rb.AddForce(Vector3.up * jumpspeed, ForceMode.VelocityChange);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            onGround = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            onGround = false;
+        }
+    }
 }
