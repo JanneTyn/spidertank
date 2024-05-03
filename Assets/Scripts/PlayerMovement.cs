@@ -61,13 +61,13 @@ public class PlayerMovement : MonoBehaviour
     {
         // We multiply the 'speed' variable to the Rigidbody's velocity...
         // and also multiply 'Time.fixedDeltaTime' to keep the movement consistant on all devices
-        rb.velocity = direction * speed * Time.fixedDeltaTime;
+        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
     }
 
     void playerJump()
     {
-        rb.AddForce(Vector3.up * jumpspeed, ForceMode.VelocityChange);
+        rb.AddForce(Vector3.up * jumpspeed);
     }
 
     private void OnCollisionEnter(Collision collision)
