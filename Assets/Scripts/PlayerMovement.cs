@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool onGround = false;
     private bool jump = false;
     float timer = 0;
+    public Vector3 velocity;
     public CinemachineFreeLook cineCamera;
 
 
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         // We only get the input of x and z, y is left at 0 as it's not required
         // 'Normalized' diagonals to prevent faster movement when two inputs are used together
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        velocity = rb.velocity;
         if (onGround && Input.GetKeyDown(KeyCode.Space))
         {
             playerJump();
@@ -61,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // We multiply the 'speed' variable to the Rigidbody's velocity...
         // and also multiply 'Time.fixedDeltaTime' to keep the movement consistant on all devices
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Impulse);
 
     }
 
