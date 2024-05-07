@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+using Cinemachine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -105,6 +106,7 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
+        public CinemachineFreeLook cineCamera;
 
         private const float _threshold = 0.01f;
 
@@ -261,9 +263,13 @@ namespace StarterAssets
                     RotationSmoothTime);
 
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                //transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+
+                
             }
 
+            float XRotation = cineCamera.m_XAxis.Value;
+            transform.eulerAngles = new Vector3(0, XRotation, 0);
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
