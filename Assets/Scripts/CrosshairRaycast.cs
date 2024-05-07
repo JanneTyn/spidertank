@@ -16,6 +16,6 @@ public class CrosshairRaycast : MonoBehaviour
     void Update()
     {
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 30, Color.red);
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
     }
 }
