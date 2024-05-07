@@ -29,8 +29,8 @@ public class Enemy : MonoBehaviour
 
     
 
-    //public float patrolspeed;
-   // public float followspeed;
+    public float patrolspeed;
+    public float chasespeed;
 
     
 
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
     {
         while (true) 
         {
-            agent.speed = 10;
+            agent.speed = chasespeed;
             agent.SetDestination(Player.transform.position);
             yield return null;
 
@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            agent.speed = 3.5f;
+            agent.speed = patrolspeed;
             Vector3 target = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
             target += agent.transform.position;
             agent.SetDestination(target);
