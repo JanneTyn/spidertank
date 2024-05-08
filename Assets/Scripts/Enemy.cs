@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     private NavMeshAgent agent;
+    Collider e_Collider;
 
-   
 
 
     public enum enemystate      
@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
         idle,
         patrol,
         chase,
-        attack
+        attack1,
+        attack2
 
     }
 
@@ -27,12 +28,16 @@ public class Enemy : MonoBehaviour
     public float startfollowdistance;
     public float currentdistance;
 
-    
-
     public float patrolspeed;
     public float chasespeed;
 
-    
+
+
+    public int maxHealth = 100;
+    public int curHealth = 100;
+
+    public int Damage = 10;
+
 
     void Awake()
     {
@@ -42,7 +47,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
-
+        e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
 
     }
@@ -51,19 +56,59 @@ public class Enemy : MonoBehaviour
     {
         currentdistance = Vector3.Distance(Player.transform.position, transform.position);
 
-        
+
         if (currentdistance > startfollowdistance && MyState != enemystate.patrol)
         {
             UpdateBehaviour(enemystate.patrol);
+
         }
         else if (currentdistance <= startfollowdistance && MyState != enemystate.chase)
         {
             UpdateBehaviour(enemystate.chase);
-        }  
-    }
-    
 
-   
+        }
+
+        if (trig)
+        {
+            UpdateBehaviour(enemystate.attack1);
+        }
+        if (att)
+        {
+            UpdateBehaviour(enemystate.attack2);
+        }
+
+        if (curHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            curHealth -= Damage;
+        }
+    }
+
+    public bool trig;
+    public bool att;
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            
+            trig = true;
+            StartCoroutine(attwait());
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            trig = false;
+            att = false;
+            StopCoroutine(attwait());
+        }
+    }
 
     private void UpdateBehaviour(enemystate state) 
     {
@@ -84,11 +129,30 @@ public class Enemy : MonoBehaviour
             case enemystate.chase:
                 CurrentBehaviour = StartCoroutine(chase());
                 break;
-            case enemystate.attack:
-                CurrentBehaviour = StartCoroutine(attack());
+            case enemystate.attack1:
+                CurrentBehaviour = StartCoroutine(attack1());
+                break;
+            case enemystate.attack2:
+                CurrentBehaviour = StartCoroutine(attack2());
                 break;
         }
         
+    }
+
+    public IEnumerator attwait()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            trig = false;
+            att = true;
+            yield return new WaitForSeconds(1.5f);
+            att = false;
+
+            Debug.Log("PLS WORK");
+            StopAllCoroutines();
+
+        }
     }
 
     public IEnumerator idle()
@@ -125,13 +189,38 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public IEnumerator attack()
+    public IEnumerator attack1()
+    {
+
+        while (true) {
+
+            agent.speed = 0.8f;
+            yield return null;
+            
+            
+            
+            
+            yield return new WaitForSeconds(1);
+           
+            UpdateBehaviour(enemystate.attack2);
+          
+    }
+}
+
+
+   
+
+   public IEnumerator attack2()
     {
         while (true)
         {
-            agent.speed = 0;
+            
+          
+            agent.speed = 4;
             yield return null;
+           
         }
     }
+    
 }
 
