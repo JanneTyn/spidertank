@@ -1,21 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CrosshairRaycast : MonoBehaviour
 {
-    Camera cam;
+    public Camera cam;
+    public GameObject dmgMarkerPrefab;
+    public Canvas crosshairCanvas;
+    private Vector3 dmgUI;
+    public TextMeshPro textmsh;
+    Ray ray;
+    RaycastHit hit;
+    int layerMask = 1 << 7;
     Vector3 pos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
 
     void Start()
     {
-        cam = GetComponent<Camera>();
+        //cam = GetComponent<Camera>();
+        dmgUI = new Vector3(500, 300, 0);
     }
 
     void Update()
     {
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+        ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        Color col = Color.red;
+        
+        if (Physics.Raycast(ray, out hit, 100, layerMask)) col = Color.green;
+        Debug.DrawRay(ray.origin, ray.direction * 100, col);
+    }
+
+    public GameObject checkEnemyRaycast()
+    {
+        if (Physics.Raycast(ray, out hit, 100, layerMask)) 
+        {
+            return hit.collider.gameObject;
+        } 
+        else return null;
+    }
+
+    public void createDamageMarker(float damage)
+    {
+        GameObject dmgMarker = Instantiate(dmgMarkerPrefab, dmgUI, Quaternion.identity);
+        dmgMarker.transform.SetParent(crosshairCanvas.transform);
+        var rect = dmgMarker.GetComponent<RectTransform>();
+        rect.localPosition = new Vector3(30, 20, 0);
+        
+        textmsh = dmgMarker.GetComponent<TextMeshPro>();
+        textmsh.text = damage.ToString();
     }
 }
