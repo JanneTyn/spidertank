@@ -14,10 +14,16 @@ public class machineGunScript : MonoBehaviour
     private GameObject shotEnemy;
 
     private float timestamp = 0.0f;
+    
+    AudioSource shootingsound;
+    public AudioClip clip;
+    bool shootingsoundtoggle = false;
+
     // Start is called before the first frame update
     void Start()
     {
         //cam = GameObject.Find("FreeLookCamera").GetComponent<ThirdPersonCam>();
+        shootingsound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,6 +38,12 @@ public class machineGunScript : MonoBehaviour
                 timestamp = Time.time + perShotDelay;
                 shotsfired++;
                 Debug.Log("Pam " + shotsfired);
+                
+                if (!shootingsound.isPlaying); {
+                    shootingsound.Play();
+                    shootingsoundtoggle = true;
+                    Debug.Log("shootingsound is false");
+                }
 
                 shotEnemy = crosshair.checkEnemyRaycast();
                 if (shotEnemy != null)
@@ -51,7 +63,14 @@ public class machineGunScript : MonoBehaviour
                 }
             }
         }
-        else { cam.endShake(); }
+        else {
+            cam.endShake();
+            shootingsound.Stop();
+            if (shootingsoundtoggle == true) {
+                shootingsound.PlayOneShot(clip);
+                shootingsoundtoggle = false;
+            }
+        }
     }
 
     Enemy GetEnemyParentScript()
