@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class machineGunScript : MonoBehaviour
 {
-    public float baseDamage = 10;
+    public int baseDamage = 10;
     float perShotDelay = 0.25f;
     float shotsfired = 0;
     public ThirdPersonCam cam;
@@ -36,12 +37,53 @@ public class machineGunScript : MonoBehaviour
                 if (shotEnemy != null)
                 {
                     //vihuun osuttu, v‰hennet‰‰n healthia
-                    Debug.Log("Enemy hit");
-                    crosshair.createDamageMarker(baseDamage);
+                    //Debug.Log("Enemy hit");
+                    Enemy enemyScript = GetEnemyParentScript();
+                    if (enemyScript != null)
+                    {
+                        enemyScript.TakeDamage(baseDamage);
+                        crosshair.createDamageMarker(baseDamage);
+                    }
+                    else
+                    {
+                        Debug.Log("ENEMY NULL!!!");
+                    }                  
                 }
             }
         }
         else { cam.endShake(); }
+    }
+
+    Enemy GetEnemyParentScript()
+    {
+        Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
+
+        if (enemyscript != null) 
+        {
+            return enemyscript;
+        }
+        else
+        {
+            if (shotEnemy.transform.parent != null)
+            {
+                shotEnemy = shotEnemy.transform.parent.gameObject;
+                Enemy enemyscript2 = shotEnemy.GetComponent<Enemy>();
+
+                if (enemyscript2 != null)
+                {
+                    return enemyscript2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 
     

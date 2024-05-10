@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public interface IDamagable
+{
+    void TakeDamage(int damage);
+}
+
+public class Enemy : MonoBehaviour, IDamagable
 {
     private NavMeshAgent agent;
     Collider e_Collider;
@@ -56,35 +61,33 @@ public class Enemy : MonoBehaviour
     {
         currentdistance = Vector3.Distance(Player.transform.position, transform.position);
 
-
-        if (currentdistance > startfollowdistance && MyState != enemystate.patrol)
+        if (this.gameObject != null)
         {
-            UpdateBehaviour(enemystate.patrol);
+            if (currentdistance > startfollowdistance && MyState != enemystate.patrol)
+            {
+                UpdateBehaviour(enemystate.patrol);
 
-        }
-        else if (currentdistance <= startfollowdistance && MyState != enemystate.chase)
-        {
-            UpdateBehaviour(enemystate.chase);
+            }
+            else if (currentdistance <= startfollowdistance && MyState != enemystate.chase)
+            {
+                UpdateBehaviour(enemystate.chase);
 
-        }
+            }
 
-        if (trig)
-        {
-            UpdateBehaviour(enemystate.attack1);
-        }
-        if (att)
-        {
-            UpdateBehaviour(enemystate.attack2);
-        }
+            if (trig)
+            {
+                UpdateBehaviour(enemystate.attack1);
+            }
+            if (att)
+            {
+                UpdateBehaviour(enemystate.attack2);
+            }
 
-        if (curHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            curHealth -= Damage;
+            if (curHealth <= 0)
+            {
+                StopAllCoroutines();
+                EnemyDeath();
+            }
         }
     }
 
@@ -137,6 +140,11 @@ public class Enemy : MonoBehaviour
                 break;
         }
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHealth -= damage;
     }
 
     public IEnumerator attwait()
@@ -220,6 +228,11 @@ public class Enemy : MonoBehaviour
             yield return null;
            
         }
+    }
+
+    public void EnemyDeath()
+    {
+        Destroy(this.gameObject);
     }
     
 }
