@@ -9,7 +9,7 @@ public class CrosshairRaycast : MonoBehaviour
     public GameObject dmgMarkerPrefab;
     public Canvas crosshairCanvas;
     private Vector3 dmgUI;
-    public TextMeshPro textmsh;
+    public TMP_Text textmsh;
     Ray ray;
     RaycastHit hit;
     int layerMask = 1 << 7;
@@ -43,11 +43,31 @@ public class CrosshairRaycast : MonoBehaviour
     public void createDamageMarker(float damage)
     {
         GameObject dmgMarker = Instantiate(dmgMarkerPrefab, dmgUI, Quaternion.identity);
+        
         dmgMarker.transform.SetParent(crosshairCanvas.transform);
         var rect = dmgMarker.GetComponent<RectTransform>();
-        rect.localPosition = new Vector3(30, 20, 0);
-        
-        textmsh = dmgMarker.GetComponent<TextMeshPro>();
+        rect.localPosition = new Vector3(40, 20, 0);       
+        textmsh = dmgMarker.GetComponent<TMP_Text>();
         textmsh.text = damage.ToString();
+        dmgMarker.SetActive(true);
+        StartCoroutine(SmoothLerp(dmgMarker, 0.5f));
+        
+    }
+
+    private IEnumerator SmoothLerp(GameObject dmgMark, float time)
+    {
+        Vector3 startingPos = dmgMark.transform.position;
+        Vector3 finalPos = dmgMark.transform.position + (dmgMark.transform.up * 30);
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            dmgMark.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(dmgMark);
     }
 }
