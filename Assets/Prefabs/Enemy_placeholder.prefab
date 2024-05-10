@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8af078e8afc1d3c409e285c7d046158a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: a643f0309408e7a4eb6973699cc5d207, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,6 +212,11 @@ MonoBehaviour:
   currentdistance: 0
   patrolspeed: 0
   chasespeed: 0
+  maxHealth: 100
+  curHealth: 100
+  Damage: 10
+  trig: 0
+  att: 0
 --- !u!195 &4618245489153619311
 NavMeshAgent:
   m_ObjectHideFlags: 0
