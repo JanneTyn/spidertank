@@ -1,52 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class machineGunScript : MonoBehaviour
+public class shotgun : MonoBehaviour
 {
-    public int baseDamage = 10;
-    public float perShotDelay = 0.25f;
+
+    public int baseDamage = 30;
+    public int finalDamage = 0;
+    public float perShotDelay = 1f;
     float shotsfired = 0;
+    public float range = 10;
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
     private GameObject shotEnemy;
+    private float timestamp = 0.0f;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
-
-    private float timestamp = 0.0f;
-    
-    AudioSource shootingsound;
-    public AudioClip clip;
-    bool shootingsoundtoggle = false;
-
     // Start is called before the first frame update
     void Start()
     {
-        //cam = GameObject.Find("FreeLookCamera").GetComponent<ThirdPersonCam>();
-        shootingsound = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
-
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1))
         {
             StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
             {
                 timestamp = Time.time + perShotDelay;
                 shotsfired++;
-                Debug.Log("Pam " + shotsfired);
-                
-                if (!shootingsound.isPlaying); {
-                    shootingsound.Play();
-                    shootingsoundtoggle = true;
-                    Debug.Log("shootingsound is false");
-                }
+                //Debug.Log("Pam " + shotsfired);
 
                 shotEnemy = crosshair.checkEnemyRaycast();
                 if (shotEnemy != null)
@@ -56,31 +43,25 @@ public class machineGunScript : MonoBehaviour
                     Enemy enemyScript = GetEnemyParentScript();
                     if (enemyScript != null)
                     {
-                        enemyScript.TakeDamage(baseDamage);
-                        crosshair.createDamageMarker(baseDamage);
+                        CalculateDamageByDistance(baseDamage, range, shotEnemy);
+                        enemyScript.TakeDamage(finalDamage);
+                        crosshair.createDamageMarker(finalDamage);
                     }
                     else
                     {
                         Debug.Log("ENEMY NULL!!!");
-                    }                  
+                    }
                 }
             }
-        }
-        else {
-            cam.endShake();
-            shootingsound.Stop();
-            if (shootingsoundtoggle == true) {
-                shootingsound.PlayOneShot(clip);
-                shootingsoundtoggle = false;
-            }
-        }
+        }       
+        else { cam.endShake(); }
     }
 
     Enemy GetEnemyParentScript()
     {
         Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
 
-        if (enemyscript != null) 
+        if (enemyscript != null)
         {
             return enemyscript;
         }
@@ -108,5 +89,24 @@ public class machineGunScript : MonoBehaviour
 
     }
 
-    
+    void CalculateDamageByDistance(float dmg, float range, GameObject shotenemy)
+    {
+        float dist = Vector3.Distance(shotenemy.transform.position, this.transform.position);
+        if (dist < range) 
+        {
+            finalDamage = (int)dmg;
+        }
+        else
+        {
+            float overDistance = dist - range;
+
+            finalDamage = (int)Mathf.Lerp(2, baseDamage, overDistance / dist);
+            if (finalDamage < 2)
+            {
+                finalDamage = 2;
+            }
+        }
+
+
+    }
 }

@@ -27,7 +27,7 @@ class Spawner : MonoBehaviour
 		while (true)
         {
 			SpawnRandom();
-			yield return new WaitForSeconds(0.6f);
+			yield return new WaitForSeconds(10f);
 
         }
     }

@@ -8,9 +8,7 @@ public class ThirdPersonCam : MonoBehaviour
 {
     public GameObject playerScript;
     public CinemachineFreeLook Ccamera;
-    public float amplitudeGain = 0.1f;
-    public float frequencyGain = 0.1f;
-    public float shakeDuration = 0.1f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +25,7 @@ public class ThirdPersonCam : MonoBehaviour
 
     }
 
-    public IEnumerator Shake()
+    public IEnumerator Shake(float amplitudeGain = 0.1f, float frequencyGain = 0.1f, float shakeDuration = 0.1f)
     {
         Debug.Log("shake");
         Noise(amplitudeGain, frequencyGain);
