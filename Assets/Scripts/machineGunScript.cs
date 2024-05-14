@@ -15,6 +15,7 @@ public class machineGunScript : MonoBehaviour
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
+    public float bulletSpread = 0.03f;
 
     private float timestamp = 0.0f;
     
@@ -36,6 +37,7 @@ public class machineGunScript : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
+            crosshair.machinegunShooting = true;
             if (Time.time > timestamp)
             {
                 timestamp = Time.time + perShotDelay;
@@ -48,7 +50,7 @@ public class machineGunScript : MonoBehaviour
                     Debug.Log("shootingsound is false");
                 }
 
-                shotEnemy = crosshair.checkEnemyRaycast();
+                shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
                 if (shotEnemy != null)
                 {
                     //vihuun osuttu, v‰hennet‰‰n healthia
@@ -57,7 +59,7 @@ public class machineGunScript : MonoBehaviour
                     if (enemyScript != null)
                     {
                         enemyScript.TakeDamage(baseDamage);
-                        crosshair.createDamageMarker(baseDamage);
+                        crosshair.createDamageMarker(baseDamage, shotEnemy);
                     }
                     else
                     {
@@ -67,6 +69,7 @@ public class machineGunScript : MonoBehaviour
             }
         }
         else {
+            crosshair.machinegunShooting=false;
             cam.endShake();
             shootingsound.Stop();
             if (shootingsoundtoggle == true) {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class shotgun : MonoBehaviour
 {
 
-    public int baseDamage = 30;
+    public int baseDamage = 5;
     public int finalDamage = 0;
     public float perShotDelay = 1f;
     float shotsfired = 0;
@@ -13,10 +13,13 @@ public class shotgun : MonoBehaviour
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
     private GameObject shotEnemy;
+    private List<GameObject> enemiesHit;
     private float timestamp = 0.0f;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
+    public float bulletSpread = 1f;
+    public int bullets = 6;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,21 +38,25 @@ public class shotgun : MonoBehaviour
                 shotsfired++;
                 //Debug.Log("Pam " + shotsfired);
 
-                shotEnemy = crosshair.checkEnemyRaycast();
-                if (shotEnemy != null)
+                enemiesHit = new List<GameObject>();
+                enemiesHit = crosshair.checkEnemyRaycastShotGun(bulletSpread, bullets);
+                if (enemiesHit != null)
                 {
                     //vihuun osuttu, v‰hennet‰‰n healthia
                     //Debug.Log("Enemy hit");
-                    Enemy enemyScript = GetEnemyParentScript();
-                    if (enemyScript != null)
+                    foreach (GameObject enemy in enemiesHit)
                     {
-                        CalculateDamageByDistance(baseDamage, range, shotEnemy);
-                        enemyScript.TakeDamage(finalDamage);
-                        crosshair.createDamageMarker(finalDamage);
-                    }
-                    else
-                    {
-                        Debug.Log("ENEMY NULL!!!");
+                        Enemy enemyScript = GetEnemyParentScript(enemy);
+                        if (enemyScript != null)
+                        {
+                            //CalculateDamageByDistance(baseDamage, range, shotEnemy);
+                            enemyScript.TakeDamage(baseDamage);
+                            crosshair.createDamageMarker(baseDamage, enemy);
+                        }
+                        else
+                        {
+                            Debug.Log("ENEMY NULL!!!");
+                        }
                     }
                 }
             }
@@ -57,9 +64,9 @@ public class shotgun : MonoBehaviour
         else { cam.endShake(); }
     }
 
-    Enemy GetEnemyParentScript()
+    Enemy GetEnemyParentScript(GameObject enemyHit)
     {
-        Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
+        Enemy enemyscript = enemyHit.GetComponent<Enemy>();
 
         if (enemyscript != null)
         {
@@ -67,10 +74,10 @@ public class shotgun : MonoBehaviour
         }
         else
         {
-            if (shotEnemy.transform.parent != null)
+            if (enemyHit.transform.parent != null)
             {
-                shotEnemy = shotEnemy.transform.parent.gameObject;
-                Enemy enemyscript2 = shotEnemy.GetComponent<Enemy>();
+                shotEnemy = enemyHit.transform.parent.gameObject;
+                Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
 
                 if (enemyscript2 != null)
                 {
@@ -100,7 +107,7 @@ public class shotgun : MonoBehaviour
         {
             float overDistance = dist - range;
 
-            finalDamage = (int)Mathf.Lerp(2, baseDamage, overDistance / dist);
+            finalDamage = (int)Mathf.Lerp(2, baseDamage, range / dist);
             if (finalDamage < 2)
             {
                 finalDamage = 2;
