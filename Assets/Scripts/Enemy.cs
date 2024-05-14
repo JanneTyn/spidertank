@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour, IDamagable
     public int curHealth = 100;
 
     public int Damage = 10;
+    public int experience = 20;
+    public PlayerLeveling playerlevel;
 
 
     void Awake()
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         
         Player = GameObject.FindWithTag("Player");
+        playerlevel = Player.GetComponent<PlayerLeveling>();
         e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
 
@@ -253,6 +256,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void EnemyDeath()
     {
+        playerlevel.GetEnemyKillExperience(experience);
         Destroy(this.gameObject);
     }
     

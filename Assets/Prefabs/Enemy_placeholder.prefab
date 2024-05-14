@@ -211,10 +211,12 @@ MonoBehaviour:
   startfollowdistance: 20
   currentdistance: 0
   patrolspeed: 3.5
-  chasespeed: 6
+  chasespeed: 4
   maxHealth: 100
   curHealth: 100
   Damage: 30
+  experience: 20
+  playerlevel: {fileID: 0}
   trig: 0
   att: 0
 --- !u!195 &4618245489153619311
