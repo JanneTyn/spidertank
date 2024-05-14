@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour, IDamagable
     }
     private void Start()
     {
+        
         Player = GameObject.FindWithTag("Player");
         e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
@@ -83,10 +84,28 @@ public class Enemy : MonoBehaviour, IDamagable
                 UpdateBehaviour(enemystate.attack2);
             }
 
+            if (curHealth <= 99)
+            {
+
+                startfollowdistance = 100;
+            }
+
             if (curHealth <= 0)
             {
                 StopAllCoroutines();
                 EnemyDeath();
+            }
+
+            if (currentdistance <= 7f)
+            {
+                trig = true;
+                StartCoroutine(attwait());
+            }
+            else if (currentdistance >= 7f)
+            {
+                trig = false;
+                att = false;
+                StopCoroutine(attwait());
             }
         }
     }
@@ -94,7 +113,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public bool trig;
     public bool att;
 
-    void OnTriggerEnter(Collider col)
+    /*void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
@@ -112,7 +131,7 @@ public class Enemy : MonoBehaviour, IDamagable
             StopCoroutine(attwait());
         }
     }
-
+*/
     private void UpdateBehaviour(enemystate state) 
     {
        
@@ -178,7 +197,7 @@ public class Enemy : MonoBehaviour, IDamagable
         while (true) 
         {
             agent.speed = chasespeed;
-            agent.SetDestination(Player.transform.position);
+            agent.SetDestination(Player.transform.position  );
             yield return null;
 
         }
@@ -188,8 +207,10 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true)
         {
+            UnityEngine.Random.InitState(System.DateTime.Now.Millisecond);
+
             agent.speed = patrolspeed;
-            Vector3 target = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            Vector3 target = Random.insideUnitSphere * 12f;
             target += agent.transform.position;
             agent.SetDestination(target);
 
