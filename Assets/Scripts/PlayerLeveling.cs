@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerLeveling : MonoBehaviour
 {
+    public int playerTotalExp = 0;
+    public int playerLevel = 0;
+    public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200};
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,16 @@ public class PlayerLeveling : MonoBehaviour
 
     public void GetEnemyKillExperience(int expAmount)
     {
-        Debug.Log("got exp: " + expAmount);
+        playerTotalExp += expAmount;
+        if (playerTotalExp >= playerLevelThresholds[playerLevel] && playerLevel < playerLevelThresholds.Count)
+        {
+            LevelUp();
+        }
+    }
+
+    public void LevelUp()
+    {
+        playerLevel += 1;
+        Debug.Log("Levelled up: Level " + playerLevel);
     }
 }
