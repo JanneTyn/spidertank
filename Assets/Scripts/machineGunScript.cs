@@ -50,16 +50,17 @@ public class machineGunScript : MonoBehaviour
                     Debug.Log("shootingsound is false");
                 }
 
-                shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
-                if (shotEnemy != null)
+                //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
+                if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
                 {
+                    shotEnemy = hit.collider.gameObject;
                     //vihuun osuttu, v‰hennet‰‰n healthia
                     //Debug.Log("Enemy hit");
                     Enemy enemyScript = GetEnemyParentScript();
                     if (enemyScript != null)
                     {
                         enemyScript.TakeDamage(baseDamage);
-                        crosshair.createDamageMarker(baseDamage, shotEnemy);
+                        crosshair.createDamageMarker(baseDamage, hit.point);
                     }
                     else
                     {

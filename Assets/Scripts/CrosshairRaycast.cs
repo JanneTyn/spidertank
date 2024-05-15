@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CrosshairRaycast : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class CrosshairRaycast : MonoBehaviour
     int layerMask = 1 << 7;
     Vector3 pos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
     float randomDir = 0;
+    float randomDir2 = 0;
+    float randomDir3 = 0;
     List<GameObject> enemiesHit = new List<GameObject>();
     public bool machinegunShooting = false;
 
@@ -38,17 +41,19 @@ public class CrosshairRaycast : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 100, col);
     }
 
-    public GameObject checkEnemyRaycast(float bulletSpread = 0f)
+    public bool checkEnemyRaycast(out RaycastHit hit, float bulletSpread = 0f)
     {
         machineGunRay = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         randomDir = Random.Range(-bulletSpread, bulletSpread);
-        machineGunRay.direction = new Vector3(machineGunRay.direction.x + randomDir, machineGunRay.direction.y + randomDir, machineGunRay.direction.z + randomDir);
-        Debug.DrawRay(machineGunRay.origin, machineGunRay.direction * 100, Color.magenta);
+        randomDir2 = Random.Range(-bulletSpread, bulletSpread);
+        randomDir3 = Random.Range(-bulletSpread, bulletSpread);
+        machineGunRay.direction = new Vector3(machineGunRay.direction.x + randomDir, machineGunRay.direction.y + randomDir2, machineGunRay.direction.z + randomDir3);
+        Debug.DrawRay(machineGunRay.origin, machineGunRay.direction * 100, Color.magenta, 10);
         if (Physics.Raycast(machineGunRay, out hit, 100, layerMask)) 
         {
-            return hit.collider.gameObject;
+            return true;
         } 
-        else return null;
+        else return false;
     }
 
     public List<GameObject> checkEnemyRaycastShotGun(float bulletSpread = 0f, int bullets = 6)
@@ -68,14 +73,14 @@ public class CrosshairRaycast : MonoBehaviour
         return enemiesHit;
     }
 
-    public void createDamageMarker(float damage, GameObject shotenemy)
+    public void createDamageMarker(float damage, Vector3 shotenemy)
     {
         GameObject dmgMarker = Instantiate(dmgMarkerPrefab, dmgUI, Quaternion.identity);
         
         dmgMarker.transform.SetParent(crosshairCanvas.transform);
         var rect = dmgMarker.GetComponent<RectTransform>();
-        Vector3 enemypos = cam.transform.InverseTransformPoint(shotenemy.transform.position);
-        rect.localPosition = enemypos;
+        Vector3 enemypos = cam.WorldToScreenPoint(shotenemy);
+        rect.position = enemypos;
         
         textmsh = dmgMarker.GetComponent<TMP_Text>();
         textmsh.text = damage.ToString();
@@ -86,8 +91,9 @@ public class CrosshairRaycast : MonoBehaviour
 
     private IEnumerator SmoothLerp(GameObject dmgMark, float time)
     {
-        Vector3 startingPos = dmgMark.transform.position;
-        Vector3 finalPos = dmgMark.transform.position + (dmgMark.transform.up * 30);
+        var rect = dmgMark.GetComponent<RectTransform>();
+        Vector3 startingPos = rect.transform.position;
+        Vector3 finalPos = rect.transform.position + (rect.transform.up * 30);
 
         float elapsedTime = 0;
 

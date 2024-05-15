@@ -38,25 +38,27 @@ public class shotgun : MonoBehaviour
                 shotsfired++;
                 //Debug.Log("Pam " + shotsfired);
 
-                enemiesHit = new List<GameObject>();
-                enemiesHit = crosshair.checkEnemyRaycastShotGun(bulletSpread, bullets);
-                if (enemiesHit != null)
-                {
-                    //vihuun osuttu, v‰hennet‰‰n healthia
-                    //Debug.Log("Enemy hit");
-                    foreach (GameObject enemy in enemiesHit)
+                for (int i = 0; i < bullets; i++) {
+                    //enemiesHit = new List<GameObject>();
+                    //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
+                    if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
                     {
-                        Enemy enemyScript = GetEnemyParentScript(enemy);
-                        if (enemyScript != null)
-                        {
-                            //CalculateDamageByDistance(baseDamage, range, shotEnemy);
-                            enemyScript.TakeDamage(baseDamage);
-                            crosshair.createDamageMarker(baseDamage, enemy);
-                        }
-                        else
-                        {
-                            Debug.Log("ENEMY NULL!!!");
-                        }
+                        shotEnemy = hit.collider.gameObject;
+                        //vihuun osuttu, v‰hennet‰‰n healthia
+                        Debug.Log("Enemy hit");
+                        
+                            Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+                            if (enemyScript != null)
+                            {
+                                //CalculateDamageByDistance(baseDamage, range, shotEnemy);
+                                enemyScript.TakeDamage(baseDamage);
+                                crosshair.createDamageMarker(baseDamage, hit.point);
+                            }
+                            else
+                            {
+                                Debug.Log("ENEMY NULL!!!");
+                            }
+                        
                     }
                 }
             }
