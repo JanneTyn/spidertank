@@ -8,6 +8,8 @@ public class shotgun : MonoBehaviour
     public int baseDamage = 5;
     public int finalDamage = 0;
     public float perShotDelay = 1f;
+    public float bulletSpread = 1f;
+    public int bullets = 6;
     float shotsfired = 0;
     public float range = 10;
     public ThirdPersonCam cam;
@@ -17,9 +19,8 @@ public class shotgun : MonoBehaviour
     private float timestamp = 0.0f;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
-    public float shakeDuration = 0.1f;
-    public float bulletSpread = 1f;
-    public int bullets = 6;
+    public float shakeDuration = 0.1f;  
+    
     // Start is called before the first frame update
     void Start()
     {

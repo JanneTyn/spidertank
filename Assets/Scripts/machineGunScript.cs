@@ -8,6 +8,7 @@ public class machineGunScript : MonoBehaviour
 {
     public int baseDamage = 10;
     public float perShotDelay = 0.25f;
+    public float bulletSpread = 0.03f;
     float shotsfired = 0;
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
@@ -15,7 +16,7 @@ public class machineGunScript : MonoBehaviour
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
-    public float bulletSpread = 0.03f;
+    
 
     private float timestamp = 0.0f;
     

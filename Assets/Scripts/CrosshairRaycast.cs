@@ -16,6 +16,7 @@ public class CrosshairRaycast : MonoBehaviour
     Ray shotGunRay;
     RaycastHit hit;
     int layerMask = 1 << 7;
+    int layerMaskTerrain = 1 << 6;
     Vector3 pos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
     float randomDir = 0;
     float randomDir2 = 0;
@@ -55,6 +56,7 @@ public class CrosshairRaycast : MonoBehaviour
         } 
         else return false;
     }
+    
 
     public List<GameObject> checkEnemyRaycastShotGun(float bulletSpread = 0f, int bullets = 6)
     {
@@ -105,5 +107,10 @@ public class CrosshairRaycast : MonoBehaviour
         }
 
         Destroy(dmgMark);
+    }
+
+    public Ray GetRay()
+    {
+        return ray;
     }
 }
