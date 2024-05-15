@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamagable
     private NavMeshAgent agent;
     Collider e_Collider;
 
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
 
 
     public enum enemystate      
@@ -58,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamagable
         playerlevel = Player.GetComponent<PlayerLeveling>();
         e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
+        StartCoroutine("Mercy");
 
     }
 
@@ -90,7 +93,7 @@ public class Enemy : MonoBehaviour, IDamagable
             if (curHealth <= 99)
             {
 
-                startfollowdistance = 100;
+                startfollowdistance = 300;
             }
 
             if (curHealth <= 0)
@@ -102,13 +105,13 @@ public class Enemy : MonoBehaviour, IDamagable
             if (currentdistance <= 7f)
             {
                 trig = true;
-                StartCoroutine(attwait());
+                StartCoroutine("attwait");
             }
             else if (currentdistance >= 7f)
             {
                 trig = false;
                 att = false;
-                StopCoroutine(attwait());
+                StopCoroutine("attwait");
             }
         }
     }
@@ -169,6 +172,13 @@ public class Enemy : MonoBehaviour, IDamagable
         curHealth -= damage;
     }
 
+    public IEnumerator Mercy()
+    {
+        yield return new WaitForSeconds(30);
+        startfollowdistance = 300;
+        StopCoroutine("Mercy");
+    }
+
     public IEnumerator attwait()
     {
         while (true)
@@ -180,7 +190,7 @@ public class Enemy : MonoBehaviour, IDamagable
             att = false;
 
             Debug.Log("PLS WORK");
-            StopAllCoroutines();
+            StopCoroutine("attwait");
 
         }
     }
@@ -200,7 +210,7 @@ public class Enemy : MonoBehaviour, IDamagable
         while (true) 
         {
             agent.speed = chasespeed;
-            agent.SetDestination(Player.transform.position  );
+            agent.SetDestination(Player.transform.position);
             yield return null;
 
         }
@@ -256,9 +266,12 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void EnemyDeath()
     {
+        
+        
         playerlevel.GetEnemyKillExperience(experience);
         Destroy(this.gameObject);
     }
+    
     
 }
 
