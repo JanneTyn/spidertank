@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2287471523449766507}
   - component: {fileID: 6508551425096878170}
   - component: {fileID: 7299804939494081522}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2458269075831893809}
   - component: {fileID: 4618245489153619311}
   - component: {fileID: 318377419371515144}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Enemy_placeholder
   m_TagString: Enemy
   m_Icon: {fileID: 0}
