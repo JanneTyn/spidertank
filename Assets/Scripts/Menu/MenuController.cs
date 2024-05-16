@@ -8,12 +8,12 @@ public class menuController : MonoBehaviour
     public bool upgrade = false;
     public GameObject pauseMenu;
     public GameObject cam;
-    public GameObject upgradeMenu
-    ;
+    public GameObject upgradeMenu;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Pause();
     }
 
     // Update is called once per frame
