@@ -9,8 +9,8 @@ public class PlayerHP : MonoBehaviour
     public int maxHealth = 100;
     public int curHP = 100;
 
-    
-    
+
+    public int healAmount = 25;
 
     public int damage = 5;
     public int damageProjectile = 10;
@@ -26,10 +26,19 @@ public class PlayerHP : MonoBehaviour
     {
         if (curHP != 0)
         {
-
+            //end
         }
 
-        
+        if (curHP >= 100)
+        {
+            curHP = 100;
+        }
+
+        if (curHP <= 0)
+        {
+            curHP = 0;
+        }
+
     }
 
     void OnTriggerEnter(Collider collision)
@@ -42,6 +51,11 @@ public class PlayerHP : MonoBehaviour
         {
             curHP -= damageProjectile;
             
+        }
+
+        if (collision.gameObject.tag == "HealthPack")
+        {
+            curHP += healAmount;
         }
     }
 }
