@@ -5,14 +5,13 @@ using UnityEngine;
 public class menuController : MonoBehaviour
 {
     private bool isPaused = false;
-    public GameObject pauseMenu;
-    public GameObject UpgradeMenu;
-    PlayerLeveling Levelingscript;
-    public GameObject Player;
+    public GameObject menus;
+    public GameObject cam;
+    public GameObject expObject;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -34,20 +33,19 @@ public class menuController : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f; // Pause the game
-        pausemenu.SetActive(true); // Show the pause menu UI
+        menus.SetActive(true); // Show the pause menu UI
+        cam.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Resume()
     {
         isPaused = false;
         Time.timeScale = 1f; // Unpause the game
-        pauseMenu.SetActive(false); // Hide the pause menu UI
-    }
-
-        public Upgrade()
-    {
-        isPaused = true;
-        Time.timeScale = 0f; // Pause the game
-        UpgradeMenu.SetActive(true); // Show the pause menu UI
+        menus.SetActive(false); // Hide the pause menu UI
+        cam.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }
