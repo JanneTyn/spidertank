@@ -15,6 +15,7 @@ public class CrosshairRaycast : MonoBehaviour
     Ray machineGunRay;
     Ray shotGunRay;
     RaycastHit hit;
+    int layerMaskEnemyPart = 1 << 8;
     int layerMask = 1 << 7;
     int layerMaskTerrain = 1 << 6;
     Vector3 pos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
@@ -50,7 +51,7 @@ public class CrosshairRaycast : MonoBehaviour
         randomDir3 = Random.Range(-bulletSpread, bulletSpread);
         machineGunRay.direction = new Vector3(machineGunRay.direction.x + randomDir, machineGunRay.direction.y + randomDir2, machineGunRay.direction.z + randomDir3);
         Debug.DrawRay(machineGunRay.origin, machineGunRay.direction * 100, Color.magenta, 10);
-        if (Physics.Raycast(machineGunRay, out hit, 100, layerMask)) 
+        if (Physics.Raycast(machineGunRay, out hit, 100, layerMaskEnemyPart) || Physics.Raycast(machineGunRay, out hit, 100, layerMask)) 
         {
             return true;
         } 
@@ -58,7 +59,7 @@ public class CrosshairRaycast : MonoBehaviour
     }
     
 
-    public List<GameObject> checkEnemyRaycastShotGun(float bulletSpread = 0f, int bullets = 6)
+    /*public List<GameObject> checkEnemyRaycastShotGun(float bulletSpread = 0f, int bullets = 6)
     {
         enemiesHit = new List<GameObject>();
         for (int i = 0; i < bullets; i++)
@@ -73,7 +74,7 @@ public class CrosshairRaycast : MonoBehaviour
             }
         }
         return enemiesHit;
-    }
+    } */
 
     public void createDamageMarker(float damage, Vector3 shotenemy)
     {

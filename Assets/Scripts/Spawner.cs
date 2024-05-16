@@ -8,6 +8,8 @@ class Spawner : MonoBehaviour
 
 	//public Transform[] m_SpawnPoints;
 	public GameObject m_EnemyPrefab;
+	public GameObject m_EnemyRangePrefab;
+	
 	public Wave wave;
 
 	Transform player;
@@ -18,7 +20,7 @@ class Spawner : MonoBehaviour
 	public int spawnRange;
 	public int waitTime;
 
-
+	private int randomNumber;
 	
 
 	void OnEnable()
@@ -79,7 +81,17 @@ class Spawner : MonoBehaviour
 
 		for (int i = 0; i < wave.enemyCount; i++)
 		{
-			Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation);
+			randomNumber = Random.Range(0, 3);
+
+			switch (randomNumber)
+			{
+				case 0: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
+
+				case 1: Instantiate(m_EnemyRangePrefab, GenerateSpawnPos(), m_EnemyRangePrefab.transform.rotation); break;
+
+				case 2: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
+			}
+			
 		}
 		
 	}

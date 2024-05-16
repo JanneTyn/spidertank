@@ -7,12 +7,17 @@ public class cannonScript : MonoBehaviour
 {
 
     public int baseDamage = 70;
+    public int minimumDamage = 5;
     public float perShotDelay = 5f;
     public float bulletSpread = 0.01f;
     public float cannonRange = 20;
+    public float explosionRange = 7;
+    public float explosionMaxDamageRange = 1;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
+    private int finalDamage = 0;
+    private int distancedDamage = 0;
     private float timestamp = 0.0f;
     private int layerMask = 1 << 7;
     private int layerMaskTerrain = 1 << 6;
@@ -41,15 +46,30 @@ public class cannonScript : MonoBehaviour
                 //enemiesHit = new List<GameObject>();
                 //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
                 crosshairRay = crosshair.GetRay();
+                GameObject cannonSphere = Instantiate(cannonSpherePrefab, dmgUI, Quaternion.identity);
 
                 if (Physics.Raycast(crosshairRay, out RaycastHit hit2, cannonRange, layerMask) || Physics.Raycast(crosshairRay, out hit2, cannonRange, layerMaskTerrain))
-                {
-                    GameObject cannonSphere = Instantiate(cannonSpherePrefab, dmgUI, Quaternion.identity);
+                {                  
                     cannonSphere.transform.position = hit2.point;
-                    cannonSphere.SetActive(true);
-                    StartCoroutine(DestroyCannonSphere(cannonSphere, 3));
+                    
                 }
-                    if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
+                else
+                {
+                    cannonSphere.transform.position = crosshairRay.GetPoint(cannonRange);
+                }
+                cannonSphere.transform.localScale = new Vector3(explosionRange, explosionRange, explosionRange);
+                cannonSphere.SetActive(true);
+                Collider[] hitColliders = Physics.OverlapSphere(cannonSphere.transform.position, explosionRange / 2, layerMask);
+
+                if (hitColliders != null)
+                {
+                    GetEnemiesInRange(hitColliders, cannonSphere.transform.position);
+                }
+                else { Debug.Log("Didn't hit anything"); }
+
+                StartCoroutine(DestroyCannonSphere(cannonSphere, 3));
+
+                /*if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
                     {
                         shotEnemy = hit.collider.gameObject;
                         //vihuun osuttu, v‰hennet‰‰n healthia
@@ -68,12 +88,50 @@ public class cannonScript : MonoBehaviour
                         }
 
                     }
-                
+                */
             }
         }
         else { cam.endShake(); }
     }
 
+    public void GetEnemiesInRange(Collider[] hitColliders, Vector3 explosionPos)
+    {
+        foreach (var hitCollider in hitColliders)
+        {
+            shotEnemy = hitCollider.gameObject;
+            //vihuun osuttu, v‰hennet‰‰n healthia
+            Debug.Log("Enemy hit");
+
+            Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+            if (enemyScript != null)
+            {
+                finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
+                enemyScript.TakeDamage(finalDamage);
+                crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+
+            }
+            else
+            {
+                Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+            }
+        }
+    }
+
+    public int CalculateDamageByDistance(Vector3 enemyPos, Vector3 explosionPos)
+    {
+        float dist = Vector3.Distance(enemyPos, explosionPos);
+        Debug.Log(explosionRange + " / " + dist);
+        if (dist < explosionMaxDamageRange)
+        {
+            distancedDamage = baseDamage;
+        }
+        else
+        {
+            distancedDamage = (int)Mathf.Lerp(baseDamage, minimumDamage, dist / (explosionRange / 2));
+        }
+        return distancedDamage;
+    }
+     
     private IEnumerator DestroyCannonSphere(GameObject sphere, float time)
     {
 
@@ -100,7 +158,7 @@ public class cannonScript : MonoBehaviour
         {
             if (enemyHit.transform.parent != null)
             {
-                shotEnemy = enemyHit.transform.parent.gameObject;
+                enemyHit = enemyHit.transform.parent.gameObject;
                 Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
 
                 if (enemyscript2 != null)
