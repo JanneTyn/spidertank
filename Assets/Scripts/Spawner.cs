@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 class Spawner : MonoBehaviour
 {
 
 
-	//public Transform[] m_SpawnPoints;
+	public Transform[] m_SpawnPoints;
 	public GameObject m_EnemyPrefab;
 	public GameObject m_EnemyRangePrefab;
 	
@@ -19,6 +20,8 @@ class Spawner : MonoBehaviour
 	public int aliveEnemyCount;
 	public int spawnRange;
 	public int waitTime;
+
+	public int enemyCount;
 
 	private int randomNumber;
 	
@@ -42,6 +45,7 @@ class Spawner : MonoBehaviour
 
 		if (gameObjects.Length == 0)
 		{
+			
 			StartCoroutine("WaitAndSpawn");
 			//spawning();
 		}
@@ -57,16 +61,18 @@ class Spawner : MonoBehaviour
 		Vector3 spawnPos = player.transform.position + new Vector3(spawnPosX, 0.91f, spawnPosZ);
 
 		return spawnPos;
+
+
 	}
 
-
 	
-	 private IEnumerator WaitAndSpawn()
-	{
 
+	private IEnumerator WaitAndSpawn()
+	{
+		
 		yield return new WaitForSeconds(waitTime);
 		Spawn();
-
+		enemyCount += 3;
 
 		StopCoroutine("WaitAndSpawn");
 	}
@@ -74,18 +80,15 @@ class Spawner : MonoBehaviour
 	
 	 void Spawn()
 	{
-		
-
-		
-
-
-		for (int i = 0; i < wave.enemyCount; i++)
+	
+		for (int i = 0; i < enemyCount; i++)
 		{
+		
 			randomNumber = Random.Range(0, 3);
-
+			
 			switch (randomNumber)
 			{
-				case 0: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
+				case 0: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); ; break;
 
 				case 1: Instantiate(m_EnemyRangePrefab, GenerateSpawnPos(), m_EnemyRangePrefab.transform.rotation); break;
 
