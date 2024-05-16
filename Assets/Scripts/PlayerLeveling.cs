@@ -8,6 +8,7 @@ public class PlayerLeveling : MonoBehaviour
     public int playerLevel = 0;
     public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200};
 
+    public menuController menu;
     
     // Start is called before the first frame update
     void Start()
@@ -35,5 +36,7 @@ public class PlayerLeveling : MonoBehaviour
     {
         playerLevel += 1;
         Debug.Log("Levelled up: Level " + playerLevel);
+        menu.upgrade = true;
+        menu.Pause();
     }
 }

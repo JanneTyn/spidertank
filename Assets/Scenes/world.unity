@@ -1670,7 +1670,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 271162229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837515926}
+        m_TargetAssemblyTypeName: menuController, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &271162229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,12 +3603,12 @@ PrefabInstance:
     - target: {fileID: 841771286371319383, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0021746855
+      value: -0.0021746517
       objectReference: {fileID: 0}
     - target: {fileID: 841771286371319383, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00042006007
+      value: -0.00042005352
       objectReference: {fileID: 0}
     - target: {fileID: 2193842014898077721, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
@@ -3696,17 +3708,17 @@ PrefabInstance:
     - target: {fileID: 5260133551761496237, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.1667279
+      value: -0.16672787
       objectReference: {fileID: 0}
     - target: {fileID: 5260133551761496237, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0021838443
+      value: -0.0021838464
       objectReference: {fileID: 0}
     - target: {fileID: 5260133551761496237, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0003692775
+      value: -0.00036927778
       objectReference: {fileID: 0}
     - target: {fileID: 7058474871554101905, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
@@ -3721,17 +3733,17 @@ PrefabInstance:
     - target: {fileID: 7259321834251256335, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.1667279
+      value: -0.16672789
       objectReference: {fileID: 0}
     - target: {fileID: 7259321834251256335, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0021838443
+      value: -0.0021838485
       objectReference: {fileID: 0}
     - target: {fileID: 7259321834251256335, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0003692775
+      value: -0.00036927807
       objectReference: {fileID: 0}
     - target: {fileID: 8230310856741153367, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
@@ -3746,18 +3758,23 @@ PrefabInstance:
     - target: {fileID: 8660165070495202568, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.1667279
+      value: -0.16672787
       objectReference: {fileID: 0}
     - target: {fileID: 8660165070495202568, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0021838443
+      value: -0.0021838464
       objectReference: {fileID: 0}
     - target: {fileID: 8660165070495202568, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0003692775
+      value: -0.00036927778
       objectReference: {fileID: 0}
+    - target: {fileID: 8667668424554421763, guid: 7c112309b5cf15a4db2f018c0f184c5f,
+        type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 1837515926}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -5570,7 +5587,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1101596390}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837515926}
+        m_TargetAssemblyTypeName: menuController, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1101596390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6437,7 +6466,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1361380045}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837515926}
+        m_TargetAssemblyTypeName: menuController, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1361380045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6807,6 +6848,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8966311043270599953, guid: 79e624e6a8770a946afb866fd94b394b,
     type: 3}
   m_PrefabInstance: {fileID: 470888825}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1442661722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8230310856741153367, guid: 7c112309b5cf15a4db2f018c0f184c5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 589220920}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454785423
 GameObject:
@@ -8068,9 +8115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ab59c1ca86dfa4ca288e778cb03418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menus: {fileID: 420731689}
-  cam: {fileID: 0}
-  expObject: {fileID: 0}
+  upgrade: 0
+  pauseMenu: {fileID: 420731689}
+  cam: {fileID: 1442661722}
+  upgradeMenu: {fileID: 372319857}
 --- !u!4 &1841175341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4190756321598296594, guid: baa3014035ec00b44b81dd14a925e739,
@@ -8766,7 +8814,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1941076515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837515926}
+        m_TargetAssemblyTypeName: menuController, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1941076515
 MonoBehaviour:
   m_ObjectHideFlags: 0

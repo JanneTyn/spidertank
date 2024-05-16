@@ -5,9 +5,11 @@ using UnityEngine;
 public class menuController : MonoBehaviour
 {
     private bool isPaused = false;
-    public GameObject menus;
+    public bool upgrade = false;
+    public GameObject pauseMenu;
     public GameObject cam;
-    public GameObject expObject;
+    public GameObject upgradeMenu
+    ;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,21 +31,28 @@ public class menuController : MonoBehaviour
             }
         }  
     }
-    void Pause()
+    public void Pause()
     {
         isPaused = true;
         Time.timeScale = 0f; // Pause the game
-        menus.SetActive(true); // Show the pause menu UI
         cam.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        if (upgrade == false) {
+            pauseMenu.SetActive(true); // Show the pause menu UI
+        }
+        else { 
+            upgradeMenu.SetActive(true);
+            upgrade = false;
+        }
     }
 
-    void Resume()
+    public void Resume()
     {
         isPaused = false;
         Time.timeScale = 1f; // Unpause the game
-        menus.SetActive(false); // Hide the pause menu UI
+        pauseMenu.SetActive(false); // Hide the pause menu UI
+        upgradeMenu.SetActive(false);
         cam.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
