@@ -79,7 +79,7 @@ public class shotgun : MonoBehaviour
         {
             if (enemyHit.transform.parent != null)
             {
-                shotEnemy = enemyHit.transform.parent.gameObject;
+                enemyHit = enemyHit.transform.parent.gameObject;
                 Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
 
                 if (enemyscript2 != null)

@@ -34,7 +34,7 @@ public class menuController : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f; // Pause the game
-        pausemenu.SetActive(true); // Show the pause menu UI
+        //pausemenu.SetActive(true); // Show the pause menu UI
     }
 
     void Resume()
@@ -44,7 +44,7 @@ public class menuController : MonoBehaviour
         pauseMenu.SetActive(false); // Hide the pause menu UI
     }
 
-        public Upgrade()
+        public void Upgrade()
     {
         isPaused = true;
         Time.timeScale = 0f; // Pause the game
