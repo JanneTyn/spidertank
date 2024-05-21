@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8186433515747751369}
   m_Layer: 8
   m_Name: eyes
-  m_TagString: Untagged
+  m_TagString: RangeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 964246245021357985}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: RangeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 2477126202847461821}
   m_Layer: 8
   m_Name: Range_placeholder
-  m_TagString: Enemy
+  m_TagString: RangeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 4423703375179288095}
   m_Layer: 8
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: RangeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

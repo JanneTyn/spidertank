@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Projectile
   - HealthPack
+  - MeleeEnemy
+  - RangeEnemy
+  - TankEnemy
   layers:
   - Default
   - TransparentFX
