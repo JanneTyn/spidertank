@@ -5,15 +5,30 @@ using UnityEngine;
 
 public class MissileLauncherScript : MonoBehaviour
 {
+    public int baseDamage = 50;
+    public int minimumDamage = 5;
+    public float perShotDelay = 1f;
     public float missileAmount = 4;
+    public float explosionRange = 5;
+    public float explosionMaxDamageRange = 2;
     public float launcherTargetRange = 40;
     public float missileTravelTime = 5;
     public float timeBetweenMissiles = 0.5f;
     public Camera cam;
     public GameObject missilesTarget;
     public GameObject missilePrefab;
+    public GameObject cannonSpherePrefab;
+    public Material targetEnabled;
+    public Material targetDisabled;
+    bool targetAllowed = false;
+    public CrosshairRaycast crosshair;
+    private GameObject shotEnemy;
+    private float timestamp = 0.0f;
     int layerMaskTerrain = 1 << 6;
     bool targeting = false;
+    private int layerMask = 1 << 7;
+    private int finalDamage = 0;
+    private int distancedDamage = 0;
     public Vector3 boxTargetArea = new Vector3(0.25F, 0.25F, 0F);
     public Vector3 boxTargetArea2 = new Vector3(0.75F, 0.75F, 0F);
     public Vector3 boxTargetWS; 
@@ -21,6 +36,7 @@ public class MissileLauncherScript : MonoBehaviour
     public Vector3 boxTargetScale;
     public Vector3 crosshairWS;
     public Vector3 missileStart;
+    private Vector3 dmgUI;
     //public Vector3 missileStartPos;
     public RaycastHit hitInfo;
     Ray ray;
@@ -41,29 +57,50 @@ public class MissileLauncherScript : MonoBehaviour
         boxTargetWS2 = cam.ViewportToWorldPoint(boxTargetArea2);
         boxTargetScale = Vector3.Scale(boxTargetWS, boxTargetWS2);
         if (Input.GetMouseButton(1))
-        {   
-            missilesTarget.SetActive(true);
-            targeting = true;
-            if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
-            {
-                missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.01f, hitInfo.point.z);
-            }
-            m_HitDetect = Physics.BoxCast(ray.GetPoint(0), boxTargetArea, ray.GetPoint(1), out hitInfo, transform.rotation, launcherTargetRange);
-            if (m_HitDetect)
-            {
-                Debug.Log("boxcast hit something");
+        {
+
+            if (Time.time > timestamp)
+            {              
+
+                targeting = true;
+                if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
+                {
+                    missilesTarget.SetActive(true);
+                    missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.01f, hitInfo.point.z);
+                    if (hitInfo.distance > 15)
+                    {                                        
+                        missilesTarget.GetComponent<MeshRenderer>().material = targetEnabled;
+                        targetAllowed = true;
+                    }
+                    else
+                    {
+                        missilesTarget.GetComponent<MeshRenderer>().material = targetDisabled;
+                        targetAllowed=false;
+                    }
+                }
+                m_HitDetect = Physics.BoxCast(ray.GetPoint(0), boxTargetArea, ray.GetPoint(1), out hitInfo, transform.rotation, launcherTargetRange);
+                if (m_HitDetect)
+                {
+                    Debug.Log("boxcast hit something");
+                }
             }
         }
+
         else
         {
-            
+
             if (targeting)
             {
-                StartCoroutine(LaunchMissiles());
+                if (targetAllowed)
+                {
+                    StartCoroutine(LaunchMissiles());
+                    timestamp = Time.time + perShotDelay;                  
+                }
                 targeting = false;
             }
             missilesTarget.SetActive(false);
         }
+        
     }
 
     public IEnumerator LaunchMissiles()
@@ -98,7 +135,6 @@ public class MissileLauncherScript : MonoBehaviour
     {
         float elapsedTime = 0;
         float startTime = Time.time;
-        
 
         while (elapsedTime < missileTravelTime)
         {
@@ -115,7 +151,110 @@ public class MissileLauncherScript : MonoBehaviour
             yield return null;
         }
 
+        ExplodeMissile(firedMissile);
+    }
+
+    public void ExplodeMissile(GameObject firedMissile)
+    {
+        GameObject cannonSphere = Instantiate(cannonSpherePrefab, dmgUI, Quaternion.identity);
+
+        cannonSphere.transform.position = firedMissile.transform.position;
+        cannonSphere.transform.localScale = new Vector3(explosionRange, explosionRange, explosionRange);
+
         Destroy(firedMissile);
+
+        Collider[] hitColliders = Physics.OverlapSphere(cannonSphere.transform.position, explosionRange / 2, layerMask);
+
+        if (hitColliders != null)
+        {
+            GetEnemiesInRange(hitColliders, cannonSphere.transform.position);
+        }
+
+        StartCoroutine(DestroyCannonSphere(cannonSphere, 3));
+    }
+
+    private IEnumerator DestroyCannonSphere(GameObject sphere, float time)
+    {
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(sphere);
+    }
+
+    public void GetEnemiesInRange(Collider[] hitColliders, Vector3 explosionPos)
+    {
+        foreach (var hitCollider in hitColliders)
+        {
+            shotEnemy = hitCollider.gameObject;
+            //vihuun osuttu, vähennetään healthia
+            Debug.Log("Enemy hit");
+
+            Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+            if (enemyScript != null)
+            {
+                finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
+                enemyScript.TakeDamage(finalDamage);
+                crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+
+            }
+            else
+            {
+                Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+            }
+        }
+    }
+
+    public int CalculateDamageByDistance(Vector3 enemyPos, Vector3 explosionPos)
+    {
+        float dist = Vector3.Distance(enemyPos, explosionPos);
+        Debug.Log(explosionRange + " / " + dist);
+        if (dist < explosionMaxDamageRange)
+        {
+            distancedDamage = baseDamage;
+        }
+        else
+        {
+            distancedDamage = (int)Mathf.Lerp(baseDamage, minimumDamage, dist / (explosionRange / 2));
+        }
+        return distancedDamage;
+    }
+
+    Enemy GetEnemyParentScript(GameObject enemyHit)
+    {
+        Enemy enemyscript = enemyHit.GetComponent<Enemy>();
+
+        if (enemyscript != null)
+        {
+            return enemyscript;
+        }
+        else
+        {
+            if (enemyHit.transform.parent != null)
+            {
+                enemyHit = enemyHit.transform.parent.gameObject;
+                Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
+
+                if (enemyscript2 != null)
+                {
+                    return enemyscript2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 
     void OnDrawGizmos()
