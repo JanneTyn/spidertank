@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5577782695810805362
+--- !u!1 &1029092862206231155
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 605295175030055240}
-  - component: {fileID: 4329624733512281871}
+  - component: {fileID: 2899510297142693789}
+  - component: {fileID: 960904436673263741}
   m_Layer: 0
-  m_Name: Spawner wip
+  m_Name: Spawnpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &605295175030055240
+--- !u!4 &2899510297142693789
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5577782695810805362}
+  m_GameObject: {fileID: 1029092862206231155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.50409, y: -55.176453, z: 22.186626}
+  m_LocalPosition: {x: 62.7932, y: 1.91, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4329624733512281871
+--- !u!114 &960904436673263741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5577782695810805362}
+  m_GameObject: {fileID: 1029092862206231155}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98badbedc91719b47ae312a464faa6c7, type: 3}
@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EnemyPrefab: {fileID: 7105485219465937781, guid: baa3014035ec00b44b81dd14a925e739,
     type: 3}
-  wave: {fileID: 11400000, guid: e6b4354f65cccf74a8c594c7cd496c86, type: 2}
+  m_EnemyRangePrefab: {fileID: 5599114208047386151, guid: e4eae4df7f2c22543bc43a03019ab262,
+    type: 3}
   aliveEnemyCount: 0
-  spawnRange: 50
+  spawnRange: 10
   waitTime: 5
+  startspawndis: 50
+  currentdis: 0
