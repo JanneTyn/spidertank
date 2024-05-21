@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 2327849263807996842}
   - component: {fileID: 7448844261795766133}
   - component: {fileID: 2477126202847461821}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Range_placeholder
   m_TagString: RangeEnemy
   m_Icon: {fileID: 0}

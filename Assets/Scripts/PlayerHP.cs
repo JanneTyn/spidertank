@@ -26,7 +26,7 @@ public class PlayerHP : MonoBehaviour
     {
         if (curHP != 0)
         {
-            //end
+            return;
         }
 
         if (curHP >= 100)
@@ -43,7 +43,7 @@ public class PlayerHP : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.layer == 7)
         {
             curHP -= damage;
         }
