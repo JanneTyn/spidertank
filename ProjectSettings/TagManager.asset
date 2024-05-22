@@ -11,6 +11,7 @@ TagManager:
   - MeleeEnemy
   - RangeEnemy
   - TankEnemy
+  - Point
   layers:
   - Default
   - TransparentFX

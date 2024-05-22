@@ -7,6 +7,8 @@ class Spawner : MonoBehaviour
 {
 
 
+	GameObject[] spawnPoints;
+	GameObject currentPoint;
 
 	public GameObject m_EnemyPrefab;
 	public GameObject m_EnemyRangePrefab;
@@ -20,6 +22,8 @@ class Spawner : MonoBehaviour
 	public int aliveEnemyCount;
 	public int spawnRange;
 	public int waitTime;
+	int index;
+
 
 	public static int maxEnemies = 5;
 	public static int enemyCount = 0;
@@ -29,8 +33,7 @@ class Spawner : MonoBehaviour
 	private int randomNumber;
 
 
-	public float startspawndis;
-	public float currentdis;
+	
 
 
 
@@ -44,7 +47,7 @@ class Spawner : MonoBehaviour
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").transform;
-
+		
 		//spawning();
 
 	}
@@ -52,29 +55,13 @@ class Spawner : MonoBehaviour
 
 	void Update()
 	{
-
+		MobCheck();
+		spawnPoints = GameObject.FindGameObjectsWithTag("Point");
 		ArrayList gos = new ArrayList();
 		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
 		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
 
 		aliveEnemyCount = gos.Count;
-
-		currentdis = Vector3.Distance(player.transform.position, transform.position);
-
-		if (this.gameObject != null)
-		{
-			if (currentdis > startspawndis)
-			{
-				StopCoroutine("WaitAndSpawn");
-
-			}
-			else if (currentdis < startspawndis)
-			{
-
-				MobCheck();
-			}
-			
-		}
 
 
 
@@ -93,18 +80,6 @@ class Spawner : MonoBehaviour
 		}
 	}
 
-	private Vector3 GenerateSpawnPos()
-	{
-
-		float spawnPosX = Random.Range(-spawnRange, spawnRange);
-		float spawnPosZ = Random.Range(-spawnRange, spawnRange);
-
-		Vector3 spawnPos = transform.position + new Vector3(spawnPosX, 0.91f, spawnPosZ);
-
-		return spawnPos;
-
-
-	}
 
 	void OnDrawGizmosSelected()
 	{
@@ -113,18 +88,33 @@ class Spawner : MonoBehaviour
 	}
 
 
+	private Vector3 GenerateSpawnPos()
+	{
+
+		float spawnPosX = Random.Range(-spawnRange, spawnRange);
+		float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+
+		randomNumber = Random.Range(0, 3);
+		index = Random.Range(0, spawnPoints.Length);
+		currentPoint = spawnPoints[index];
+
+		Vector3 spawnPos = currentPoint.transform.position + new Vector3(spawnPosX, 0.91f, spawnPosZ);
+
+		return spawnPos;
+
+
+	}
 
 	private IEnumerator WaitAndSpawn()
 	{
 		Debug.Log("started spawning");
 		yield return new WaitForSeconds(waitTime);
 		Spawn();
-		//enemyCount += 2;
+		
 		
 
 		
 	}
-
 	
 	void Spawn()
 	{
@@ -139,8 +129,7 @@ class Spawner : MonoBehaviour
 		{
 			enemyCount++;
 
-			randomNumber = Random.Range(0, 3);
-
+			
 			switch (randomNumber)
 			{
 				case 0: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); ; break;
