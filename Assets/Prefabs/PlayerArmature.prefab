@@ -2562,7 +2562,7 @@ MonoBehaviour:
   playerTotalExp: 0
   playerLevel: 0
   playerLevelThresholds: 14000000280000005000000078000000c8000000
-  menu: {fileID: 0}
+  menu: {fileID: 2821247929479438162}
 --- !u!1 &2259433870378398618
 GameObject:
   m_ObjectHideFlags: 0
