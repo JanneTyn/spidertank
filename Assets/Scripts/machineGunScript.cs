@@ -12,6 +12,7 @@ public class machineGunScript : MonoBehaviour
     float shotsfired = 0;
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
+    public CheckEnemyTag checkEnemyTag;
     private GameObject shotEnemy;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
@@ -52,7 +53,7 @@ public class machineGunScript : MonoBehaviour
                 //    shootingsoundtoggle = true;
                 //    Debug.Log("shootingsound is false");
                 //}
-                sound.MG_Sound_On();
+                //sound.MG_Sound_On();
 
                 //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
                 if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
@@ -60,16 +61,37 @@ public class machineGunScript : MonoBehaviour
                     shotEnemy = hit.collider.gameObject;
                     //vihuun osuttu, v‰hennet‰‰n healthia
                     //Debug.Log("Enemy hit");
-                    Enemy enemyScript = GetEnemyParentScript();
-                    if (enemyScript != null)
+                    if (shotEnemy.gameObject.tag == "MeleeEnemy")
                     {
-                        enemyScript.TakeDamage(baseDamage);
-                        crosshair.createDamageMarker(baseDamage, hit.point);
+                        Enemy enemyScript = GetEnemyParentScript();
+                        if (enemyScript != null)
+                        {
+                            enemyScript.TakeDamage(baseDamage);
+                            crosshair.createDamageMarker(baseDamage, hit.point);
+                        }
+                        else
+                        {
+                            Debug.Log("ENEMY NULL!!!");
+                        }
+                    }
+                    else if (shotEnemy.gameObject.tag == "RangeEnemy")
+                    {
+                        EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                        if (enemyScriptRange != null)
+                        {
+                            enemyScriptRange.TakeDamage(baseDamage);
+                            crosshair.createDamageMarker(baseDamage, hit.point);
+                        }
+                        else
+                        {
+                            Debug.Log("ENEMY NULL!!!");
+                        }
                     }
                     else
                     {
-                        Debug.Log("ENEMY NULL!!!");
-                    }                  
+                        Debug.Log("Unknown enemy");
+                    }
+                                      
                 }
             }
         }
@@ -82,7 +104,7 @@ public class machineGunScript : MonoBehaviour
             //    shootingsound.PlayOneShot(clip);
             //    shootingsoundtoggle = false;
             //}
-            sound.MG_Sound_Off();
+            //sound.MG_Sound_Off();
         }
     }
 
@@ -107,7 +129,24 @@ public class machineGunScript : MonoBehaviour
                 }
                 else
                 {
-                    return null;
+                    if (shotEnemy.transform.parent != null)
+                    {
+                        shotEnemy = shotEnemy.transform.parent.gameObject;
+                        Enemy enemyscript3 = shotEnemy.GetComponent<Enemy>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else
@@ -118,5 +157,54 @@ public class machineGunScript : MonoBehaviour
 
     }
 
-    
+    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    {
+        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
+
+        if (enemyscript != null)
+        {
+            return enemyscript;
+        }
+        else
+        {
+            if (enemyHit.transform.parent != null)
+            {
+                enemyHit = enemyHit.transform.parent.gameObject;
+                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
+
+                if (enemyscript2 != null)
+                {
+                    return enemyscript2;
+                }
+                else
+                {
+                    if (enemyHit.transform.parent != null)
+                    {
+                        enemyHit = enemyHit.transform.parent.gameObject;
+                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    }
+
+
 }
