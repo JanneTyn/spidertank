@@ -69,7 +69,7 @@ public class MissileLauncherScript : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
                 {
                     missilesTarget.SetActive(true);
-                    missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.1f, hitInfo.point.z);
+                    missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.05f, hitInfo.point.z);
                     if (hitInfo.distance > 15)
                     {                                        
                         missilesTarget.GetComponent<MeshRenderer>().material = targetEnabled;
@@ -133,7 +133,7 @@ public class MissileLauncherScript : MonoBehaviour
     {
         GameObject missile = Instantiate(missilePrefab, missileStart, Quaternion.identity);
         missile.transform.SetParent(transform);
-        missile.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        missile.transform.localScale = new Vector3(0.2f, 0.3f, 0.2f);
         Vector3 missileStartPos = transform.position;
         missile.SetActive(true);
         StartCoroutine(MissileSlerp(missile, missileStartPos, missileTargetPos));
