@@ -14,6 +14,9 @@ public class MissileLauncherScript : MonoBehaviour
     public float launcherTargetRange = 40;
     public float missileTravelTime = 5;
     public float timeBetweenMissiles = 0.5f;
+    private float groundSlopeAngleX = 0f;
+    private float groundSlopeAngleY = 0f;
+    private float groundSlopeAngleZ = 0f;
     public Camera cam;
     public GameObject missilesTarget;
     public GameObject missilePrefab;
@@ -66,7 +69,7 @@ public class MissileLauncherScript : MonoBehaviour
                 if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
                 {
                     missilesTarget.SetActive(true);
-                    missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.01f, hitInfo.point.z);
+                    missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.1f, hitInfo.point.z);
                     if (hitInfo.distance > 15)
                     {                                        
                         missilesTarget.GetComponent<MeshRenderer>().material = targetEnabled;
@@ -77,6 +80,11 @@ public class MissileLauncherScript : MonoBehaviour
                         missilesTarget.GetComponent<MeshRenderer>().material = targetDisabled;
                         targetAllowed=false;
                     }
+
+                    //groundSlopeAngleX = Vector3.Angle(hitInfo.normal, Vector3.right);
+                    //groundSlopeAngleY = Vector3.Angle(hitInfo.normal, Vector3.up);
+                    //groundSlopeAngleZ = Vector3.Angle(hitInfo.normal, Vector3.forward);
+                    //missilesTarget.transform.rotation = new Quaternion(groundSlopeAngleX, groundSlopeAngleY, groundSlopeAngleZ, 0);
                 }
                 m_HitDetect = Physics.BoxCast(ray.GetPoint(0), boxTargetArea, ray.GetPoint(1), out hitInfo, transform.rotation, launcherTargetRange);
                 if (m_HitDetect)
@@ -195,17 +203,39 @@ public class MissileLauncherScript : MonoBehaviour
             //vihuun osuttu, v‰hennet‰‰n healthia
             Debug.Log("Enemy hit");
 
-            Enemy enemyScript = GetEnemyParentScript(shotEnemy);
-            if (enemyScript != null)
+            if (shotEnemy.gameObject.tag == "MeleeEnemy")
             {
-                finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
-                enemyScript.TakeDamage(finalDamage);
-                crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+                if (enemyScript != null)
+                {
+                    finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
+                    enemyScript.TakeDamage(finalDamage);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
 
+                }
+                else
+                {
+                    Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+                }
+            }
+            else if (shotEnemy.gameObject.tag == "RangeEnemy")
+            {
+                EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                if (enemyScriptRange != null)
+                {
+                    finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
+                    enemyScriptRange.TakeDamage(finalDamage);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+
+                }
+                else
+                {
+                    Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+                }
             }
             else
             {
-                Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+                Debug.Log("Unknown enemy");
             }
         }
     }
@@ -246,7 +276,73 @@ public class MissileLauncherScript : MonoBehaviour
                 }
                 else
                 {
-                    return null;
+                    if (enemyHit.transform.parent != null)
+                    {
+                        enemyHit = enemyHit.transform.parent.gameObject;
+                        Enemy enemyscript3 = enemyHit.GetComponent<Enemy>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    }
+
+    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    {
+        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
+
+        if (enemyscript != null)
+        {
+            return enemyscript;
+        }
+        else
+        {
+            if (enemyHit.transform.parent != null)
+            {
+                enemyHit = enemyHit.transform.parent.gameObject;
+                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
+
+                if (enemyscript2 != null)
+                {
+                    return enemyscript2;
+                }
+                else
+                {
+                    if (enemyHit.transform.parent != null)
+                    {
+                        enemyHit = enemyHit.transform.parent.gameObject;
+                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else

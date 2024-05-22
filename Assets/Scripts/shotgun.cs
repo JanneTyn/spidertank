@@ -47,7 +47,9 @@ public class shotgun : MonoBehaviour
                         shotEnemy = hit.collider.gameObject;
                         //vihuun osuttu, v‰hennet‰‰n healthia
                         Debug.Log("Enemy hit");
-                        
+
+                        if (shotEnemy.gameObject.tag == "MeleeEnemy")
+                        {
                             Enemy enemyScript = GetEnemyParentScript(shotEnemy);
                             if (enemyScript != null)
                             {
@@ -59,7 +61,25 @@ public class shotgun : MonoBehaviour
                             {
                                 Debug.Log("ENEMY NULL!!!");
                             }
-                        
+                        }
+                        else if (shotEnemy.gameObject.tag == "RangeEnemy")
+                        {
+                            EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                            if (enemyScriptRange != null)
+                            {
+                                //CalculateDamageByDistance(baseDamage, range, shotEnemy);
+                                enemyScriptRange.TakeDamage(baseDamage);
+                                crosshair.createDamageMarker(baseDamage, hit.point);
+                            }
+                            else
+                            {
+                                Debug.Log("ENEMY NULL!!!");
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("Unknown enemy");
+                        }
                     }
                 }
             }
@@ -88,7 +108,73 @@ public class shotgun : MonoBehaviour
                 }
                 else
                 {
-                    return null;
+                    if (enemyHit.transform.parent != null)
+                    {
+                        enemyHit = enemyHit.transform.parent.gameObject;
+                        Enemy enemyscript3 = enemyHit.GetComponent<Enemy>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+    }
+
+    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    {
+        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
+
+        if (enemyscript != null)
+        {
+            return enemyscript;
+        }
+        else
+        {
+            if (enemyHit.transform.parent != null)
+            {
+                enemyHit = enemyHit.transform.parent.gameObject;
+                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
+
+                if (enemyscript2 != null)
+                {
+                    return enemyscript2;
+                }
+                else
+                {
+                    if (enemyHit.transform.parent != null)
+                    {
+                        enemyHit = enemyHit.transform.parent.gameObject;
+                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
+
+                        if (enemyscript3 != null)
+                        {
+                            return enemyscript3;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             else
