@@ -20,16 +20,18 @@ public class machineGunScript : MonoBehaviour
     
 
     private float timestamp = 0.0f;
-    
-    AudioSource shootingsound;
-    public AudioClip clip;
-    bool shootingsoundtoggle = false;
+
+    // AudioSource shootingsound;
+    // public AudioClip clip;
+    // bool shootingsoundtoggle = false;
+    public SoundController sound;
 
     // Start is called before the first frame update
     void Start()
     {
         //cam = GameObject.Find("FreeLookCamera").GetComponent<ThirdPersonCam>();
-        shootingsound = GetComponent<AudioSource>();
+        
+        // shootingsound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,12 +47,13 @@ public class machineGunScript : MonoBehaviour
                 timestamp = Time.time + perShotDelay;
                 shotsfired++;
                 Debug.Log("Pam " + shotsfired);
-                
-                if (!shootingsound.isPlaying); {
-                    shootingsound.Play();
-                    shootingsoundtoggle = true;
-                    Debug.Log("shootingsound is false");
-                }
+
+                //if (!shootingsound.isPlaying); {
+                //    shootingsound.Play();
+                //    shootingsoundtoggle = true;
+                //    Debug.Log("shootingsound is false");
+                //}
+                sound.MG_Sound_On();
 
                 //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
                 if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
@@ -95,11 +98,13 @@ public class machineGunScript : MonoBehaviour
         else {
             crosshair.machinegunShooting=false;
             cam.endShake();
-            shootingsound.Stop();
-            if (shootingsoundtoggle == true) {
-                shootingsound.PlayOneShot(clip);
-                shootingsoundtoggle = false;
-            }
+
+            //shootingsound.Stop();
+            //if (shootingsoundtoggle == true) {
+            //    shootingsound.PlayOneShot(clip);
+            //    shootingsoundtoggle = false;
+            //}
+            sound.MG_Sound_Off();
         }
     }
 
