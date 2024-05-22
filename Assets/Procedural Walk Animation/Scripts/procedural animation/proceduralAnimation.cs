@@ -62,7 +62,7 @@ public class proceduralAnimation : MonoBehaviour
     
     private bool[] isLegMoving;
 
-    private void Start()
+    private void Awake()
     {
         indexTomove = -1;
         nbLegs = legIktargets.Length;

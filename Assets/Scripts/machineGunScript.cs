@@ -10,6 +10,7 @@ public class machineGunScript : MonoBehaviour
     public float perShotDelay = 0.25f;
     public float bulletSpread = 0.03f;
     float shotsfired = 0;
+    public int side = 0;
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
     public CheckEnemyTag checkEnemyTag;
@@ -17,6 +18,7 @@ public class machineGunScript : MonoBehaviour
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
+
     
 
     private float timestamp = 0.0f;
@@ -38,7 +40,7 @@ public class machineGunScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(side))
         {
             StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             crosshair.machinegunShooting = true;

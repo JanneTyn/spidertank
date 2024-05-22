@@ -12,6 +12,7 @@ public class shotgun : MonoBehaviour
     public int bullets = 6;
     float shotsfired = 0;
     public float range = 10;
+    public int side = 0;
     public ThirdPersonCam cam;
     public CrosshairRaycast crosshair;
     private GameObject shotEnemy;
@@ -30,7 +31,7 @@ public class shotgun : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(side))
         {
             StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)

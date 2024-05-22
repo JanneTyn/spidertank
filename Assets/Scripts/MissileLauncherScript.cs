@@ -14,6 +14,7 @@ public class MissileLauncherScript : MonoBehaviour
     public float launcherTargetRange = 40;
     public float missileTravelTime = 5;
     public float timeBetweenMissiles = 0.5f;
+    public int side = 0;
     private float groundSlopeAngleX = 0f;
     private float groundSlopeAngleY = 0f;
     private float groundSlopeAngleZ = 0f;
@@ -59,7 +60,7 @@ public class MissileLauncherScript : MonoBehaviour
         boxTargetWS = cam.ViewportToWorldPoint(boxTargetArea);
         boxTargetWS2 = cam.ViewportToWorldPoint(boxTargetArea2);
         boxTargetScale = Vector3.Scale(boxTargetWS, boxTargetWS2);
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(side))
         {
 
             if (Time.time > timestamp)

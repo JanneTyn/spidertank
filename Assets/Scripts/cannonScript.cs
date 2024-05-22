@@ -16,6 +16,7 @@ public class cannonScript : MonoBehaviour
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
+    public int side = 0;
     private int finalDamage = 0;
     private int distancedDamage = 0;
     private float timestamp = 0.0f;
@@ -36,7 +37,7 @@ public class cannonScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(side))
         {
             StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
