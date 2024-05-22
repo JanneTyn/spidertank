@@ -36,7 +36,7 @@ public class menuController : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        pa.StopCoroutine("UpdateTimings");
+        pa.enabled = false;
         Time.timeScale = 0f; // Pause the game
         cam.SetActive(false);
         Cursor.visible = true;
@@ -54,7 +54,7 @@ public class menuController : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f; // Unpause the game
-        pa.StartCoroutine("RestartUpdateTimings");
+        pa.enabled = true;
         pauseMenu.SetActive(false); // Hide the pause menu UI
         upgradeMenu.SetActive(false);
         cam.SetActive(true);
