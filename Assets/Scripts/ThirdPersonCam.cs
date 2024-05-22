@@ -28,13 +28,13 @@ public class ThirdPersonCam : MonoBehaviour
     public IEnumerator Shake(float amplitudeGain = 0.1f, float frequencyGain = 0.1f, float shakeDuration = 0.1f)
     {
         Debug.Log("shake");
-        Noise(amplitudeGain, frequencyGain);
+        //Noise(amplitudeGain, frequencyGain);
         yield return new WaitForSeconds(shakeDuration);     
     }
 
     public void endShake()
     {
-        Noise(0, 0);
+        //Noise(0, 0);
     }
 
     void Noise(float amplitude, float frequency)
