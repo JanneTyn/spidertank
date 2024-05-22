@@ -38,7 +38,7 @@ public class menuController : MonoBehaviour
         isPaused = true;
         pa.enabled = false;
         Time.timeScale = 0f; // Pause the game
-        cam.SetActive(false);
+        cam.gameObject.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (upgrade == false) {
@@ -57,7 +57,7 @@ public class menuController : MonoBehaviour
         pa.enabled = true;
         pauseMenu.SetActive(false); // Hide the pause menu UI
         upgradeMenu.SetActive(false);
-        cam.SetActive(true);
+        cam.gameObject.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }

@@ -6267,7 +6267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgrade: 0
   pauseMenu: {fileID: 7055906608233001834}
-  cam: {fileID: 8230310856741153367}
+  cam: {fileID: 4965292499733250399}
   upgradeMenu: {fileID: 2028854108881742829}
   pa: {fileID: 9111703044241220954}
 --- !u!1 &6208025276335963621
@@ -8191,7 +8191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230310856741153367}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.023296418, y: -0.000000017201712, z: -4.008471e-10, w: 0.9997286}
+  m_LocalRotation: {x: -0.023296418, y: 0.00000001720171, z: 4.0084708e-10, w: 0.9997286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
