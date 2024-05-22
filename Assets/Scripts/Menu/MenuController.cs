@@ -10,8 +10,6 @@ public class menuController : MonoBehaviour
     public GameObject cam;
     public GameObject upgradeMenu;
 
-    [SerializeField] Lolopupka.ProceduralAnimation pa;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +34,6 @@ public class menuController : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
-        pa.StopCoroutine("UpdateTimings");
         Time.timeScale = 0f; // Pause the game
         cam.SetActive(false);
         Cursor.visible = true;
@@ -54,7 +51,6 @@ public class menuController : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f; // Unpause the game
-        pa.StartCoroutine("UpdateTimings");
         pauseMenu.SetActive(false); // Hide the pause menu UI
         upgradeMenu.SetActive(false);
         cam.SetActive(true);
