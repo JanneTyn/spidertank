@@ -53,7 +53,11 @@ class Spawner : MonoBehaviour
 	void Update()
 	{
 
-		
+		ArrayList gos = new ArrayList();
+		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
+		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
+
+		aliveEnemyCount = gos.Count;
 
 		currentdis = Vector3.Distance(player.transform.position, transform.position);
 
@@ -79,11 +83,9 @@ class Spawner : MonoBehaviour
 	void MobCheck()
 	{
 
-		aliveEnemyCount = FindObjectsOfType<Enemy>().Length;
-		GameObject[] gameObjects;
-		gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+		
 
-		if (gameObjects.Length == 0)
+		if (aliveEnemyCount == 0)
 		{
 
 			StartCoroutine("WaitAndSpawn");
@@ -126,12 +128,17 @@ class Spawner : MonoBehaviour
 	
 	void Spawn()
 	{
-		int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+		ArrayList gos = new ArrayList();
+		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
+		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
 
+		int enemyCount = gos.Count;
+		
 
 		if (enemyCount < maxEnemies)
 		{
 			enemyCount++;
+
 			randomNumber = Random.Range(0, 3);
 
 			switch (randomNumber)
