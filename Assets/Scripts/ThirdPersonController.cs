@@ -124,6 +124,8 @@ namespace StarterAssets
             }
         }
 
+        [SerializeField] GameObject tankHead;
+
 
         private void Awake()
         {
@@ -269,7 +271,7 @@ namespace StarterAssets
             }
 
             float XRotation = cineCamera.m_XAxis.Value;
-            transform.eulerAngles = new Vector3(0, XRotation, 0);
+            tankHead.transform.eulerAngles = new Vector3(0, XRotation, 0);
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
