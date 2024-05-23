@@ -6,6 +6,7 @@ using UnityEngine;
 public class MissileLauncherScript : MonoBehaviour
 {
     public int baseDamage = 50;
+    private int trueDamage = 50;
     public int minimumDamage = 5;
     public float perShotDelay = 1f;
     public float missileAmount = 4;
@@ -64,7 +65,8 @@ public class MissileLauncherScript : MonoBehaviour
         {
 
             if (Time.time > timestamp)
-            {              
+            {
+                trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
 
                 targeting = true;
                 if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
@@ -247,11 +249,11 @@ public class MissileLauncherScript : MonoBehaviour
         Debug.Log(explosionRange + " / " + dist);
         if (dist < explosionMaxDamageRange)
         {
-            distancedDamage = baseDamage;
+            distancedDamage = trueDamage;
         }
         else
         {
-            distancedDamage = (int)Mathf.Lerp(baseDamage, minimumDamage, dist / (explosionRange / 2));
+            distancedDamage = (int)Mathf.Lerp(trueDamage, minimumDamage, dist / (explosionRange / 2));
         }
         return distancedDamage;
     }

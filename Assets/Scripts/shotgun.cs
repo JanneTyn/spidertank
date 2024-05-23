@@ -6,7 +6,7 @@ public class shotgun : MonoBehaviour
 {
 
     public int baseDamage = 5;
-    public int finalDamage = 0;
+    private int trueDamage = 0;
     public float perShotDelay = 1f;
     public float bulletSpread = 1f;
     public int bullets = 6;
@@ -33,7 +33,7 @@ public class shotgun : MonoBehaviour
     {
         if (Input.GetMouseButton(side))
         {
-            StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
+            //StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
             {
                 timestamp = Time.time + perShotDelay;
@@ -46,6 +46,7 @@ public class shotgun : MonoBehaviour
                     if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
                     {
                         shotEnemy = hit.collider.gameObject;
+                        trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
                         //vihuun osuttu, v‰hennet‰‰n healthia
                         Debug.Log("Enemy hit");
 
@@ -55,8 +56,8 @@ public class shotgun : MonoBehaviour
                             if (enemyScript != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
-                                enemyScript.TakeDamage(baseDamage);
-                                crosshair.createDamageMarker(baseDamage, hit.point);
+                                enemyScript.TakeDamage(trueDamage);
+                                crosshair.createDamageMarker(trueDamage, hit.point);
                             }
                             else
                             {
@@ -69,8 +70,8 @@ public class shotgun : MonoBehaviour
                             if (enemyScriptRange != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
-                                enemyScriptRange.TakeDamage(baseDamage);
-                                crosshair.createDamageMarker(baseDamage, hit.point);
+                                enemyScriptRange.TakeDamage(trueDamage);
+                                crosshair.createDamageMarker(trueDamage, hit.point);
                             }
                             else
                             {
@@ -183,27 +184,6 @@ public class shotgun : MonoBehaviour
                 return null;
             }
         }
-
-    }
-
-    void CalculateDamageByDistance(float dmg, float range, GameObject shotenemy)
-    {
-        float dist = Vector3.Distance(shotenemy.transform.position, this.transform.position);
-        if (dist < range) 
-        {
-            finalDamage = (int)dmg;
-        }
-        else
-        {
-            float overDistance = dist - range;
-
-            finalDamage = (int)Mathf.Lerp(2, baseDamage, range / dist);
-            if (finalDamage < 2)
-            {
-                finalDamage = 2;
-            }
-        }
-
 
     }
 }

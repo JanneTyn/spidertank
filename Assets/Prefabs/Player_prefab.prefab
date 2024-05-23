@@ -4155,12 +4155,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3990839708318888954}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.060000002, y: 0.3349998, z: 0.005}
-  m_LocalScale: {x: -0.39999998, y: 0.59999996, z: 0.39999998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.56400007, y: 1.8729999, z: 0.018999953}
+  m_LocalScale: {x: -0.32, y: 0.48, z: 0.32}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 12001979355784586}
+  m_Father: {fileID: 8122167736607890018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3809769310598488386
 MeshFilter:
@@ -4394,12 +4394,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181236631459863033}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.060000002, y: 0.3349998, z: 0.005}
-  m_LocalScale: {x: -0.39999998, y: 0.59999996, z: 0.39999998}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.56400007, y: 1.8729999, z: 0.018999953}
+  m_LocalScale: {x: 0.32, y: 0.48, z: 0.32}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6384600397197853476}
+  m_Father: {fileID: 8122167736607890018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4070030202359294912
 MeshFilter:
@@ -7050,7 +7050,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458958717387473710}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.023296418, y: -0.000000034453777, z: -8.028675e-10, w: 0.9997286}
+  m_LocalRotation: {x: -0.023296418, y: 0.000000034453777, z: 8.028675e-10, w: 0.9997286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7115,7 +7115,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6458958717387473710}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6920341876642364207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8115,6 +8115,8 @@ Transform:
   - {fileID: 339045675051586144}
   - {fileID: 7576936704362501103}
   - {fileID: 4302188648349278617}
+  - {fileID: 535027815764356793}
+  - {fileID: 6387813853578970737}
   - {fileID: 4408345776154347747}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8406,7 +8408,7 @@ MonoBehaviour:
   - Critical
   rareUpgradeChance: 20
   healthUpgrade: 15
-  damageUpgrade: 5
+  damageUpgrade: 10
   fireRateUpgrade: 5
   movementSpeedUpgrade: 10
   xpboostUpgrade: 20
@@ -8423,6 +8425,10 @@ MonoBehaviour:
   upgradetankorweapon3: {fileID: 7414449555125692620}
   upgradeDescriptions: []
   upgradestankorweapon: []
+  upgradeButton1: {fileID: 307642480495806097}
+  upgradeButton2: {fileID: 154585021252502039}
+  upgradeButton3: {fileID: 5845601814113864192}
+  upgradeButtons: []
 --- !u!1 &7277276614384130116
 GameObject:
   m_ObjectHideFlags: 0
@@ -10147,10 +10153,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b15fb8637205c5343b0076b4661f2777,
         type: 3}
       insertIndex: 0
-      addedObject: {fileID: 6387813853578970737}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b15fb8637205c5343b0076b4661f2777,
-        type: 3}
-      insertIndex: 1
       addedObject: {fileID: 7843710760342015569}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b15fb8637205c5343b0076b4661f2777,
@@ -10650,7 +10652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 5
-  finalDamage: 0
   perShotDelay: 1
   bulletSpread: 0.1
   bullets: 6
@@ -11375,7 +11376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 5
-  finalDamage: 0
   perShotDelay: 1
   bulletSpread: 0.1
   bullets: 6
@@ -11581,10 +11581,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b15fb8637205c5343b0076b4661f2777,
         type: 3}
       insertIndex: 0
-      addedObject: {fileID: 535027815764356793}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b15fb8637205c5343b0076b4661f2777,
-        type: 3}
-      insertIndex: 1
       addedObject: {fileID: 2292372288260676691}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b15fb8637205c5343b0076b4661f2777,
