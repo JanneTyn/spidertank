@@ -2356,7 +2356,8 @@ MonoBehaviour:
   pauseMenu: {fileID: 2064624018513247744}
   cam: {fileID: 6533914921103348552}
   upgradeMenu: {fileID: 1658860786195752639}
-  crosshairCanvas: {fileID: 0}
+  upgrades: {fileID: 6086579841449867855}
+  crosshairCanvas: {fileID: 2702753864785636396}
   pa: {fileID: 8461669892655248386}
 --- !u!1 &2008488565905688898
 GameObject:
@@ -8089,6 +8090,7 @@ GameObject:
   - component: {fileID: 7103222844699673327}
   - component: {fileID: 1191362564925159283}
   - component: {fileID: 3377459201300565745}
+  - component: {fileID: 6086579841449867855}
   m_Layer: 8
   m_Name: Player_prefab
   m_TagString: Player
@@ -8359,7 +8361,8 @@ MonoBehaviour:
   playerTotalExp: 0
   playerLevel: 0
   playerLevelThresholds: 14000000280000005000000078000000c8000000
-  menu: {fileID: 0}
+  upgrades: {fileID: 6086579841449867855}
+  menu: {fileID: 6419741857609227764}
 --- !u!114 &3377459201300565745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8380,6 +8383,46 @@ MonoBehaviour:
   cannonRight: {fileID: 641357592561599559}
   missileLauncher: {fileID: 820063119960850224}
   missileLauncherRight: {fileID: 6039741166985648542}
+--- !u!114 &6086579841449867855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268667776595726588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff6ae992f3e06c419a1727b5d232846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradesListCommon:
+  - Health
+  - Damage
+  - Fire Rate
+  - Movement Speed
+  - Experience Boost
+  upgradesListRare:
+  - Health Regeneration
+  - Critical
+  rareUpgradeChance: 20
+  healthUpgrade: 15
+  damageUpgrade: 5
+  fireRateUpgrade: 5
+  movementSpeedUpgrade: 10
+  xpboostUpgrade: 20
+  healthRegenUpgrade: 1
+  criticalUpgrade: 3
+  upgradetext1: {fileID: 148315986769513101}
+  upgradetext2: {fileID: 2298336833187130240}
+  upgradetext3: {fileID: 8237492123010836095}
+  upgradedescription1: {fileID: 1474610802917737398}
+  upgradedescription2: {fileID: 5308163609548565669}
+  upgradedescription3: {fileID: 2688281265464873212}
+  upgradetankorweapon1: {fileID: 499178044512734587}
+  upgradetankorweapon2: {fileID: 3356536969490797629}
+  upgradetankorweapon3: {fileID: 7414449555125692620}
+  upgradeDescriptions: []
+  upgradestankorweapon: []
 --- !u!1 &7277276614384130116
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class menuController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject cam;
     public GameObject upgradeMenu;
+    public Upgrades upgrades;
     public CrosshairRaycast crosshairCanvas;
 
     [SerializeField] Lolopupka.proceduralAnimation pa;
@@ -47,6 +48,7 @@ public class menuController : MonoBehaviour
         }
         else { 
             upgradeMenu.SetActive(true);
+            //upgrades.SetUpgradeText();
             upgrade = false;
         }
     }
