@@ -14,6 +14,7 @@ public class PlayerHP : MonoBehaviour
 
     public int damage = 5;
     public int damageProjectile = 10;
+
     // Start is called before the first frame update
     void Start()
     {
