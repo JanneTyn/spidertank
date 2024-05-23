@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class machineGunScript : MonoBehaviour
 {
     public int baseDamage = 10;
+    private int trueDamage = 10;
     public float perShotDelay = 0.25f;
     public float bulletSpread = 0.03f;
     float shotsfired = 0;
@@ -48,7 +49,6 @@ public class machineGunScript : MonoBehaviour
             {
                 timestamp = Time.time + perShotDelay;
                 shotsfired++;
-                Debug.Log("Pam " + shotsfired);
 
                 //if (!shootingsound.isPlaying); {
                 //    shootingsound.Play();
@@ -61,15 +61,15 @@ public class machineGunScript : MonoBehaviour
                 if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
                 {
                     shotEnemy = hit.collider.gameObject;
+                    trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
                     //vihuun osuttu, v‰hennet‰‰n healthia
-                    //Debug.Log("Enemy hit");
                     if (shotEnemy.gameObject.tag == "MeleeEnemy")
                     {
                         Enemy enemyScript = GetEnemyParentScript();
                         if (enemyScript != null)
                         {
-                            enemyScript.TakeDamage(baseDamage);
-                            crosshair.createDamageMarker(baseDamage, hit.point);
+                            enemyScript.TakeDamage(trueDamage);
+                            crosshair.createDamageMarker(trueDamage, hit.point);
                         }
                         else
                         {
@@ -81,8 +81,8 @@ public class machineGunScript : MonoBehaviour
                         EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
                         if (enemyScriptRange != null)
                         {
-                            enemyScriptRange.TakeDamage(baseDamage);
-                            crosshair.createDamageMarker(baseDamage, hit.point);
+                            enemyScriptRange.TakeDamage(trueDamage);
+                            crosshair.createDamageMarker(trueDamage, hit.point);
                         }
                         else
                         {

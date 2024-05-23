@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
@@ -26,6 +28,10 @@ public class Upgrades : MonoBehaviour
     public TMP_Text upgradetankorweapon3;
     public List<TMP_Text> upgradeDescriptions;
     public List<TMP_Text> upgradestankorweapon;
+    public Button upgradeButton1;
+    public Button upgradeButton2;
+    public Button upgradeButton3;
+    public List<Button> upgradeButtons;
     private List<string> randomUpgrades = new List<string>();
     private List<string> upgradeList = new List<string>();
     private int rolledUpgrades = 0;
@@ -92,6 +98,9 @@ public class Upgrades : MonoBehaviour
         upgradestankorweapon.Add(upgradetankorweapon1);
         upgradestankorweapon.Add(upgradetankorweapon2);
         upgradestankorweapon.Add(upgradetankorweapon3);
+        upgradeButtons.Add(upgradeButton1);
+        upgradeButtons.Add(upgradeButton2);
+        upgradeButtons.Add(upgradeButton3);
 
         for (int i = 0; i < 3; i++)
         {
@@ -101,36 +110,43 @@ public class Upgrades : MonoBehaviour
                     upgradeDescriptions[i].text = "+" + healthUpgrade +  " Health";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthUpgrade(healthUpgrade); });
                     break;
                 case "Damage":
                     upgradeDescriptions[i].text = "+" + damageUpgrade + "% Damage";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveDamageUpgrade(damageUpgrade); });
                     break;
                 case "Fire Rate":
                     upgradeDescriptions[i].text = "+" + fireRateUpgrade + "% Fire Rate";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade); });
                     break;
                 case "Movement Speed":
                     upgradeDescriptions[i].text = "+" + movementSpeedUpgrade + "% Movement Speed";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade); });
                     break;
                 case "Experience Boost":
                     upgradeDescriptions[i].text = "+" + xpboostUpgrade + "% Experience Boost";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveXPBoostUpgrade(xpboostUpgrade); });
                     break;
                 case "Health Regeneration":
                     upgradeDescriptions[i].text = "Heal +" + healthRegenUpgrade + " every 2 seconds";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthRegenUpgrade(healthRegenUpgrade); });
                     break;
                 case "Critical":
                     upgradeDescriptions[i].text = "+" + criticalUpgrade + "% chance for Critical (3x damage)";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveCriticalUpgrade(criticalUpgrade); });
                     break;
                 default:
                     upgradeDescriptions[i].text = "Unknown";
@@ -144,4 +160,56 @@ public class Upgrades : MonoBehaviour
         upgradestankorweapon.Clear();
     }
 
+    public void GiveHealthUpgrade(float hpUpgrade)
+    {
+        Debug.Log("health chosen");
+        PlayerStats.playerHealth += (int)hpUpgrade;
+        RemoveButtonListeners();
+    }
+    public void GiveDamageUpgrade(float dmgUpgrade)
+    {
+        Debug.Log("dmg chosen");
+        PlayerStats.playerDamage += dmgUpgrade;
+        RemoveButtonListeners();
+    }
+    public void GiveFireRateUpgrade(float firerateUpg)
+    {
+        Debug.Log("firerate chosen");
+        PlayerStats.playerFireRate += firerateUpg;
+        RemoveButtonListeners();
+    }
+    public void GiveMovementSpeedUpgrade(float speedUpgrade)
+    {
+        Debug.Log("movementspeed chosen");
+        PlayerStats.playerMovementSpeed += speedUpgrade;
+        RemoveButtonListeners();
+    }
+    public void GiveXPBoostUpgrade(float xpboost)
+    {
+        Debug.Log("xpboost chosen");
+        PlayerStats.playerXPrate += xpboost;
+        RemoveButtonListeners();
+    }
+    public void GiveHealthRegenUpgrade(float hpregenUpgrade)
+    {
+        Debug.Log("healthregen chosen");
+        PlayerStats.playerHealthRegen += hpregenUpgrade;
+        RemoveButtonListeners();
+    }
+    public void GiveCriticalUpgrade(float critical)
+    {
+        Debug.Log("critical chosen");
+        PlayerStats.playerCriticalChance += critical;
+        RemoveButtonListeners();
+    }
+
+
+
+
+    public void RemoveButtonListeners()
+    {
+        upgradeButton1.onClick.RemoveAllListeners();
+        upgradeButton2.onClick.RemoveAllListeners();
+        upgradeButton3.onClick.RemoveAllListeners();
+    }
 }

@@ -7,6 +7,7 @@ public class cannonScript : MonoBehaviour
 {
 
     public int baseDamage = 70;
+    private int trueDamage = 70;
     public int minimumDamage = 5;
     public float perShotDelay = 5f;
     public float bulletSpread = 0.01f;
@@ -39,10 +40,12 @@ public class cannonScript : MonoBehaviour
     {
         if (Input.GetMouseButton(side))
         {
-            StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
+            //StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
             {
                 timestamp = Time.time + perShotDelay;
+
+                trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
 
                 //enemiesHit = new List<GameObject>();
                 //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
@@ -146,11 +149,11 @@ public class cannonScript : MonoBehaviour
         Debug.Log(explosionRange + " / " + dist);
         if (dist < explosionMaxDamageRange)
         {
-            distancedDamage = baseDamage;
+            distancedDamage = trueDamage;
         }
         else
         {
-            distancedDamage = (int)Mathf.Lerp(baseDamage, minimumDamage, dist / (explosionRange / 2));
+            distancedDamage = (int)Mathf.Lerp(trueDamage, minimumDamage, dist / (explosionRange / 2));
         }
         return distancedDamage;
     }
