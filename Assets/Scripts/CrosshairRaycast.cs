@@ -8,6 +8,7 @@ public class CrosshairRaycast : MonoBehaviour
 {
     public Camera cam;
     public GameObject dmgMarkerPrefab;
+    public List<GameObject> dmgMarkerList;
     public Canvas crosshairCanvas;
     private Vector3 dmgUI;
     public TMP_Text textmsh;
@@ -79,6 +80,7 @@ public class CrosshairRaycast : MonoBehaviour
     public void createDamageMarker(float damage, Vector3 shotenemy)
     {
         GameObject dmgMarker = Instantiate(dmgMarkerPrefab, dmgUI, Quaternion.identity);
+        dmgMarkerList.Add(dmgMarker);
         
         dmgMarker.transform.SetParent(crosshairCanvas.transform);
         var rect = dmgMarker.GetComponent<RectTransform>();
@@ -95,6 +97,7 @@ public class CrosshairRaycast : MonoBehaviour
     private IEnumerator SmoothLerp(GameObject dmgMark, float time)
     {
         var rect = dmgMark.GetComponent<RectTransform>();
+
         Vector3 startingPos = rect.transform.position;
         Vector3 finalPos = rect.transform.position + (rect.transform.up * 30);
 
@@ -103,11 +106,22 @@ public class CrosshairRaycast : MonoBehaviour
         while (elapsedTime < time)
         {
             dmgMark.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.fixedDeltaTime;
+            Debug.Log(elapsedTime);
             yield return null;
         }
 
         Destroy(dmgMark);
+
+    }
+
+    public void ClearDmgMarkers()
+    {
+        foreach (GameObject dmgmarker in dmgMarkerList)
+        {
+            Destroy(dmgmarker);
+        }
+        dmgMarkerList.Clear();
     }
 
     public Ray GetRay()

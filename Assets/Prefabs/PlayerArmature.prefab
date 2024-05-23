@@ -4738,7 +4738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4376539368297362944}
   serializedVersion: 2
-  m_LocalRotation: {x: 1e-45, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5334,6 +5334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 4765158360675991049}
   dmgMarkerPrefab: {fileID: 956673750202123878}
+  dmgMarkerList: []
   crosshairCanvas: {fileID: 7100502322412184733}
   textmsh: {fileID: 0}
   machinegunShooting: 0
@@ -6269,6 +6270,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 7055906608233001834}
   cam: {fileID: 4965292499733250399}
   upgradeMenu: {fileID: 2028854108881742829}
+  crosshairCanvas: {fileID: 7173264134838463109}
   pa: {fileID: 9111703044241220954}
 --- !u!1 &6208025276335963621
 GameObject:
@@ -6581,7 +6583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6522038494802276659}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.023296418, y: -0.000000017201712, z: -4.008471e-10, w: 0.9997286}
+  m_LocalRotation: {x: -0.023296418, y: 0.00000001720171, z: 4.0084708e-10, w: 0.9997286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7763,7 +7765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7852627760940762737}
   serializedVersion: 2
-  m_LocalRotation: {x: 1e-45, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8191,7 +8193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8230310856741153367}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.023296418, y: 0.00000001720171, z: 4.0084708e-10, w: 0.9997286}
+  m_LocalRotation: {x: -0.023296418, y: -0.000000017201712, z: -4.008471e-10, w: 0.9997286}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

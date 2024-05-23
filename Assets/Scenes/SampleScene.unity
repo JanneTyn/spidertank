@@ -597,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   dmgMarkerPrefab: {fileID: 0}
+  dmgMarkerList: []
   crosshairCanvas: {fileID: 0}
   textmsh: {fileID: 0}
   machinegunShooting: 0
@@ -725,16 +726,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 841771286371319383, guid: 7c112309b5cf15a4db2f018c0f184c5f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000017201712
-      objectReference: {fileID: 0}
-    - target: {fileID: 841771286371319383, guid: 7c112309b5cf15a4db2f018c0f184c5f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -4.008471e-10
-      objectReference: {fileID: 0}
     - target: {fileID: 1763825954807096486, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -750,11 +741,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerArmature
       objectReference: {fileID: 0}
-    - target: {fileID: 2821247929479438162, guid: 7c112309b5cf15a4db2f018c0f184c5f,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 2094674503}
     - target: {fileID: 3649719659333828343, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -819,16 +805,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765158360675991049, guid: 7c112309b5cf15a4db2f018c0f184c5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4965292499733250399, guid: 7c112309b5cf15a4db2f018c0f184c5f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5260133551761496237, guid: 7c112309b5cf15a4db2f018c0f184c5f,
         type: 3}
@@ -1602,8 +1578,6 @@ MonoBehaviour:
   aliveEnemyCount: 0
   spawnRange: 0
   waitTime: 0
-  startspawndis: 0
-  currentdis: 0
 --- !u!4 &1449504265
 Transform:
   m_ObjectHideFlags: 0

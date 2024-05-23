@@ -9,6 +9,7 @@ public class menuController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject cam;
     public GameObject upgradeMenu;
+    public CrosshairRaycast crosshairCanvas;
 
     [SerializeField] Lolopupka.proceduralAnimation pa;
 
@@ -60,5 +61,6 @@ public class menuController : MonoBehaviour
         cam.gameObject.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+        crosshairCanvas.ClearDmgMarkers();
     }
 }
