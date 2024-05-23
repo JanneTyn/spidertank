@@ -7,6 +7,7 @@ public class PlayerLeveling : MonoBehaviour
     public int playerTotalExp = 0;
     public int playerLevel = 0;
     public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200};
+    public Upgrades upgrades;
 
     public menuController menu;
     
@@ -34,8 +35,9 @@ public class PlayerLeveling : MonoBehaviour
 
     public void LevelUp()
     {
-        playerLevel += 1;
+        playerLevel += 1;       
         Debug.Log("Levelled up: Level " + playerLevel);
+        StartCoroutine(upgrades.GetRandomLevelUpgrades());
         menu.upgrade = true;
         menu.Pause();
     }
