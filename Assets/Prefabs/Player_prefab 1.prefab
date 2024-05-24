@@ -1581,6 +1581,7 @@ MonoBehaviour:
   cannonSpherePrefab: {fileID: 3126334916807917390, guid: 93b82204eff07b74aadd506313dda922,
     type: 3}
   cannonEffect: {fileID: 0}
+  muzzle: {fileID: 0}
 --- !u!1 &988573987487428893
 GameObject:
   m_ObjectHideFlags: 0
@@ -54221,7 +54222,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -76196,6 +76197,7 @@ MonoBehaviour:
   cannonSpherePrefab: {fileID: 3126334916807917390, guid: 93b82204eff07b74aadd506313dda922,
     type: 3}
   cannonEffect: {fileID: 0}
+  muzzle: {fileID: 0}
 --- !u!1 &7541276534550385481
 GameObject:
   m_ObjectHideFlags: 0

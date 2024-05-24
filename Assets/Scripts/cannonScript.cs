@@ -31,6 +31,9 @@ public class cannonScript : MonoBehaviour
     public GameObject cannonSpherePrefab;
 
     [SerializeField] CannonEffect cannonEffect;
+
+    public ParticleSystem muzzle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,8 @@ public class cannonScript : MonoBehaviour
                 //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
                 crosshairRay = crosshair.GetRay();
                 GameObject cannonSphere = Instantiate(cannonSpherePrefab, dmgUI, Quaternion.identity);
+
+                muzzle.Play();
 
                 if (Physics.Raycast(crosshairRay, out RaycastHit hit2, cannonRange, layerMask) || Physics.Raycast(crosshairRay, out hit2, cannonRange, layerMaskTerrain))
                 {                  
