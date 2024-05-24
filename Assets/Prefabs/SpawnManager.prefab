@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98badbedc91719b47ae312a464faa6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EnemyPrefab: {fileID: 7105485219465937781, guid: baa3014035ec00b44b81dd14a925e739,
+  m_EnemyPrefab: {fileID: 7648036435851416421, guid: b025f86fb433eeb4a9febff8ddef0558,
     type: 3}
-  m_EnemyRangePrefab: {fileID: 5599114208047386151, guid: e4eae4df7f2c22543bc43a03019ab262,
+  m_EnemyRangePrefab: {fileID: 7116588948067472199, guid: 0d08949942a07504782d2484af57d8f5,
     type: 3}
   aliveEnemyCount: 0
   spawnRange: 10
