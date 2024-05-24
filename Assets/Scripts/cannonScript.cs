@@ -29,6 +29,8 @@ public class cannonScript : MonoBehaviour
     public CrosshairRaycast crosshair;
     public ThirdPersonCam cam;
     public GameObject cannonSpherePrefab;
+
+    [SerializeField] CannonEffect cannonEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class cannonScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButton(side))
         {
@@ -61,6 +63,9 @@ public class cannonScript : MonoBehaviour
                 {
                     cannonSphere.transform.position = crosshairRay.GetPoint(cannonRange);
                 }
+
+                cannonEffect.CreateLine(cannonSphere.transform.position);
+
                 cannonSphere.transform.localScale = new Vector3(explosionRange, explosionRange, explosionRange);
                 cannonSphere.SetActive(true);
                 Collider[] hitColliders = Physics.OverlapSphere(cannonSphere.transform.position, explosionRange / 2, layerMask);
