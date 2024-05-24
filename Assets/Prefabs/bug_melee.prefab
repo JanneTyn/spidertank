@@ -471,6 +471,7 @@ MonoBehaviour:
   Damage: 30
   experience: 20
   playerlevel: {fileID: 0}
+  blood: {fileID: 0}
   trig: 0
   att: 0
 --- !u!195 &1557824212122324010

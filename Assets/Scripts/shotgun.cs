@@ -20,8 +20,10 @@ public class shotgun : MonoBehaviour
     private float timestamp = 0.0f;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
-    public float shakeDuration = 0.1f;  
-    
+    public float shakeDuration = 0.1f;
+
+    public ParticleSystem muzzle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class shotgun : MonoBehaviour
                 timestamp = Time.time + perShotDelay;
                 shotsfired++;
                 //Debug.Log("Pam " + shotsfired);
+
+                muzzle.Play();
 
                 for (int i = 0; i < bullets; i++) {
                     //enemiesHit = new List<GameObject>();

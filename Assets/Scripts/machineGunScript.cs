@@ -20,7 +20,7 @@ public class machineGunScript : MonoBehaviour
     public float frequencyGain = 0.1f;
     public float shakeDuration = 0.1f;
 
-    
+    public ParticleSystem muzzle;
 
     private float timestamp = 0.0f;
 
@@ -56,6 +56,8 @@ public class machineGunScript : MonoBehaviour
                 //    Debug.Log("shootingsound is false");
                 //}
                 //sound.MG_Sound_On();
+
+                muzzle.Play();
 
                 //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
                 if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))

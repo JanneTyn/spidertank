@@ -47,6 +47,8 @@ public class MissileLauncherScript : MonoBehaviour
     Ray ray;
     bool m_HitDetect;
 
+    public ParticleSystem muzzle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,6 +142,9 @@ public class MissileLauncherScript : MonoBehaviour
         Vector3 missileStartPos = transform.position;
         missile.SetActive(true);
         StartCoroutine(MissileSlerp(missile, missileStartPos, missileTargetPos));
+
+        muzzle.Play();
+
     }
 
     public IEnumerator MissileSlerp(GameObject firedMissile, Vector3 missileStartpos, Vector3 missileTarget)

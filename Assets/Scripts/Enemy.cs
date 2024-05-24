@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour, IDamagable
     public int experience = 20;
     public PlayerLeveling playerlevel;
 
+    public ParticleSystem blood;
+    private bool test = true;
 
     void Awake()
     {
@@ -170,6 +172,9 @@ public class Enemy : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         curHealth -= damage;
+
+        blood.Play();
+        Debug.Log(test);
     }
 
     public IEnumerator Mercy()
