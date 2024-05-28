@@ -1570,7 +1570,7 @@ MonoBehaviour:
   minimumDamage: 5
   perShotDelay: 5
   bulletSpread: 0.01
-  cannonRange: 40
+  cannonRange: 400
   explosionRange: 7
   explosionMaxDamageRange: 1
   amplitudeGain: 0.1
@@ -2454,6 +2454,7 @@ MonoBehaviour:
   frequencyGain: 0.4
   shakeDuration: 0.1
   muzzle: {fileID: 6196580573193605049}
+  anim: {fileID: 7915591946505604615}
   sound: {fileID: 0}
 --- !u!82 &806905827632981362
 AudioSource:
@@ -19451,6 +19452,7 @@ GameObject:
   - component: {fileID: 7388498452842810711}
   - component: {fileID: 3942563043096055756}
   - component: {fileID: 6283982028888001880}
+  - component: {fileID: 6834938890268780269}
   m_Layer: 0
   m_Name: barrels
   m_TagString: Untagged
@@ -19472,7 +19474,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1260046871973026430}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 333.3333}
 --- !u!33 &3942563043096055756
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -19523,6 +19525,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!111 &6834938890268780269
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2629932720131016599}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e621a807b4c13b844a7328a985f216a0, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e621a807b4c13b844a7328a985f216a0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2630224008605091859
 GameObject:
   m_ObjectHideFlags: 0
@@ -38657,6 +38675,7 @@ MonoBehaviour:
   frequencyGain: 0.4
   shakeDuration: 0.1
   muzzle: {fileID: 5396400298518064362}
+  anim: {fileID: 6834938890268780269}
   sound: {fileID: 0}
 --- !u!82 &7582925184678844386
 AudioSource:
@@ -43665,6 +43684,7 @@ GameObject:
   - component: {fileID: 9045962504814325167}
   - component: {fileID: 1551168747591001368}
   - component: {fileID: 6545754240492906157}
+  - component: {fileID: 7915591946505604615}
   m_Layer: 0
   m_Name: barrels
   m_TagString: Untagged
@@ -43686,7 +43706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6920824072231970709}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 314.80182}
 --- !u!33 &1551168747591001368
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43737,6 +43757,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!111 &7915591946505604615
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4923816035947361397}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e621a807b4c13b844a7328a985f216a0, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e621a807b4c13b844a7328a985f216a0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4960057215022840395
 GameObject:
   m_ObjectHideFlags: 0
@@ -76065,6 +76101,7 @@ MonoBehaviour:
   crosshairCanvas: {fileID: 8764915819037555830}
   textmsh: {fileID: 0}
   machinegunShooting: 0
+  shotPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3872121203791870710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76495,7 +76532,7 @@ MonoBehaviour:
   minimumDamage: 5
   perShotDelay: 5
   bulletSpread: 0.01
-  cannonRange: 40
+  cannonRange: 400
   explosionRange: 7
   explosionMaxDamageRange: 1
   amplitudeGain: 0.1
