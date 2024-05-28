@@ -46,6 +46,7 @@ public class CrosshairRaycast : MonoBehaviour
 
     public bool checkEnemyRaycast(out RaycastHit hit, float bulletSpread = 0f)
     {
+        Debug.Log("checkray");
         machineGunRay = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         randomDir = Random.Range(-bulletSpread, bulletSpread);
         randomDir2 = Random.Range(-bulletSpread, bulletSpread);

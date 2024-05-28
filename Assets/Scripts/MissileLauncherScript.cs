@@ -75,7 +75,7 @@ public class MissileLauncherScript : MonoBehaviour
                 {
                     missilesTarget.SetActive(true);
                     missilesTarget.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + 0.05f, hitInfo.point.z);
-                    if (hitInfo.distance > 15)
+                    if (hitInfo.distance > 5)
                     {                                        
                         missilesTarget.GetComponent<MeshRenderer>().material = targetEnabled;
                         targetAllowed = true;
@@ -155,10 +155,10 @@ public class MissileLauncherScript : MonoBehaviour
         while (elapsedTime < missileTravelTime)
         {
             Vector3 center = (missileStartpos + missileTarget) * 0.5F;
-            center -= new Vector3(0, 1, 0);
+            center += new Vector3(0, 1, 0);
 
-            Vector3 startRelCenter = missileStartpos - center;
-            Vector3 targetRelCenter = missileTarget - center;
+            Vector3 startRelCenter = missileStartpos + center;
+            Vector3 targetRelCenter = missileTarget + center;
 
             float fracComplete = (Time.time - startTime) / missileTravelTime;
             firedMissile.transform.position = Vector3.Slerp(startRelCenter, targetRelCenter, fracComplete);
@@ -213,7 +213,7 @@ public class MissileLauncherScript : MonoBehaviour
 
             if (shotEnemy.gameObject.tag == "MeleeEnemy")
             {
-                Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+                Enemy enemyScript = GetEnemyParentScript();
                 if (enemyScript != null)
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
@@ -228,7 +228,7 @@ public class MissileLauncherScript : MonoBehaviour
             }
             else if (shotEnemy.gameObject.tag == "RangeEnemy")
             {
-                EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
                 if (enemyScriptRange != null)
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
@@ -263,103 +263,46 @@ public class MissileLauncherScript : MonoBehaviour
         return distancedDamage;
     }
 
-    Enemy GetEnemyParentScript(GameObject enemyHit)
+    Enemy GetEnemyParentScript()
     {
-        Enemy enemyscript = enemyHit.GetComponent<Enemy>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        Enemy enemyscript3 = enemyHit.GetComponent<Enemy>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
 
-    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    EnemyRange GetRangeEnemyParentScript()
     {
-        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            EnemyRange enemyscript = shotEnemy.GetComponent<EnemyRange>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
+
 
     void OnDrawGizmos()
     {
