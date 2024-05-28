@@ -28,8 +28,8 @@ public class CannonEffect : MonoBehaviour
     {
         if (mat.color.a > 0 && line.enabled)
         {
-            //mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - fadeSpeed * Time.deltaTime);
-            mat.color = Color.Lerp(Color.white, fade, fadeSpeed);
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, mat.color.a - fadeSpeed * Time.deltaTime);
+            //mat.color = Color.Lerp(Color.white, fade, fadeSpeed);
             mat.SetColor("_EmissionColor", Color.Lerp(Color.white, Color.black, fadeSpeed));
         }
         else if (mat.color.a <= 0 && line.enabled)
