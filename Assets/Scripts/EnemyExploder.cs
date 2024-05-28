@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 
 
-public class EnemyRange : MonoBehaviour
+public class EnemyExploder : MonoBehaviour, IDamagable
 {
     private NavMeshAgent agent;
-    Collider e_Collider;
-    private Animator anim;
+    Collider m_Collider;
+
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
@@ -19,16 +19,13 @@ public class EnemyRange : MonoBehaviour
         idle,
         patrol,
         chase,
-        attack1
-        
+        attack1,
+        attack2
 
     }
 
     public enemystate MyState;
 
-    public GameObject projectile;
-    public float fireDelay;
-    
     public GameObject Player;
     public Coroutine CurrentBehaviour;
 
@@ -38,7 +35,6 @@ public class EnemyRange : MonoBehaviour
     public float patrolspeed;
     public float chasespeed;
 
-    
 
 
     public int maxHealth = 100;
@@ -48,6 +44,9 @@ public class EnemyRange : MonoBehaviour
     public int experience = 20;
     public PlayerLeveling playerlevel;
 
+    public ParticleSystem blood;
+    public ParticleSystem explosion;
+    private bool test = true;
 
     void Awake()
     {
@@ -56,10 +55,10 @@ public class EnemyRange : MonoBehaviour
     }
     private void Start()
     {
-       
+
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
-        e_Collider = GetComponent<Collider>();
+        m_Collider = GetComponent<Collider>(); 
         MyState = enemystate.idle;
         StartCoroutine("Mercy");
 
@@ -86,7 +85,7 @@ public class EnemyRange : MonoBehaviour
             {
                 UpdateBehaviour(enemystate.attack1);
             }
-           
+            
 
             if (curHealth <= 99)
             {
@@ -100,16 +99,16 @@ public class EnemyRange : MonoBehaviour
                 EnemyDeath();
             }
 
-            if (currentdistance <= 30f)
+            if (currentdistance <= 3f)
             {
                 trig = true;
-                StartCoroutine("attack1");
+                StartCoroutine("attwait");
             }
-            else if (currentdistance >= 30f)
+            else if (currentdistance >= 3f)
             {
                 trig = false;
                 att = false;
-                StopCoroutine("attack1");
+                StopCoroutine("attwait");
             }
         }
     }
@@ -117,6 +116,25 @@ public class EnemyRange : MonoBehaviour
     public bool trig;
     public bool att;
 
+    /*void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            
+            trig = true;
+            StartCoroutine(attwait());
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            trig = false;
+            att = false;
+            StopCoroutine(attwait());
+        }
+    }
+*/
     private void UpdateBehaviour(enemystate state)
     {
 
@@ -147,6 +165,9 @@ public class EnemyRange : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHealth -= damage;
+
+        blood.Play();
+        Debug.Log(test);
     }
 
     public IEnumerator Mercy()
@@ -156,7 +177,22 @@ public class EnemyRange : MonoBehaviour
         StopCoroutine("Mercy");
     }
 
-    
+    public IEnumerator attwait()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            m_Collider.enabled = !m_Collider.enabled;
+            explosion.Play();
+            yield return new WaitForSeconds(0.2f);
+            
+            Destroy(gameObject);
+
+
+            StopCoroutine("attwait");
+
+        }
+    }
 
     public IEnumerator idle()
     {
@@ -197,22 +233,16 @@ public class EnemyRange : MonoBehaviour
     public IEnumerator attack1()
     {
 
-        Vector3 offset = new Vector3(0, 3, 0);
-
-        agent.speed = 0.8f;
         
-        yield return new WaitForSeconds(fireDelay);
         
-        Instantiate(projectile, transform.position + offset, Quaternion.identity);
-        StopCoroutine("attack1");
 
+            agent.speed = 0.4f;
+            yield return null;
+            
+            
 
-
-
-
-
-
-
+            
+        
     }
 
 
@@ -230,4 +260,3 @@ public class EnemyRange : MonoBehaviour
 
 
 }
-
