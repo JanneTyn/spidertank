@@ -6,6 +6,11 @@ using UnityEngine.AI;
 class Spawner : MonoBehaviour
 {
 
+	public float timeRemaining = 150;
+	public bool timerIsRunning = false;
+    public TMPro.TMP_Text timeText;
+	public GameObject text;
+
 
 	GameObject[] spawnPoints;
 	GameObject currentPoint;
@@ -65,8 +70,38 @@ class Spawner : MonoBehaviour
 
 		aliveEnemyCount = gos.Count;
 
+		if (timeRemaining > 0)
+		{
+			timeRemaining -= Time.deltaTime;
+			DisplayTime(timeRemaining);
+		}
+		else
+		{
+			Debug.Log("time ran out");
+			timeRemaining = 0;
+			timerIsRunning = false;
+		}
 
+		if (timeRemaining < 90)
+        {
+			maxEnemies=11;
+		}
 
+		if (timeRemaining < 12)
+		{
+			text.SetActive(true);
+			StartCoroutine("Ending");
+		}
+
+	}
+
+	void DisplayTime(float timeToDisplay)
+	{
+		timeToDisplay += 1;
+		float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+		float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+		timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 	}
 
 	void MobCheck()
@@ -80,6 +115,14 @@ class Spawner : MonoBehaviour
 			StartCoroutine("WaitAndSpawn");
 			//spawning();
 		}
+
+		if (aliveEnemyCount <= maxEnemies)
+		{
+
+			StartCoroutine("WaitAndSpawn");
+			//spawning();
+		}
+
 	}
 
 
@@ -105,6 +148,19 @@ class Spawner : MonoBehaviour
 		return spawnPos;
 
 
+	}
+
+	private IEnumerator Ending()
+    {
+		yield return new WaitForSeconds(6);
+		text.SetActive(false);
+		maxEnemies = 15;
+		yield return new WaitForSeconds(6);
+		maxEnemies = 25;
+		yield return new WaitForSeconds(10);
+		maxEnemies = 35;
+		yield return new WaitForSeconds(10);
+		maxEnemies = 50;
 	}
 
 	private IEnumerator WaitAndSpawn()

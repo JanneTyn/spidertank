@@ -100,17 +100,12 @@ public class EnemyRange : MonoBehaviour
                 EnemyDeath();
             }
 
-            if (currentdistance <= 30f)
+            if (currentdistance <= 40f)
             {
                 trig = true;
                 StartCoroutine("attack1");
             }
-            else if (currentdistance >= 30f)
-            {
-                trig = false;
-                att = false;
-                StopCoroutine("attack1");
-            }
+           
         }
     }
 
@@ -151,7 +146,7 @@ public class EnemyRange : MonoBehaviour
 
     public IEnumerator Mercy()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(25);
         startfollowdistance = 300;
         StopCoroutine("Mercy");
     }
@@ -198,8 +193,8 @@ public class EnemyRange : MonoBehaviour
     {
 
         Vector3 offset = new Vector3(0, 3, 0);
-
-        agent.speed = 0.8f;
+        startfollowdistance = 300;
+        agent.speed = 2f;
         
         yield return new WaitForSeconds(fireDelay);
         

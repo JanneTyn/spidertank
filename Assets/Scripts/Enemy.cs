@@ -179,7 +179,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public IEnumerator Mercy()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(25);
         startfollowdistance = 300;
         StopCoroutine("Mercy");
     }
@@ -214,8 +214,10 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true) 
         {
+            Vector3 offset = new Vector3(0, 0, 0);
+
             agent.speed = chasespeed;
-            agent.SetDestination(Player.transform.position);
+            agent.SetDestination(Player.transform.position + offset);
             yield return null;
 
         }

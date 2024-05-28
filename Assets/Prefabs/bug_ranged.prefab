@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6020503431903942617}
   m_Layer: 0
   m_Name: Rig 1
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6440443267716713174}
   m_Layer: 0
   m_Name: Leg4_target
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 5468909396653870399}
   m_Layer: 0
   m_Name: Leg2_target
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 9039296911471149870}
   m_Layer: 0
   m_Name: Leg1_target
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 5563679146227051619}
   m_Layer: 0
   m_Name: Leg2
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 2551893432558349314}
   m_Layer: 0
   m_Name: Leg1
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 7477052899622521337}
   m_Layer: 0
   m_Name: Leg1_hint
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,7 +486,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7116588948067472199}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.8
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 3032553662362235117}
   m_Layer: 0
   m_Name: Leg4
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 5533911521221422054}
   m_Layer: 0
   m_Name: Leg3_target
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -653,7 +653,7 @@ GameObject:
   - component: {fileID: 2534213103228690360}
   m_Layer: 0
   m_Name: Leg3
-  m_TagString: RangeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,12 +709,12 @@ PrefabInstance:
     - target: {fileID: -9163358936576108284, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -9133932097866917345, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -794,22 +794,22 @@ PrefabInstance:
     - target: {fileID: -8391222552659086748, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -7629273946473809912, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6447086016880123113, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6220610968957307738, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6005019052449273764, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -819,12 +819,12 @@ PrefabInstance:
     - target: {fileID: -6005019052449273764, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -5347939175383022690, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -5243698586795067401, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -834,7 +834,7 @@ PrefabInstance:
     - target: {fileID: -5243698586795067401, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -5133813080643046214, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -844,22 +844,22 @@ PrefabInstance:
     - target: {fileID: -5133813080643046214, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -3359700585983719785, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -3310833984918592720, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2966734037313891532, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2851789377459098132, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -869,12 +869,12 @@ PrefabInstance:
     - target: {fileID: -2851789377459098132, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2573458935671318918, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2511240423080479738, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -884,12 +884,12 @@ PrefabInstance:
     - target: {fileID: -2511240423080479738, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2234481119266958079, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -132832550029519704, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -899,7 +899,7 @@ PrefabInstance:
     - target: {fileID: -132832550029519704, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -909,7 +909,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1293567982896933887, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -919,27 +919,27 @@ PrefabInstance:
     - target: {fileID: 1293567982896933887, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2579308236814421956, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2635835706424005828, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2912038868037611534, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2921124624261287290, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3391465835957245923, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -949,7 +949,7 @@ PrefabInstance:
     - target: {fileID: 3391465835957245923, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3821905945971130419, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -959,7 +959,7 @@ PrefabInstance:
     - target: {fileID: 3821905945971130419, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3931971825789597653, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -969,7 +969,7 @@ PrefabInstance:
     - target: {fileID: 3931971825789597653, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5798103199273971736, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -979,7 +979,7 @@ PrefabInstance:
     - target: {fileID: 5798103199273971736, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6366306462427159030, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -989,12 +989,12 @@ PrefabInstance:
     - target: {fileID: 6366306462427159030, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7036213049465896255, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7235941865395747012, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -1004,7 +1004,7 @@ PrefabInstance:
     - target: {fileID: 7235941865395747012, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7504404399588663358, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
@@ -1014,22 +1014,22 @@ PrefabInstance:
     - target: {fileID: 7504404399588663358, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7696636723683933212, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8175037628739319961, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 9140331931005208988, guid: bcfcda31de295d44485c243512ba6ff4,
         type: 3}
       propertyPath: m_TagString
-      value: RangeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

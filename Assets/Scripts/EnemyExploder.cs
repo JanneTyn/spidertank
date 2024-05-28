@@ -172,7 +172,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
 
     public IEnumerator Mercy()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(25);
         startfollowdistance = 300;
         StopCoroutine("Mercy");
     }

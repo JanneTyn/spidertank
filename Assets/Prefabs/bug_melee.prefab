@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2120651408437301503}
   m_Layer: 0
   m_Name: Leg1_target
-  m_TagString: MeleeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 1238807607234067948}
   m_Layer: 0
   m_Name: Leg3_target
-  m_TagString: MeleeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 7477765017450137200}
   - component: {fileID: -1500078530390923620}
   - component: {fileID: 1557824212122324010}
-  - component: {fileID: 8613429259501569965}
+  - component: {fileID: 3622342823213839080}
   m_Layer: 7
   m_Name: bug_melee
   m_TagString: MeleeEnemy
@@ -485,7 +485,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7648036435851416421}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.4
+  m_Radius: 0.8
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -498,7 +498,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &8613429259501569965
+--- !u!136 &3622342823213839080
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,14 +513,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.44000727
-  m_Height: 1.7840402
+  m_Radius: 0.4323983
+  m_Height: 1.8720784
   m_Direction: 1
-  m_Center: {x: 0, y: -0.024036169, z: 0.9634661}
+  m_Center: {x: 0, y: -8.571897e-16, z: 0.9396804}
 --- !u!1 &8364593846963701740
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 2826774386797561315}
   m_Layer: 0
   m_Name: Leg2_target
-  m_TagString: MeleeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 6015608582484129852}
   m_Layer: 0
   m_Name: Leg4_target
-  m_TagString: MeleeEnemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -782,6 +782,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 135056908871083446, guid: 24b82347924701148a13c746edfb6b22,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198103514842770696, guid: 24b82347924701148a13c746edfb6b22,
         type: 3}
       propertyPath: playOnAwake
@@ -865,7 +870,7 @@ PrefabInstance:
     - target: {fileID: -8843775113422576876, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -925,7 +930,7 @@ PrefabInstance:
     - target: {fileID: -8656445370132944119, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -8555434657539202274, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -945,7 +950,7 @@ PrefabInstance:
     - target: {fileID: -8258080402653196816, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -8084326546555211892, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -955,7 +960,7 @@ PrefabInstance:
     - target: {fileID: -8084326546555211892, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -7348033771314366222, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -965,7 +970,7 @@ PrefabInstance:
     - target: {fileID: -7348033771314366222, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6833811625235659429, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -975,7 +980,7 @@ PrefabInstance:
     - target: {fileID: -6833811625235659429, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -6043460647196194536, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -985,7 +990,7 @@ PrefabInstance:
     - target: {fileID: -6043460647196194536, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -5952765995974061088, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -995,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: -5952765995974061088, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -5882536739741874763, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1005,7 +1010,7 @@ PrefabInstance:
     - target: {fileID: -5882536739741874763, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -4443780622050591885, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1015,7 +1020,7 @@ PrefabInstance:
     - target: {fileID: -4443780622050591885, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -3796091797870583241, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1025,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: -3796091797870583241, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2954021338953098316, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1035,7 +1040,7 @@ PrefabInstance:
     - target: {fileID: -2954021338953098316, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2565358979576321823, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1045,7 +1050,7 @@ PrefabInstance:
     - target: {fileID: -2565358979576321823, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2484681970196371774, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1055,7 +1060,7 @@ PrefabInstance:
     - target: {fileID: -2484681970196371774, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -2436608382401837086, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1065,7 +1070,7 @@ PrefabInstance:
     - target: {fileID: -2436608382401837086, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -1145543146143071924, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1075,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: -1145543146143071924, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -1094547602767512261, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1085,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: -1094547602767512261, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -953788130326038292, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1095,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: -953788130326038292, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -580013382467217678, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1105,7 +1110,7 @@ PrefabInstance:
     - target: {fileID: -580013382467217678, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -488582387728210752, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1115,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: -488582387728210752, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 41692666512423431, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1125,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: 41692666512423431, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 355450388625137996, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1135,7 +1140,7 @@ PrefabInstance:
     - target: {fileID: 355450388625137996, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1145,7 +1150,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 996902483726438360, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1155,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 996902483726438360, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1378084831920124349, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1165,7 +1170,7 @@ PrefabInstance:
     - target: {fileID: 1378084831920124349, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1454987208392350908, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1180,7 +1185,7 @@ PrefabInstance:
     - target: {fileID: 3277565202462791166, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4039361923463005806, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1190,7 +1195,7 @@ PrefabInstance:
     - target: {fileID: 4039361923463005806, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4182651242277244346, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1200,7 +1205,7 @@ PrefabInstance:
     - target: {fileID: 4182651242277244346, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5715987612819797241, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1210,7 +1215,7 @@ PrefabInstance:
     - target: {fileID: 5715987612819797241, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6363181878773897555, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1220,7 +1225,7 @@ PrefabInstance:
     - target: {fileID: 6363181878773897555, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7180056272508580871, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1230,7 +1235,7 @@ PrefabInstance:
     - target: {fileID: 7180056272508580871, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7705266504311207429, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1245,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 8397775052183303125, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8649704599795557187, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
@@ -1255,7 +1260,7 @@ PrefabInstance:
     - target: {fileID: 8649704599795557187, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       propertyPath: m_TagString
-      value: MeleeEnemy
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

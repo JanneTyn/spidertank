@@ -36,13 +36,14 @@ public class PlayerHP : MonoBehaviour
             curHP = 100;
         }
 
-        if (curHP <= 0)
+        if (curHP < 0)
         {
             curHP = 0;
         }
 
     }
-
+    
+    
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer == 7)
