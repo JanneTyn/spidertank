@@ -12,6 +12,7 @@ class Spawner : MonoBehaviour
 
 	public GameObject m_EnemyPrefab;
 	public GameObject m_EnemyRangePrefab;
+	public GameObject m_EnemyExploderPrefab;
 
 
 
@@ -60,6 +61,7 @@ class Spawner : MonoBehaviour
 		ArrayList gos = new ArrayList();
 		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
 		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
+		gos.AddRange(GameObject.FindGameObjectsWithTag("TankEnemy"));
 
 		aliveEnemyCount = gos.Count;
 
@@ -94,7 +96,7 @@ class Spawner : MonoBehaviour
 		float spawnPosX = Random.Range(-spawnRange, spawnRange);
 		float spawnPosZ = Random.Range(-spawnRange, spawnRange);
 
-		randomNumber = Random.Range(0, 3);
+		randomNumber = Random.Range(0, 4);
 		index = Random.Range(0, spawnPoints.Length);
 		currentPoint = spawnPoints[index];
 
@@ -121,6 +123,7 @@ class Spawner : MonoBehaviour
 		ArrayList gos = new ArrayList();
 		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
 		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
+		gos.AddRange(GameObject.FindGameObjectsWithTag("TankEnemy"));
 
 		int enemyCount = gos.Count;
 		
@@ -136,7 +139,12 @@ class Spawner : MonoBehaviour
 
 				case 1: Instantiate(m_EnemyRangePrefab, GenerateSpawnPos(), m_EnemyRangePrefab.transform.rotation); break;
 
-				case 2: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
+				case 2: Instantiate(m_EnemyExploderPrefab, GenerateSpawnPos(), m_EnemyExploderPrefab.transform.rotation); break;
+
+				case 3: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
+
+
+				
 
 
 			}

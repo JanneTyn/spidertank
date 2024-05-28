@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerHP : MonoBehaviour
 {
 
+    Collider m_Collider;
     public int maxHealth = 100;
     public int curHP = 100;
 
@@ -14,11 +15,11 @@ public class PlayerHP : MonoBehaviour
 
     public int damage = 5;
     public int damageProjectile = 10;
-
+    public int damageExplosion = 20;
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Collider = GetComponent<Collider>();
 
     }
 
@@ -47,6 +48,7 @@ public class PlayerHP : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             curHP -= damage;
+
         }
         if (collision.gameObject.tag == "Projectile")
         {
@@ -58,5 +60,22 @@ public class PlayerHP : MonoBehaviour
         {
             curHP += healAmount;
         }
+
+        if (collision.gameObject.tag == "TankEnemy")
+        {
+            curHP -= damageExplosion;
+            StartCoroutine("Iframe");
+        }
     }
+
+
+    private IEnumerator Iframe()
+    {
+        
+        m_Collider.enabled = !m_Collider.enabled;
+        yield return new WaitForSeconds(0.2f);
+        m_Collider.enabled = !m_Collider.enabled;
+        StopCoroutine("Iframe");
+    }
+   
 }
