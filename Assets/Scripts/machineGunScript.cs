@@ -80,7 +80,7 @@ public class machineGunScript : MonoBehaviour
                     }
                     else if (shotEnemy.gameObject.tag == "RangeEnemy")
                     {
-                        EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                        EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
                         if (enemyScriptRange != null)
                         {
                             enemyScriptRange.TakeDamage(trueDamage);
@@ -114,100 +114,42 @@ public class machineGunScript : MonoBehaviour
 
     Enemy GetEnemyParentScript()
     {
-        Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
-
-        if (enemyscript != null) 
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (shotEnemy.transform.parent != null)
+            Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
+            if (enemyscript != null)
             {
-                shotEnemy = shotEnemy.transform.parent.gameObject;
-                Enemy enemyscript2 = shotEnemy.GetComponent<Enemy>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (shotEnemy.transform.parent != null)
-                    {
-                        shotEnemy = shotEnemy.transform.parent.gameObject;
-                        Enemy enemyscript3 = shotEnemy.GetComponent<Enemy>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
 
-    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    EnemyRange GetRangeEnemyParentScript()
     {
-        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            EnemyRange enemyscript = shotEnemy.GetComponent<EnemyRange>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;     
     }
 
 
