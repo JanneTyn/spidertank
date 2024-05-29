@@ -155,10 +155,10 @@ public class MissileLauncherScript : MonoBehaviour
         while (elapsedTime < missileTravelTime)
         {
             Vector3 center = (missileStartpos + missileTarget) * 0.5F;
-            center += new Vector3(0, 1, 0);
+            center -= new Vector3(0, 1, 0);
 
-            Vector3 startRelCenter = missileStartpos + center;
-            Vector3 targetRelCenter = missileTarget + center;
+            Vector3 startRelCenter = missileStartpos - center;
+            Vector3 targetRelCenter = missileTarget - center;
 
             float fracComplete = (Time.time - startTime) / missileTravelTime;
             firedMissile.transform.position = Vector3.Slerp(startRelCenter, targetRelCenter, fracComplete);
