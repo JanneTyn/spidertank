@@ -105,7 +105,12 @@ public class EnemyRange : MonoBehaviour
                 trig = true;
                 StartCoroutine("attack1");
             }
-           
+
+            if (currentdistance >= 40f)
+            {
+                agent.speed = 4f;
+            }
+
         }
     }
 
@@ -191,22 +196,15 @@ public class EnemyRange : MonoBehaviour
 
     public IEnumerator attack1()
     {
-
+        
         Vector3 offset = new Vector3(0, 3, 0);
         startfollowdistance = 300;
-        agent.speed = 2f;
+        agent.speed = 1;
         
         yield return new WaitForSeconds(fireDelay);
         
         Instantiate(projectile, transform.position + offset, Quaternion.identity);
         StopCoroutine("attack1");
-
-
-
-
-
-
-
 
     }
 
