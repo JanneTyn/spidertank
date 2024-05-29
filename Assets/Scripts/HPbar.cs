@@ -5,6 +5,7 @@ using UnityEngine;
 public class HPbar : MonoBehaviour
 {
     public static int health;
+    public static int Maxhealth;
     TMPro.TMP_Text text;
     public PlayerHP hpScript;
 
@@ -23,11 +24,12 @@ public class HPbar : MonoBehaviour
     void Update()
     {
         health = hpScript.curHP;
-        text.text = $"Health: {health}";
+        Maxhealth = hpScript.maxHealth;
+        text.text = $"Health: {health}" + "/" + Maxhealth;
     }
 
     void UpdateHP()
     {
-        text.text = $"Health: {health}";
+        text.text = $"Health: {health}" + "/" + Maxhealth;
     }
 }

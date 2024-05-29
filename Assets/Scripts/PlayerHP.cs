@@ -7,6 +7,7 @@ public class PlayerHP : MonoBehaviour
 {
 
     Collider m_Collider;
+    public Slider HPSlider;
     public int maxHealth = 100;
     public int curHP = 100;
 
@@ -16,20 +17,25 @@ public class PlayerHP : MonoBehaviour
     public int damage = 5;
     public int damageProjectile = 10;
     public int damageExplosion = 20;
+
+    [SerializeField] public Image imageReference;
+    [SerializeField] private Gradient gradient;
+
+    private void UpdateFillBarAmount(float amount)
+    {
+        imageReference.fillAmount = amount;
+    }
     // Start is called before the first frame update
     void Start()
     {
         m_Collider = GetComponent<Collider>();
+        imageReference.color = gradient.Evaluate(1f);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (curHP != 0)
-        {
-            return;
-        }
 
         if (curHP >= 100)
         {
@@ -40,6 +46,9 @@ public class PlayerHP : MonoBehaviour
         {
             curHP = 0;
         }
+
+        HPSlider.value = curHP;
+        imageReference.color = gradient.Evaluate(HPSlider.normalizedValue);
 
     }
     
