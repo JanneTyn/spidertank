@@ -3,7 +3,12 @@ guid: fa31bcef375bbec469f68712bc6c0301
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: powerlines
+    second: {fileID: 2100000, guid: 2667bf7655d00ec479122b79034b33b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
