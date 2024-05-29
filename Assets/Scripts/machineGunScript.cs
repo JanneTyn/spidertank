@@ -21,7 +21,6 @@ public class machineGunScript : MonoBehaviour
     public float shakeDuration = 0.1f;
 
     public ParticleSystem muzzle;
-    [SerializeField] Animation anim;
 
     private float timestamp = 0.0f;
 
@@ -59,7 +58,6 @@ public class machineGunScript : MonoBehaviour
                 //sound.MG_Sound_On();
 
                 muzzle.Play();
-                anim.Play();
 
                 //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
                 if (crosshair.checkEnemyRaycast(out RaycastHit hit, bulletSpread))
@@ -104,7 +102,6 @@ public class machineGunScript : MonoBehaviour
         else {
             crosshair.machinegunShooting=false;
             cam.endShake();
-            anim.Stop();
 
             //shootingsound.Stop();
             //if (shootingsoundtoggle == true) {

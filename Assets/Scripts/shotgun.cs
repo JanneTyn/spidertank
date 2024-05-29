@@ -56,7 +56,7 @@ public class shotgun : MonoBehaviour
 
                         if (shotEnemy.gameObject.tag == "MeleeEnemy")
                         {
-                            Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+                            Enemy enemyScript = GetEnemyParentScript();
                             if (enemyScript != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
@@ -70,7 +70,7 @@ public class shotgun : MonoBehaviour
                         }
                         else if (shotEnemy.gameObject.tag == "RangeEnemy")
                         {
-                            EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                            EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
                             if (enemyScriptRange != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
@@ -93,101 +93,43 @@ public class shotgun : MonoBehaviour
         else { cam.endShake(); }
     }
 
-    Enemy GetEnemyParentScript(GameObject enemyHit)
+    Enemy GetEnemyParentScript()
     {
-        Enemy enemyscript = enemyHit.GetComponent<Enemy>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            Enemy enemyscript = shotEnemy.GetComponent<Enemy>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        Enemy enemyscript3 = enemyHit.GetComponent<Enemy>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
 
-    EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
+    EnemyRange GetRangeEnemyParentScript()
     {
-        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            EnemyRange enemyscript = shotEnemy.GetComponent<EnemyRange>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
 }

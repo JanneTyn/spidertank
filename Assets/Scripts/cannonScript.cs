@@ -23,12 +23,14 @@ public class cannonScript : MonoBehaviour
     private float timestamp = 0.0f;
     private int layerMask = 1 << 7;
     private int layerMaskTerrain = 1 << 6;
+    int layerMaskEnemyPart = 1 << 8;
     private Ray crosshairRay;
     private Vector3 dmgUI;
     private GameObject shotEnemy;
     public CrosshairRaycast crosshair;
     public ThirdPersonCam cam;
     public GameObject cannonSpherePrefab;
+    private List<GameObject> enemyList = new List<GameObject>();
 
     [SerializeField] CannonEffect cannonEffect;
 
@@ -121,9 +123,17 @@ public class cannonScript : MonoBehaviour
                 Enemy enemyScript = GetEnemyParentScript(shotEnemy);
                 if (enemyScript != null)
                 {
-                    finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
-                    enemyScript.TakeDamage(finalDamage);
-                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                    if (!enemyList.Contains(shotEnemy))
+                    {
+                        finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
+                        enemyScript.TakeDamage(finalDamage);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        enemyList.Add(shotEnemy);
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy was already damaged");
+                    }
 
                 }
                 else
@@ -136,9 +146,17 @@ public class cannonScript : MonoBehaviour
                 EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
                 if (enemyScriptRange != null)
                 {
-                    finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
-                    enemyScriptRange.TakeDamage(finalDamage);
-                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                    if (!enemyList.Contains(shotEnemy))
+                    {
+                        finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
+                        enemyScriptRange.TakeDamage(finalDamage);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        enemyList.Add(shotEnemy);
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy was already damaged");
+                    }
 
                 }
                 else
@@ -151,6 +169,7 @@ public class cannonScript : MonoBehaviour
                 Debug.Log("Unknown enemy");
             }
         }
+        enemyList.Clear();
     }
 
     public int CalculateDamageByDistance(Vector3 enemyPos, Vector3 explosionPos)
@@ -184,99 +203,43 @@ public class cannonScript : MonoBehaviour
 
     Enemy GetEnemyParentScript(GameObject enemyHit)
     {
-        Enemy enemyscript = enemyHit.GetComponent<Enemy>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            Enemy enemyscript = enemyHit.GetComponent<Enemy>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                Enemy enemyscript2 = enemyHit.GetComponent<Enemy>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        Enemy enemyscript3 = enemyHit.GetComponent<Enemy>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                shotEnemy = enemyHit;
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (enemyHit.transform.parent != null)
+                {
+                    enemyHit = enemyHit.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;
     }
 
     EnemyRange GetRangeEnemyParentScript(GameObject enemyHit)
     {
-        EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
-
-        if (enemyscript != null)
+        for (int i = 0; i < 6; i++)
         {
-            return enemyscript;
-        }
-        else
-        {
-            if (enemyHit.transform.parent != null)
+            EnemyRange enemyscript = enemyHit.GetComponent<EnemyRange>();
+            if (enemyscript != null)
             {
-                enemyHit = enemyHit.transform.parent.gameObject;
-                EnemyRange enemyscript2 = enemyHit.GetComponent<EnemyRange>();
-
-                if (enemyscript2 != null)
-                {
-                    return enemyscript2;
-                }
-                else
-                {
-                    if (enemyHit.transform.parent != null)
-                    {
-                        enemyHit = enemyHit.transform.parent.gameObject;
-                        EnemyRange enemyscript3 = enemyHit.GetComponent<EnemyRange>();
-
-                        if (enemyscript3 != null)
-                        {
-                            return enemyscript3;
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
+                shotEnemy = enemyHit;
+                return enemyscript;
             }
             else
             {
-                return null;
+                if (enemyHit.transform.parent != null)
+                {
+                    enemyHit = enemyHit.transform.parent.gameObject;
+                }
             }
         }
-
+        return null;     
     }
 }
