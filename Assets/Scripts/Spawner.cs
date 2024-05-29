@@ -24,16 +24,17 @@ class Spawner : MonoBehaviour
 	Transform player;
 
 
-
+	public int spawnedCount;
 	public int aliveEnemyCount;
 	public int spawnRange;
 	public int waitTime;
+	
 	int index;
 
 
 	public static int maxEnemies = 5;
-	public static int enemyCount = 0;
-	
+	public static int enemyCount;
+	public static int spawnedEnemies;
 
 
 	private int randomNumber;
@@ -56,14 +57,9 @@ class Spawner : MonoBehaviour
 
 	void Update()
 	{
+		
 		MobCheck();
 		spawnPoints = GameObject.FindGameObjectsWithTag("Point");
-		ArrayList gos = new ArrayList();
-		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
-		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
-		gos.AddRange(GameObject.FindGameObjectsWithTag("TankEnemy"));
-
-		aliveEnemyCount = gos.Count;
 
 		if (timeRemaining > 0)
 		{
@@ -77,7 +73,7 @@ class Spawner : MonoBehaviour
 			timerIsRunning = false;
 		}
 
-		if (timeRemaining < 120)
+	/*	if (timeRemaining < 120)
         {
 			maxEnemies=12;
 		}
@@ -91,7 +87,7 @@ class Spawner : MonoBehaviour
 		{
 			return;
 		}
-
+	*/
 	}
 
 	void DisplayTime(float timeToDisplay)
@@ -105,22 +101,21 @@ class Spawner : MonoBehaviour
 
 	void MobCheck()
 	{
+		aliveEnemyCount = enemyCount;
+		spawnedCount = spawnedEnemies;
 
-		
 
 		if (aliveEnemyCount == 0)
 		{
-
+			
 			StartCoroutine("WaitAndSpawn");
-			//spawning();
+			
 		}
 
-		if (aliveEnemyCount <= maxEnemies)
-		{
-
-			StartCoroutine("WaitAndSpawn");
-			//spawning();
-		}
+		if (aliveEnemyCount == maxEnemies)
+        {
+			StopCoroutine("WaitAndSpawn");
+        }
 
 	}
 
@@ -151,7 +146,7 @@ class Spawner : MonoBehaviour
 
 	private IEnumerator WaitAndSpawn()
 	{
-		Debug.Log("started spawning");
+		
 		yield return new WaitForSeconds(waitTime);
 		Spawn();
 		
@@ -162,18 +157,18 @@ class Spawner : MonoBehaviour
 	
 	void Spawn()
 	{
-		ArrayList gos = new ArrayList();
+		/*ArrayList gos = new ArrayList();
 		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
 		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
 		gos.AddRange(GameObject.FindGameObjectsWithTag("TankEnemy"));
 
 		int enemyCount = gos.Count;
-		
+		*/
 
 		if (enemyCount < maxEnemies)
 		{
 			enemyCount++;
-
+			spawnedEnemies++;
 			
 			switch (randomNumber)
 			{
