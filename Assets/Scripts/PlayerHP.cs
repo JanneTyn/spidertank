@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
@@ -45,6 +46,11 @@ public class PlayerHP : MonoBehaviour
         if (curHP < 0)
         {
             curHP = 0;
+        }
+
+        if (curHP == 0)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         HPSlider.value = curHP;
