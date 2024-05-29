@@ -9,7 +9,7 @@ class Spawner : MonoBehaviour
 	public float timeRemaining = 150;
 	public bool timerIsRunning = false;
     public TMPro.TMP_Text timeText;
-	public GameObject text;
+	
 
 
 	GameObject[] spawnPoints;
@@ -82,14 +82,18 @@ class Spawner : MonoBehaviour
 			timerIsRunning = false;
 		}
 
-		if (timeRemaining < 90)
+		if (timeRemaining < 120)
         {
-			maxEnemies=11;
+			maxEnemies=12;
 		}
 
-		if (timeRemaining < 12)
+		if (timeRemaining < 80)
 		{
-			text.SetActive(true);
+			maxEnemies = 19;
+		}
+
+		if (timeRemaining == 0)
+		{		
 			StartCoroutine("Ending");
 		}
 
@@ -153,14 +157,9 @@ class Spawner : MonoBehaviour
 	private IEnumerator Ending()
     {
 		yield return new WaitForSeconds(6);
-		text.SetActive(false);
-		maxEnemies = 15;
-		yield return new WaitForSeconds(6);
-		maxEnemies = 25;
-		yield return new WaitForSeconds(10);
-		maxEnemies = 35;
-		yield return new WaitForSeconds(10);
-		maxEnemies = 50;
+		
+		
+		
 	}
 
 	private IEnumerator WaitAndSpawn()
