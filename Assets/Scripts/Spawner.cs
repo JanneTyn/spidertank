@@ -39,11 +39,6 @@ class Spawner : MonoBehaviour
 	private int randomNumber;
 
 
-	
-
-
-
-
 
 	void OnEnable()
 	{
@@ -93,8 +88,8 @@ class Spawner : MonoBehaviour
 		}
 
 		if (timeRemaining == 0)
-		{		
-			StartCoroutine("Ending");
+		{
+			return;
 		}
 
 	}
@@ -154,14 +149,6 @@ class Spawner : MonoBehaviour
 
 	}
 
-	private IEnumerator Ending()
-    {
-		yield return new WaitForSeconds(6);
-		
-		
-		
-	}
-
 	private IEnumerator WaitAndSpawn()
 	{
 		Debug.Log("started spawning");
@@ -197,31 +184,8 @@ class Spawner : MonoBehaviour
 				case 2: Instantiate(m_EnemyExploderPrefab, GenerateSpawnPos(), m_EnemyExploderPrefab.transform.rotation); break;
 
 				case 3: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
-
-
-				
-
-
 			}
 		}
-	/*	for (int i = 0; i < enemyCount; i++)
-		{
-
-			randomNumber = Random.Range(0, 3);
-
-			switch (randomNumber)
-			{
-				case 0: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); ; break;
-
-				case 1: Instantiate(m_EnemyRangePrefab, GenerateSpawnPos(), m_EnemyRangePrefab.transform.rotation); break;
-
-				case 2: Instantiate(m_EnemyPrefab, GenerateSpawnPos(), m_EnemyPrefab.transform.rotation); break;
-
-
-			}
-
-		}
-	*/
 	}
 }
 
