@@ -87,10 +87,7 @@ public class Enemy : MonoBehaviour, IDamagable
             {
                 UpdateBehaviour(enemystate.attack1);
             }
-            if (att)
-            {
-                UpdateBehaviour(enemystate.attack2);
-            }
+           
 
             if (curHealth <= 99)
             {
@@ -104,42 +101,26 @@ public class Enemy : MonoBehaviour, IDamagable
                 EnemyDeath();
             }
 
-            if (currentdistance <= 7f)
+            if (currentdistance <= 2.3f)
             {
                 trig = true;
-                StartCoroutine("attwait");
+                
             }
-            else if (currentdistance >= 7f)
+            else if (currentdistance >= 2.3f)
             {
                 trig = false;
-                att = false;
-                StopCoroutine("attwait");
             }
         }
     }
 
     public bool trig;
-    public bool att;
+    
 
-    /*void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            
-            trig = true;
-            StartCoroutine(attwait());
-        }
-    }
-    void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            trig = false;
-            att = false;
-            StopCoroutine(attwait());
-        }
-    }
-*/
+    
+   
+
+
+
     private void UpdateBehaviour(enemystate state) 
     {
        
@@ -177,6 +158,10 @@ public class Enemy : MonoBehaviour, IDamagable
         Debug.Log(test);
     }
 
+   
+
+
+
     public IEnumerator Mercy()
     {
         yield return new WaitForSeconds(25);
@@ -184,21 +169,6 @@ public class Enemy : MonoBehaviour, IDamagable
         StopCoroutine("Mercy");
     }
 
-    public IEnumerator attwait()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            trig = false;
-            att = true;
-            yield return new WaitForSeconds(1.5f);
-            att = false;
-
-            Debug.Log("PLS WORK");
-            StopCoroutine("attwait");
-
-        }
-    }
 
     public IEnumerator idle()
     {
@@ -244,16 +214,9 @@ public class Enemy : MonoBehaviour, IDamagable
         while (true) {
 
             agent.speed = 0.8f;
+            agent.SetDestination(transform.position);
             yield return null;
-            
-            
-            
-            
-            yield return new WaitForSeconds(1);
-           
-            UpdateBehaviour(enemystate.attack2);
-          
-    }
+        }
 }
 
 
@@ -263,11 +226,9 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true)
         {
-            
-          
-            agent.speed = 4;
+
             yield return null;
-           
+
         }
     }
 

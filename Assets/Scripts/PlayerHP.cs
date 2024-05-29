@@ -83,7 +83,22 @@ public class PlayerHP : MonoBehaviour
             StartCoroutine("Iframe");
         }
     }
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            StartCoroutine("DelayDmg");
 
+        }
+    }
+
+    private IEnumerator DelayDmg()
+    {
+        yield return new WaitForSeconds(0.8f);
+        curHP -= damage;
+
+        StopCoroutine("DelayDmg");
+    }
 
     private IEnumerator Iframe()
     {

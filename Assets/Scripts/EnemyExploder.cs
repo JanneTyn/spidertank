@@ -236,7 +236,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
         
         
 
-            agent.speed = 0.4f;
+            
             yield return null;
             
             
