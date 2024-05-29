@@ -37,6 +37,20 @@ public class PlayerLeveling : MonoBehaviour
     {
         playerLevel += 1;       
         Debug.Log("Levelled up: Level " + playerLevel);
+        StartCoroutine(DelayBeforeMenu());
+    }
+
+    public IEnumerator DelayBeforeMenu()
+    {
+        float elapsedTime = 0;
+        float time = 0.3f;
+
+        while (elapsedTime < time)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
         StartCoroutine(upgrades.GetRandomLevelUpgrades());
         menu.upgrade = true;
         menu.Pause();

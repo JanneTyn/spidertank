@@ -54,9 +54,9 @@ public class shotgun : MonoBehaviour
                         //vihuun osuttu, v‰hennet‰‰n healthia
                         Debug.Log("Enemy hit");
 
-                        if (shotEnemy.gameObject.tag == "MeleeEnemy")
+                        if (shotEnemy.TryGetComponent(out Enemy enemyScript))
                         {
-                            Enemy enemyScript = GetEnemyParentScript();
+                            enemyScript = GetEnemyParentScript();
                             if (enemyScript != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
@@ -68,13 +68,26 @@ public class shotgun : MonoBehaviour
                                 Debug.Log("ENEMY NULL!!!");
                             }
                         }
-                        else if (shotEnemy.gameObject.tag == "RangeEnemy")
+                        else if (shotEnemy.TryGetComponent(out EnemyRange enemyScriptRange))
                         {
-                            EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
+                            enemyScriptRange = GetRangeEnemyParentScript();
                             if (enemyScriptRange != null)
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
                                 enemyScriptRange.TakeDamage(trueDamage);
+                                crosshair.createDamageMarker(trueDamage, hit.point);
+                            }
+                            else
+                            {
+                                Debug.Log("ENEMY NULL!!!");
+                            }
+                        }
+                        else if (shotEnemy.TryGetComponent(out EnemyExploder enemyScriptExploder))
+                        {
+                            enemyScriptExploder = GetExploderEnemyParentScript();
+                            if (enemyScriptExploder != null)
+                            {
+                                enemyScriptExploder.TakeDamage(trueDamage);
                                 crosshair.createDamageMarker(trueDamage, hit.point);
                             }
                             else
@@ -118,6 +131,26 @@ public class shotgun : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             EnemyRange enemyscript = shotEnemy.GetComponent<EnemyRange>();
+            if (enemyscript != null)
+            {
+                return enemyscript;
+            }
+            else
+            {
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+    EnemyExploder GetExploderEnemyParentScript()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            EnemyExploder enemyscript = shotEnemy.GetComponent<EnemyExploder>();
             if (enemyscript != null)
             {
                 return enemyscript;

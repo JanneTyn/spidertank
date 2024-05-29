@@ -211,9 +211,9 @@ public class MissileLauncherScript : MonoBehaviour
             //vihuun osuttu, v‰hennet‰‰n healthia
             Debug.Log("Enemy hit");
 
-            if (shotEnemy.gameObject.tag == "MeleeEnemy")
+            if (shotEnemy.TryGetComponent(out Enemy enemyScript))
             {
-                Enemy enemyScript = GetEnemyParentScript();
+                enemyScript = GetEnemyParentScript();
                 if (enemyScript != null)
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
@@ -226,13 +226,28 @@ public class MissileLauncherScript : MonoBehaviour
                     Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
                 }
             }
-            else if (shotEnemy.gameObject.tag == "RangeEnemy")
+            else if (shotEnemy.TryGetComponent(out EnemyRange enemyScriptRange))
             {
-                EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
+                enemyScriptRange = GetRangeEnemyParentScript();
                 if (enemyScriptRange != null)
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
                     enemyScriptRange.TakeDamage(finalDamage);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+
+                }
+                else
+                {
+                    Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+                }
+            }
+            else if (shotEnemy.TryGetComponent(out EnemyExploder enemyScriptExploder))
+            {
+                enemyScriptExploder = GetExploderEnemyParentScript();
+                if (enemyScriptExploder != null)
+                {
+                    finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
+                    enemyScriptExploder.TakeDamage(finalDamage);
                     crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
 
                 }
@@ -288,6 +303,26 @@ public class MissileLauncherScript : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             EnemyRange enemyscript = shotEnemy.GetComponent<EnemyRange>();
+            if (enemyscript != null)
+            {
+                return enemyscript;
+            }
+            else
+            {
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
+            }
+        }
+        return null;
+    }
+
+    EnemyExploder GetExploderEnemyParentScript()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            EnemyExploder enemyscript = shotEnemy.GetComponent<EnemyExploder>();
             if (enemyscript != null)
             {
                 return enemyscript;

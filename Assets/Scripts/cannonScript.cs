@@ -118,9 +118,9 @@ public class cannonScript : MonoBehaviour
             //vihuun osuttu, v‰hennet‰‰n healthia
             Debug.Log("Enemy hit");
 
-            if (shotEnemy.gameObject.tag == "MeleeEnemy")
+            if (shotEnemy.TryGetComponent(out Enemy enemyScript))
             {
-                Enemy enemyScript = GetEnemyParentScript(shotEnemy);
+                enemyScript = GetEnemyParentScript(shotEnemy);
                 if (enemyScript != null)
                 {
                     if (!enemyList.Contains(shotEnemy))
@@ -141,15 +141,38 @@ public class cannonScript : MonoBehaviour
                     Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
                 }
             }
-            else if (shotEnemy.gameObject.tag == "RangeEnemy")
+            else if (shotEnemy.TryGetComponent(out EnemyRange enemyScriptRange))
             {
-                EnemyRange enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
+                enemyScriptRange = GetRangeEnemyParentScript(shotEnemy);
                 if (enemyScriptRange != null)
                 {
                     if (!enemyList.Contains(shotEnemy))
                     {
                         finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
                         enemyScriptRange.TakeDamage(finalDamage);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        enemyList.Add(shotEnemy);
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy was already damaged");
+                    }
+
+                }
+                else
+                {
+                    Debug.Log("ENEMY NULL!!! " + shotEnemy.gameObject);
+                }
+            }
+            else if (shotEnemy.TryGetComponent(out EnemyExploder enemyScriptExploder))
+            {
+                enemyScriptExploder = GetExploderEnemyParentScript(shotEnemy);
+                if (enemyScriptExploder != null)
+                {
+                    if (!enemyList.Contains(shotEnemy))
+                    {
+                        finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
+                        enemyScriptExploder.TakeDamage(finalDamage);
                         crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
                         enemyList.Add(shotEnemy);
                     }
@@ -241,5 +264,26 @@ public class cannonScript : MonoBehaviour
             }
         }
         return null;     
+    }
+
+    EnemyExploder GetExploderEnemyParentScript(GameObject enemyHit)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            EnemyExploder enemyscript = enemyHit.GetComponent<EnemyExploder>();
+            if (enemyscript != null)
+            {
+                shotEnemy = enemyHit;
+                return enemyscript;
+            }
+            else
+            {
+                if (enemyHit.transform.parent != null)
+                {
+                    enemyHit = enemyHit.transform.parent.gameObject;
+                }
+            }
+        }
+        return null;
     }
 }
