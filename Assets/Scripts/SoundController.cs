@@ -9,8 +9,8 @@ public class SoundController : MonoBehaviour
 
     public AudioClip MG_active_sound;
     public AudioClip MG_finished_sound;
+    public AudioClip Shotgun;
 
-    SoundController sound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class SoundController : MonoBehaviour
 
     public void MG_Sound_On()
     {
-        sound.MG_active = true;
+        MG_active = true;
         Debug.Log(MG_active + "soundon");
         if (!audioSource.isPlaying)
         {
@@ -35,6 +35,7 @@ public class SoundController : MonoBehaviour
             Debug.Log(MG_active + "soundon loop");
         }
     }
+
     public void MG_Sound_Off()
     {
         Debug.Log(MG_active + "soundoff");
@@ -45,5 +46,10 @@ public class SoundController : MonoBehaviour
             audioSource.PlayOneShot(MG_finished_sound);
             MG_active = false;
         }
+    }
+
+    public void ShotgunSound()
+    {
+        audioSource.PlayOneShot(Shotgun);
     }
 }

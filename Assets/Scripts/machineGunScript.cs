@@ -55,7 +55,7 @@ public class machineGunScript : MonoBehaviour
                 //    shootingsoundtoggle = true;
                 //    Debug.Log("shootingsound is false");
                 //}
-                //sound.MG_Sound_On();
+                sound.MG_Sound_On();
 
                 muzzle.Play();
 
@@ -121,7 +121,7 @@ public class machineGunScript : MonoBehaviour
             //    shootingsound.PlayOneShot(clip);
             //    shootingsoundtoggle = false;
             //}
-            //sound.MG_Sound_Off();
+            sound.MG_Sound_Off();
         }
     }
 
