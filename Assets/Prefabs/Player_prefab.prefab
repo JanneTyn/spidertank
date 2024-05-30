@@ -20608,11 +20608,11 @@ Transform:
   m_GameObject: {fileID: 3204791285808132654}
   serializedVersion: 2
   m_LocalRotation: {x: 0.02653269, y: -0.0000000038760404, z: 1.0287798e-10, w: 0.999648}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 288564821371458179}
+  m_Father: {fileID: 9113410222539156928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8203657507536530974
 Camera:
@@ -20731,7 +20731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShowDebugText: 0
   m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
+  m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
@@ -59953,6 +59953,7 @@ Transform:
   - {fileID: 6476633467261987381}
   - {fileID: 874170536235594187}
   - {fileID: 8452272621230161277}
+  - {fileID: 8767899841392332168}
   - {fileID: 288564821371458179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60201,6 +60202,7 @@ MonoBehaviour:
   playerLevelThresholds: 14000000280000005000000078000000c8000000
   upgrades: {fileID: 2150912702325831874}
   menu: {fileID: 5395799510669210485}
+  expSlider: {fileID: 0}
 --- !u!114 &8206852530547114470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60278,7 +60280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPSlider: {fileID: 7032444458300110713}
-  maxHealth: 100
   curHP: 100
   healAmount: 25
   damage: 5
@@ -76159,7 +76160,6 @@ Transform:
   - {fileID: 6523331744519095300}
   - {fileID: 6661861701082796945}
   - {fileID: 4868738635429635632}
-  - {fileID: 8767899841392332168}
   m_Father: {fileID: 9113410222539156928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &67308178714029282

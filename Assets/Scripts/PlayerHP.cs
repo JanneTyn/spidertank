@@ -82,10 +82,10 @@ public class PlayerHP : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "TankEnemy")
+        if (collision.gameObject.tag == "Explosion")
         {
             curHP -= damageExplosion;
-            StartCoroutine("Iframe");
+            //StartCoroutine("Iframe");
         }
     }
     void OnTriggerStay(Collider collision)
