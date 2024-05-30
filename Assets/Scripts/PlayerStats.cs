@@ -14,14 +14,14 @@ public class PlayerStats : MonoBehaviour
     public static float playerCriticalChance = 0;
 
     // Start is called before the first frame update
-    void Start()
+    public static void ResetDefaultValues()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerHealth = 100;
+        playerDamage = 0;
+        playerFireRate = 0;                    
+        playerMovementSpeed = 0;
+        playerXPrate = 0;
+        playerHealthRegen = 0;
+        playerCriticalChance = 0;
     }
 }

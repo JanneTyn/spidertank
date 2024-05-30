@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 class Spawner : MonoBehaviour
 {
@@ -18,6 +19,7 @@ class Spawner : MonoBehaviour
 	public GameObject m_EnemyPrefab;
 	public GameObject m_EnemyRangePrefab;
 	public GameObject m_EnemyExploderPrefab;
+	public GameObject demoFin;
 
 
 
@@ -71,6 +73,8 @@ class Spawner : MonoBehaviour
 			Debug.Log("time ran out");
 			timeRemaining = 0;
 			timerIsRunning = false;
+			demoFin.SetActive(true);
+			StartCoroutine(ReturnToMenu());
 		}
 
 	/*	if (timeRemaining < 120)
@@ -182,5 +186,12 @@ class Spawner : MonoBehaviour
 			}
 		}
 	}
+
+	public IEnumerator ReturnToMenu()
+	{
+        yield return new WaitForSeconds(5);
+		PlayerStats.ResetDefaultValues();
+		SceneManager.LoadScene("MainMenu");
+    }
 }
 
