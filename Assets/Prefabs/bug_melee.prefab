@@ -462,20 +462,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d6a30724d5f3e4e877ae35ad7f5435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyState: 2
+  MyState: 0
   Player: {fileID: 0}
   startfollowdistance: 20
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 4
-  maxHealth: 20000
-  curHealth: 20000
+  maxEHealth: 100
+  curEHealth: 100
   Damage: 30
   experience: 20
   playerlevel: {fileID: 0}
   blood: {fileID: 1452846405759570649}
   trig: 0
-  att: 0
 --- !u!195 &1557824212122324010
 NavMeshAgent:
   m_ObjectHideFlags: 0

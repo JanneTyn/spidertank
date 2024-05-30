@@ -108,7 +108,6 @@ public class CrosshairRaycast : MonoBehaviour
         {
             dmgMark.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
             elapsedTime += Time.fixedDeltaTime;
-            Debug.Log(elapsedTime);
             yield return null;
         }
 

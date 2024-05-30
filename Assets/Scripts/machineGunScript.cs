@@ -65,9 +65,9 @@ public class machineGunScript : MonoBehaviour
                     shotEnemy = hit.collider.gameObject;
                     trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
                     //vihuun osuttu, v‰hennet‰‰n healthia
-                    if (shotEnemy.gameObject.tag == "MeleeEnemy")
+                    if (shotEnemy.TryGetComponent(out Enemy enemyScript))
                     {
-                        Enemy enemyScript = GetEnemyParentScript();
+                        enemyScript = GetEnemyParentScript();
                         if (enemyScript != null)
                         {
                             enemyScript.TakeDamage(trueDamage);
@@ -78,12 +78,25 @@ public class machineGunScript : MonoBehaviour
                             Debug.Log("ENEMY NULL!!!");
                         }
                     }
-                    else if (shotEnemy.gameObject.tag == "RangeEnemy")
+                    else if (shotEnemy.TryGetComponent(out EnemyRange enemyScriptRange))
                     {
-                        EnemyRange enemyScriptRange = GetRangeEnemyParentScript();
+                        enemyScriptRange = GetRangeEnemyParentScript();
                         if (enemyScriptRange != null)
                         {
                             enemyScriptRange.TakeDamage(trueDamage);
+                            crosshair.createDamageMarker(trueDamage, hit.point);
+                        }
+                        else
+                        {
+                            Debug.Log("ENEMY NULL!!!");
+                        }
+                    }
+                    else if (shotEnemy.TryGetComponent(out EnemyExploder enemyScriptExploder))
+                    {
+                        enemyScriptExploder = GetExploderEnemyParentScript();
+                        if (enemyScriptExploder != null)
+                        {
+                            enemyScriptExploder.TakeDamage(trueDamage);
                             crosshair.createDamageMarker(trueDamage, hit.point);
                         }
                         else
@@ -150,6 +163,26 @@ public class machineGunScript : MonoBehaviour
             }
         }
         return null;     
+    }
+
+    EnemyExploder GetExploderEnemyParentScript()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            EnemyExploder enemyscript = shotEnemy.GetComponent<EnemyExploder>();
+            if (enemyscript != null)
+            {
+                return enemyscript;
+            }
+            else
+            {
+                if (shotEnemy.transform.parent != null)
+                {
+                    shotEnemy = shotEnemy.transform.parent.gameObject;
+                }
+            }
+        }
+        return null;
     }
 
 

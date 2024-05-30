@@ -38,10 +38,11 @@ public class Enemy : MonoBehaviour, IDamagable
     public float patrolspeed;
     public float chasespeed;
 
+    Spawner count;
+    
 
-
-    public int maxHealth = 100;
-    public int curHealth = 100;
+    public int maxEHealth = 100;
+    public int curEHealth = 100;
 
     public int Damage = 10;
     public int experience = 20;
@@ -64,6 +65,8 @@ public class Enemy : MonoBehaviour, IDamagable
         MyState = enemystate.idle;
         StartCoroutine("Mercy");
 
+        count = GameObject.Find("SpawnManager").GetComponent<Spawner>();
+        
     }
 
     private void Update()
@@ -89,14 +92,15 @@ public class Enemy : MonoBehaviour, IDamagable
             }
            
 
-            if (curHealth <= 99)
+            if (curEHealth <= 99)
             {
 
                 startfollowdistance = 300;
             }
 
-            if (curHealth <= 0)
+            if (curEHealth <= 0)
             {
+                
                 StopAllCoroutines();
                 EnemyDeath();
             }
@@ -152,7 +156,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        curHealth -= damage;
+        curEHealth -= damage;
 
         blood.Play();
         Debug.Log(test);
@@ -234,10 +238,12 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void EnemyDeath()
     {
+
         
-        
+
         playerlevel.GetEnemyKillExperience(experience);
-        Destroy(this.gameObject);
+        Spawner.enemyCount--;
+        Destroy(gameObject);
     }
     
     
