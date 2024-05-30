@@ -39,7 +39,7 @@ public class machineGunScript : MonoBehaviour
 
     // Update is called once per frame
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButton(side))
         {
@@ -47,7 +47,7 @@ public class machineGunScript : MonoBehaviour
             crosshair.machinegunShooting = true;
             if (Time.time > timestamp)
             {
-                timestamp = Time.time + perShotDelay;
+                timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
                 shotsfired++;
 
                 //if (!shootingsound.isPlaying); {

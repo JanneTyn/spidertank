@@ -49596,7 +49596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 02a9c05482ef78844a2b847fcfb43024, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b18da540a13f524f8c358d5d00c2456, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -60202,7 +60202,7 @@ MonoBehaviour:
   playerLevelThresholds: 14000000280000005000000078000000c8000000
   upgrades: {fileID: 2150912702325831874}
   menu: {fileID: 5395799510669210485}
-  expSlider: {fileID: 0}
+  expSlider: {fileID: 9182167915081997367}
 --- !u!114 &8206852530547114470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60247,7 +60247,7 @@ MonoBehaviour:
   rareUpgradeChance: 20
   healthUpgrade: 15
   damageUpgrade: 10
-  fireRateUpgrade: 5
+  fireRateUpgrade: 0.1
   movementSpeedUpgrade: 10
   xpboostUpgrade: 20
   healthRegenUpgrade: 1
@@ -82822,7 +82822,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

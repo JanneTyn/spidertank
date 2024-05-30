@@ -50,7 +50,7 @@ public class cannonScript : MonoBehaviour
             //StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
             {
-                timestamp = Time.time + perShotDelay;
+                timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
 
                 trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
 

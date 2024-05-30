@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 
     public static int playerHealth = 100;
     public static float playerDamage = 0; //kaikki prosenttim‰‰rin‰
-    public static float playerFireRate = 0; 
+    public static float playerFireRate = 1.00f; 
     public static float playerMovementSpeed = 0;
     public static float playerXPrate = 0;
     public static float playerHealthRegen = 0;
@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     {
         playerHealth = 100;
         playerDamage = 0;
-        playerFireRate = 0;                    
+        playerFireRate = 1.00f;                    
         playerMovementSpeed = 0;
         playerXPrate = 0;
         playerHealthRegen = 0;

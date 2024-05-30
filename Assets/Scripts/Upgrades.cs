@@ -12,7 +12,7 @@ public class Upgrades : MonoBehaviour
     public float rareUpgradeChance = 20;
     public float healthUpgrade = 15;
     public float damageUpgrade = 5;
-    public float fireRateUpgrade = 5;
+    public float fireRateUpgrade = 0.1f;
     public float movementSpeedUpgrade = 10;
     public float xpboostUpgrade = 20;
     public float healthRegenUpgrade = 1;
@@ -119,7 +119,7 @@ public class Upgrades : MonoBehaviour
                     upgradeButtons[i].onClick.AddListener(delegate { GiveDamageUpgrade(damageUpgrade); });
                     break;
                 case "Fire Rate":
-                    upgradeDescriptions[i].text = "+" + fireRateUpgrade + "% Fire Rate";
+                    upgradeDescriptions[i].text = "+" + fireRateUpgrade * 100 + "% Fire Rate";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade); });

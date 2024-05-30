@@ -38,7 +38,7 @@ public class shotgun : MonoBehaviour
             //StartCoroutine(cam.Shake(amplitudeGain, frequencyGain, shakeDuration));
             if (Time.time > timestamp)
             {
-                timestamp = Time.time + perShotDelay;
+                timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
                 shotsfired++;
                 //Debug.Log("Pam " + shotsfired);
 

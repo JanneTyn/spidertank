@@ -107,7 +107,7 @@ public class MissileLauncherScript : MonoBehaviour
                 if (targetAllowed)
                 {
                     StartCoroutine(LaunchMissiles());
-                    timestamp = Time.time + perShotDelay;                  
+                    timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
                 }
                 targeting = false;
             }
