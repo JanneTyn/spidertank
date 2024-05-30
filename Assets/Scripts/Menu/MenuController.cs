@@ -39,8 +39,8 @@ public class menuController : MonoBehaviour
     {
         isPaused = true;
         pa.enabled = false;
-        Time.timeScale = 0f; // Pause the game
         cam.gameObject.SetActive(false);
+        Time.timeScale = 0f; // Pause the game     
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (upgrade == false) {
@@ -56,11 +56,11 @@ public class menuController : MonoBehaviour
     public void Resume()
     {
         isPaused = false;
+        cam.gameObject.SetActive(true);
         Time.timeScale = 1f; // Unpause the game
         pa.enabled = true;
         pauseMenu.SetActive(false); // Hide the pause menu UI
-        upgradeMenu.SetActive(false);
-        cam.gameObject.SetActive(true);
+        upgradeMenu.SetActive(false);      
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         crosshairCanvas.ClearDmgMarkers();

@@ -28,6 +28,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     public enemystate MyState;
 
     public GameObject Player;
+    public GameObject explosionSphere;
     public Coroutine CurrentBehaviour;
 
     public float startfollowdistance;
@@ -188,7 +189,9 @@ public class EnemyExploder : MonoBehaviour, IDamagable
             yield return new WaitForSeconds(1f);
             m_Collider.enabled = !m_Collider.enabled;
             explosion.Play();
+            explosionSphere.SetActive(true);
             yield return new WaitForSeconds(0.2f);
+            explosionSphere.SetActive(false);
             Spawner.enemyCount--;
             Destroy(gameObject);
 

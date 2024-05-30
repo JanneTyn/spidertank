@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public interface IDamagable
 {
@@ -37,6 +38,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public float patrolspeed;
     public float chasespeed;
+    public float prepareSpeed;
+    public float chargespeed;
 
     Spawner count;
     
@@ -46,6 +49,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public int Damage = 10;
     public int experience = 20;
+    public int chargeDistance = 5;
+    public int chargeTime = 1;
     public PlayerLeveling playerlevel;
 
     public ParticleSystem blood;
@@ -75,7 +80,14 @@ public class Enemy : MonoBehaviour, IDamagable
 
         if (this.gameObject != null)
         {
-            if (currentdistance > startfollowdistance && MyState != enemystate.patrol)
+            if (trig)
+            {
+                if (MyState != enemystate.attack1)
+                {
+                    UpdateBehaviour(enemystate.attack1);
+                }
+            }
+            else if (currentdistance > startfollowdistance && MyState != enemystate.patrol)
             {
                 UpdateBehaviour(enemystate.patrol);
 
@@ -86,10 +98,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
             }
 
-            if (trig)
-            {
-                UpdateBehaviour(enemystate.attack1);
-            }
+            
            
 
             if (curEHealth <= 99)
@@ -105,12 +114,12 @@ public class Enemy : MonoBehaviour, IDamagable
                 EnemyDeath();
             }
 
-            if (currentdistance <= 2.3f)
+            if (currentdistance <= chargeDistance)
             {
                 trig = true;
                 
             }
-            else if (currentdistance >= 2.3f)
+            else if (currentdistance >= chargeDistance && MyState != enemystate.attack1)
             {
                 trig = false;
             }
@@ -217,11 +226,20 @@ public class Enemy : MonoBehaviour, IDamagable
 
         while (true) {
 
-            agent.speed = 0.8f;
-            agent.SetDestination(transform.position);
-            yield return null;
+            agent.speed = prepareSpeed;
+            agent.SetDestination(Player.transform.position);
+            float elapsedTime = 0;
+
+            while (elapsedTime < chargeTime)
+            {
+                agent.SetDestination(Player.transform.position);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            StartCoroutine(attack2()); break;
         }
-}
+    }
 
 
    
@@ -230,10 +248,30 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true)
         {
+            agent.speed = chargespeed;
+            agent.SetDestination(Player.transform.position);
+            float elapsedTime = 0;
 
-            yield return null;
-
+            while (elapsedTime < chargeTime)
+            {
+                agent.SetDestination(Player.transform.position);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            StartCoroutine(WaitAfterCharge()); break;
         }
+    }
+
+    public IEnumerator WaitAfterCharge()
+    {
+        agent.speed = 0f;
+        float elapsedTime = 0;
+        while (elapsedTime < 0.5f)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        trig = false;
     }
 
     public void EnemyDeath()
