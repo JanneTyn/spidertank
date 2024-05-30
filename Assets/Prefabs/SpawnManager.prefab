@@ -44,10 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98badbedc91719b47ae312a464faa6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeRemaining: 150
+  timerIsRunning: 0
+  timeText: {fileID: 0}
   m_EnemyPrefab: {fileID: 7648036435851416421, guid: b025f86fb433eeb4a9febff8ddef0558,
     type: 3}
   m_EnemyRangePrefab: {fileID: 7116588948067472199, guid: 0d08949942a07504782d2484af57d8f5,
     type: 3}
+  m_EnemyExploderPrefab: {fileID: 1820625751522156529, guid: bf5c033e53a1e8042874a1bb8387f66f,
+    type: 3}
+  spawnedCount: 0
   aliveEnemyCount: 0
   spawnRange: 10
   waitTime: 5
