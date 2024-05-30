@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 7186988026002940955}
   - component: {fileID: 3209368307154339821}
   - component: {fileID: 7045802843883176311}
+  - component: {fileID: 1484409040785862482}
   m_Layer: 7
   m_Name: bug_ranged
   m_TagString: RangeEnemy
@@ -522,6 +523,27 @@ CapsuleCollider:
   m_Height: 3.0796127
   m_Direction: 1
   m_Center: {x: 0, y: 2.0283608, z: 0}
+--- !u!95 &1484409040785862482
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7116588948067472199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fc0d4dd1c22d67469f970d742825ad9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7174317889572737013
 GameObject:
   m_ObjectHideFlags: 0

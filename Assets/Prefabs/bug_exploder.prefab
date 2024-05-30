@@ -223,9 +223,9 @@ MonoBehaviour:
   startfollowdistance: 20
   currentdistance: 0
   patrolspeed: 3.5
-  chasespeed: 6
-  maxHealth: 100
-  curHealth: 100
+  chasespeed: 10
+  maxHealth: 30
+  curHealth: 30
   Damage: 10
   experience: 20
   playerlevel: {fileID: 0}

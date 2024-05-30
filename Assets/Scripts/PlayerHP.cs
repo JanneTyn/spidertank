@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
@@ -47,6 +48,11 @@ public class PlayerHP : MonoBehaviour
             curHP = 0;
         }
 
+        if (curHP == 0)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
         HPSlider.value = curHP;
         imageReference.color = gradient.Evaluate(HPSlider.normalizedValue);
 
@@ -77,7 +83,22 @@ public class PlayerHP : MonoBehaviour
             StartCoroutine("Iframe");
         }
     }
+    void OnTriggerStay(Collider collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            StartCoroutine("DelayDmg");
 
+        }
+    }
+
+    private IEnumerator DelayDmg()
+    {
+        yield return new WaitForSeconds(0.8f);
+        curHP -= damage;
+
+        StopCoroutine("DelayDmg");
+    }
 
     private IEnumerator Iframe()
     {

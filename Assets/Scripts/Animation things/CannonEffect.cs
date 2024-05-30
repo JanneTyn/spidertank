@@ -10,7 +10,12 @@ public class CannonEffect : MonoBehaviour
     [SerializeField] float widthEnd;
     [SerializeField] Material originalMat;
     Material mat;
-    Color fade = new Color(1, 1, 1, 0);
+
+    private void Start()
+    {
+        mat = line.material;
+    }
+
     public void CreateLine(Vector3 endPos)
     {
         mat = new Material(originalMat);
