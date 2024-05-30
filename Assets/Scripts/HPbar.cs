@@ -24,7 +24,7 @@ public class HPbar : MonoBehaviour
     void Update()
     {
         health = hpScript.curHP;
-        Maxhealth = hpScript.maxHealth;
+        Maxhealth = PlayerStats.playerHealth;
         text.text = $"Health: {health}" + "/" + Maxhealth;
     }
 

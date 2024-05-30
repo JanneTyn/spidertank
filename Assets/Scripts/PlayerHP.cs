@@ -9,7 +9,6 @@ public class PlayerHP : MonoBehaviour
 
     Collider m_Collider;
     public Slider HPSlider;
-    public int maxHealth = 100;
     public int curHP = 100;
 
 
@@ -38,9 +37,9 @@ public class PlayerHP : MonoBehaviour
     void Update()
     {
 
-        if (curHP >= 100)
+        if (curHP >= PlayerStats.playerHealth)
         {
-            curHP = 100;
+            curHP = PlayerStats.playerHealth;
         }
 
         if (curHP < 0)
@@ -50,10 +49,12 @@ public class PlayerHP : MonoBehaviour
 
         if (curHP == 0)
         {
+            PlayerStats.ResetDefaultValues();
             SceneManager.LoadScene("MainMenu");
         }
 
         HPSlider.value = curHP;
+        HPSlider.maxValue = PlayerStats.playerHealth;
         imageReference.color = gradient.Evaluate(HPSlider.normalizedValue);
 
     }
@@ -75,6 +76,10 @@ public class PlayerHP : MonoBehaviour
         if (collision.gameObject.tag == "HealthPack")
         {
             curHP += healAmount;
+            if (curHP > PlayerStats.playerHealth)
+            {
+                curHP = PlayerStats.playerHealth;
+            }
         }
 
         if (collision.gameObject.tag == "TankEnemy")
