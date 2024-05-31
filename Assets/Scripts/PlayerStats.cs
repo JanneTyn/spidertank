@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     public static float playerHealthRegen = 0;
     public static float playerHealthRegenTimeInterval = 2;
     public static float playerCriticalChance = 0;
+    public static float playerCriticalMultiplier = 3;
 
     // Start is called before the first frame update
     public static void ResetDefaultValues()
@@ -25,5 +26,16 @@ public class PlayerStats : MonoBehaviour
         playerHealthRegen = 0;
         playerHealthRegenTimeInterval = 2;
         playerCriticalChance = 0;
+        playerCriticalMultiplier = 3;
+    }
+
+    public static int RollCriticalChance(int dmg)
+    {
+        float rng = Random.Range(1, 101);
+        if (rng < playerCriticalChance ) 
+        {
+            dmg = dmg * (int)playerCriticalMultiplier;
+        }
+        return dmg;
     }
 }

@@ -103,8 +103,8 @@ public class proceduralAnimation : MonoBehaviour
 
     private void Update()
     {   
-        velocity = (transform.position - lastBodyPos) / Time.deltaTime;
-        velocity = Vector3.MoveTowards(lastVelocity, velocity, Time.deltaTime * 45f);
+        velocity = (transform.position - lastBodyPos) / Time.unscaledDeltaTime;
+        velocity = Vector3.MoveTowards(lastVelocity, velocity, Time.unscaledDeltaTime * 45f);
         clampDevider = 1 / Remap(velocity.magnitude, 0, velocityClamp, 1, 2);
 
         lastVelocity = velocity;
@@ -124,7 +124,7 @@ public class proceduralAnimation : MonoBehaviour
         for (int i = 0; i < nbLegs; ++i)
         {
             //move legs when everytime footTimings reache limit
-            footTimings[i] += Time.deltaTime * cycleSpeed * cycleSpeedMultiplyer;
+            footTimings[i] += Time.unscaledDeltaTime * cycleSpeed * cycleSpeedMultiplyer;
 
             if(footTimings[i] >= cycleLimit) 
             {
@@ -164,7 +164,7 @@ public class proceduralAnimation : MonoBehaviour
 
         while(current < 1)
         {
-            current += Time.deltaTime * stepSpeed;
+            current += Time.unscaledDeltaTime * stepSpeed;
 
             float positionY = legArcPathY.Evaluate(current) * stepHeight * Mathf.Clamp(arcHeitMultiply[index], 0, 1f);
 
