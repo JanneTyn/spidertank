@@ -31,6 +31,7 @@ public class PlayerHP : MonoBehaviour
     {
         m_Collider = GetComponent<Collider>();
         imageReference.color = gradient.Evaluate(1f);
+        StartCoroutine(HealthRegeneration());
 
     }
 
@@ -114,6 +115,19 @@ public class PlayerHP : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         m_Collider.enabled = !m_Collider.enabled;
         StopCoroutine("Iframe");
+    }
+
+    public IEnumerator HealthRegeneration()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(PlayerStats.playerHealthRegenTimeInterval);
+            curHP += (int)PlayerStats.playerHealthRegen;
+            if (curHP >= PlayerStats.playerHealth)
+            {
+                curHP = PlayerStats.playerHealth;
+            }
+        }
     }
    
 }
