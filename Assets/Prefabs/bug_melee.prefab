@@ -468,13 +468,13 @@ MonoBehaviour:
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 4
-  prepareSpeed: 1
-  chargespeed: 15
+  prepareSpeed: 0.5
+  chargespeed: 20
   maxEHealth: 100
   curEHealth: 100
   Damage: 30
   experience: 20
-  chargeDistance: 5
+  chargeDistance: 7
   chargeTime: 1
   playerlevel: {fileID: 0}
   blood: {fileID: 1452846405759570649}
