@@ -5,6 +5,8 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour
 {
     public ParticleSystem dust;
+    public ParticleSystem blood1;
+    public ParticleSystem blood2;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +19,23 @@ public class ParticleController : MonoBehaviour
     {
     }
 
-    void CreateDust()
+    public void CreateDust()
     {
-        dust.Play();
-        Debug.Log("log 2");
+        if (!dust.isPlaying) 
+        {
+            dust.Play();
+        }
+    }
+
+    public void PauseDust()
+    {
+        dust.Stop();
+    }
+
+    public void Bleed()
+    {
+        blood1.Play();
+        blood2.Play();
     }
 
 }

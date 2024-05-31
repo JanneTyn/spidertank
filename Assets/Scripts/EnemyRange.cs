@@ -50,6 +50,7 @@ public class EnemyRange : MonoBehaviour
     public int experience = 20;
     public PlayerLeveling playerlevel;
 
+    public ParticleController particle; 
 
     void Awake()
     {
@@ -130,18 +131,23 @@ public class EnemyRange : MonoBehaviour
         {
             StopCoroutine(CurrentBehaviour);
         }
+        
         switch (MyState)
         {
             case enemystate.idle:
+                particle.PauseDust();
                 CurrentBehaviour = StartCoroutine(idle());
                 break;
             case enemystate.patrol:
+                particle.PauseDust();
                 CurrentBehaviour = StartCoroutine(patrol());
                 break;
             case enemystate.chase:
+                particle.CreateDust();
                 CurrentBehaviour = StartCoroutine(chase());
                 break;
             case enemystate.attack1:
+                particle.PauseDust();
                 CurrentBehaviour = StartCoroutine(attack1());
                 break;
             
@@ -152,6 +158,8 @@ public class EnemyRange : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curEHealth -= damage;
+
+        particle.Bleed();
     }
 
     public IEnumerator Mercy()
@@ -174,7 +182,7 @@ public class EnemyRange : MonoBehaviour
 
 
     public IEnumerator chase()
-    {
+    { 
         while (true)
         {
             agent.speed = chasespeed;
@@ -201,7 +209,6 @@ public class EnemyRange : MonoBehaviour
 
     public IEnumerator attack1()
     {
-        
         Vector3 offset = new Vector3(0, 3, 0);
         startfollowdistance = 300;
         agent.speed = 1;

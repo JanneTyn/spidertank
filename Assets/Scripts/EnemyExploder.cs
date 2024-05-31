@@ -173,7 +173,6 @@ public class EnemyExploder : MonoBehaviour, IDamagable
         curEHealth -= damage;
 
         blood.Play();
-        Debug.Log(test);
     }
 
     public IEnumerator Mercy()
