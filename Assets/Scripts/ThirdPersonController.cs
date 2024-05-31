@@ -167,6 +167,9 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
+            MoveSpeed = origMoveSpeed * PlayerStats.playerMovementSpeed;
+            JumpSpeed = origJumpSpeed * PlayerStats.playerMovementSpeed;
+
             JumpAndGravity();
             GroundedCheck();
             Move();
