@@ -51,6 +51,7 @@ public class shotgun : MonoBehaviour
                     {
                         shotEnemy = hit.collider.gameObject;
                         trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                        trueDamage = PlayerStats.RollCriticalChance(trueDamage);
                         //vihuun osuttu, v‰hennet‰‰n healthia
                         Debug.Log("Enemy hit");
 

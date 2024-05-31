@@ -69,6 +69,7 @@ public class MissileLauncherScript : MonoBehaviour
             if (Time.time > timestamp)
             {
                 trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                trueDamage = PlayerStats.RollCriticalChance(trueDamage);
 
                 targeting = true;
                 if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))

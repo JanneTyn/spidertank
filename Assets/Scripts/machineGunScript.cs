@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -64,6 +65,7 @@ public class machineGunScript : MonoBehaviour
                 {
                     shotEnemy = hit.collider.gameObject;
                     trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                    trueDamage = PlayerStats.RollCriticalChance(trueDamage);
                     //vihuun osuttu, v‰hennet‰‰n healthia
                     if (shotEnemy.TryGetComponent(out Enemy enemyScript))
                     {

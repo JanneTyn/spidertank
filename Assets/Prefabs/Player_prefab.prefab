@@ -768,7 +768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 596066443479672368}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049813703, y: -0.000000002148128, z: 1.07139214e-10, w: 0.99875855}
+  m_LocalRotation: {x: 0.0498137, y: 0.0000000021481275, z: -1.0713917e-10, w: 0.99875855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   bulletSpread: 0.01
   cannonRange: 400
   explosionRange: 7
-  explosionMaxDamageRange: 1
+  explosionMaxDamageRange: 2
   amplitudeGain: 0.1
   frequencyGain: 0.1
   shakeDuration: 0.1
@@ -1964,7 +1964,7 @@ GameObject:
   - component: {fileID: 2103039926648669731}
   - component: {fileID: 4446878787331074657}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20514,7 +20514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3204791285808132654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02653269, y: -0.0000000038760404, z: 1.0287798e-10, w: 0.999648}
+  m_LocalRotation: {x: 0.02653269, y: 0.0000000038760404, z: -1.0287798e-10, w: 0.999648}
   m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -43789,7 +43789,7 @@ GameObject:
   - component: {fileID: 1767370529722751858}
   - component: {fileID: 558939237051732289}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60019,7 +60019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTotalExp: 0
   playerLevel: 0
-  playerLevelThresholds: 14000000280000005000000078000000c8000000
+  playerLevelThresholds: 14000000280000005000000078000000c80000005e010000f4010000ee020000e8030000dc050000
   upgrades: {fileID: 2150912702325831874}
   menu: {fileID: 5395799510669210485}
   expSlider: {fileID: 9182167915081997367}
@@ -60069,7 +60069,7 @@ MonoBehaviour:
   damageUpgrade: 10
   fireRateUpgrade: 0.1
   movementSpeedUpgrade: 0.1
-  xpboostUpgrade: 20
+  xpboostUpgrade: 0.2
   healthRegenUpgrade: 1
   criticalUpgrade: 3
   upgradetext1: {fileID: 672798557684556066}
@@ -60087,6 +60087,21 @@ MonoBehaviour:
   upgradeButton2: {fileID: 7452124316269410170}
   upgradeButton3: {fileID: 7813824212640484234}
   upgradeButtons: []
+  upgradeImage1: {fileID: 7246863736885872335}
+  upgradeImage2: {fileID: 558939237051732289}
+  upgradeImage3: {fileID: 4446878787331074657}
+  upgradeImages: []
+  healthUpgradeIcon: {fileID: 21300000, guid: 247f37c2b4f632549b4b767fd01d3879, type: 3}
+  damageUpgradeIcon: {fileID: 21300000, guid: 2dc59ec9cef481e49843406261f2b975, type: 3}
+  fireRateUpgradeIcon: {fileID: 21300000, guid: 358c9b5b6698f0c429c4427d8f2d67ef,
+    type: 3}
+  movementSpeedUpgradeIcon: {fileID: 21300000, guid: e1fb3cd337d0b4a49a9fbfda4c6e824d,
+    type: 3}
+  xpboostUpgradeIcon: {fileID: 21300000, guid: 1d9494d36d4c2d843932732964bf31c4, type: 3}
+  healthRegenUpgradeIcon: {fileID: 21300000, guid: a3b871919eb26364ba6efd660b725a47,
+    type: 3}
+  criticalUpgradeIcon: {fileID: 21300000, guid: a2de79ff69ed033439b243dec7a90ee0,
+    type: 3}
 --- !u!114 &7948488739446461398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60297,7 +60312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6428443204885392254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026532687, y: 0.0000000010750201, z: -2.8533216e-11, w: 0.999648}
+  m_LocalRotation: {x: 0.026532687, y: -0.0000000010750202, z: 2.8533217e-11, w: 0.999648}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -70804,7 +70819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7003969275487006269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0498137, y: -0.0000000021481275, z: 1.0713917e-10, w: 0.99875855}
+  m_LocalRotation: {x: 0.049813703, y: 0.000000002148128, z: -1.07139214e-10, w: 0.99875855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -82397,7 +82412,7 @@ GameObject:
   - component: {fileID: 1829992052537545121}
   - component: {fileID: 7246863736885872335}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

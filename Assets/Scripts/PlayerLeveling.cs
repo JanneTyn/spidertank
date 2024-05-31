@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerLeveling : MonoBehaviour
 {
-    public int playerTotalExp = 0;
+    public float playerTotalExp = 0;
     public int playerLevel = 0;
-    public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200};
+    public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200, 350, 500, 800, 1200};
     public Upgrades upgrades;
 
     public menuController menu;
@@ -29,23 +29,26 @@ public class PlayerLeveling : MonoBehaviour
 
     public void GetEnemyKillExperience(int expAmount)
     {
-        playerTotalExp += expAmount;
-
-        int playerLevelTresholdInt = playerLevelThresholds[playerLevel];
-        float playerLevelTresholdFloat = playerLevelTresholdInt;
-        float playerTotalExpFloat = playerTotalExp;
-        float expPercent = playerTotalExpFloat / playerLevelTresholdFloat * 100;
+        playerTotalExp += expAmount * PlayerStats.playerXPrate;
 
         if (playerLevel < playerLevelThresholds.Count)
         {
-            if (playerTotalExp >= playerLevelThresholds[playerLevel])
+            int playerLevelTresholdInt = playerLevelThresholds[playerLevel];
+            float playerLevelTresholdFloat = playerLevelTresholdInt;
+            float playerTotalExpFloat = playerTotalExp;
+            float expPercent = playerTotalExpFloat / playerLevelTresholdFloat * 100;
+
+            if (playerLevel < playerLevelThresholds.Count)
             {
-                LevelUp();
-                expSlider.value = 0;
-            }
-            else
-            {
-                expSlider.value = expPercent;
+                if (playerTotalExp >= playerLevelThresholds[playerLevel])
+                {
+                    LevelUp();
+                    expSlider.value = 0;
+                }
+                else
+                {
+                    expSlider.value = expPercent;
+                }
             }
         }
         

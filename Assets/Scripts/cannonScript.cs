@@ -53,6 +53,7 @@ public class cannonScript : MonoBehaviour
                 timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
 
                 trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                trueDamage = PlayerStats.RollCriticalChance(trueDamage);
 
                 //enemiesHit = new List<GameObject>();
                 //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
