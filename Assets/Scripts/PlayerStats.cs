@@ -1,5 +1,8 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -14,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     public static float playerHealthRegenTimeInterval = 2;
     public static float playerCriticalChance = 0;
     public static float playerCriticalMultiplier = 3;
+    public ThirdPersonController thirdPersonController;
 
     // Start is called before the first frame update
     public static void ResetDefaultValues()
@@ -26,7 +30,12 @@ public class PlayerStats : MonoBehaviour
         playerHealthRegen = 0;
         playerHealthRegenTimeInterval = 2;
         playerCriticalChance = 0;
-        playerCriticalMultiplier = 3;
+        playerCriticalMultiplier = 3;     
+    }
+
+    public void ResetMoveSpeed()
+    {
+        thirdPersonController.ResetMovementSpeed();
     }
 
     public static int RollCriticalChance(int dmg)

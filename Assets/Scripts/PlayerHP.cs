@@ -52,7 +52,6 @@ public class PlayerHP : MonoBehaviour
         if (curHP == 0)
         {
             PlayerStats.ResetDefaultValues();
-            GetComponent<ThirdPersonController>().UpdateMovementSpeed();
             SceneManager.LoadScene("MainMenu");
         }
 

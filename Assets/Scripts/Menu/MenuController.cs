@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class menuController : MonoBehaviour
 {
@@ -67,5 +68,11 @@ public class menuController : MonoBehaviour
         upgradeMenu.SetActive(false);      
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;        
+    }
+
+    public void QuitToMenu()
+    {
+        PlayerStats.ResetDefaultValues();
+        SceneManager.LoadScene("MainMenu");
     }
 }
