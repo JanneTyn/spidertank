@@ -24,6 +24,8 @@ public class shotgun : MonoBehaviour
 
     public ParticleSystem muzzle;
 
+    public SoundController sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class shotgun : MonoBehaviour
                 //Debug.Log("Pam " + shotsfired);
 
                 muzzle.Play();
+                sound.ShotgunSound();
 
                 for (int i = 0; i < bullets; i++) {
                     //enemiesHit = new List<GameObject>();
