@@ -15,7 +15,7 @@ public class Upgrades : MonoBehaviour
     public float damageUpgrade = 5;
     public float fireRateUpgrade = 0.1f;
     public float movementSpeedUpgrade = 0.15f;
-    public float xpboostUpgrade = 20;
+    public float xpboostUpgrade = 0.20f;
     public float healthRegenUpgrade = 1;
     public float criticalUpgrade = 3;
     public TMP_Text upgradetext1;
@@ -132,13 +132,13 @@ public class Upgrades : MonoBehaviour
                     upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade); });
                     break;
                 case "Experience Boost":
-                    upgradeDescriptions[i].text = "+" + xpboostUpgrade + "% Experience Boost";
+                    upgradeDescriptions[i].text = "+" + xpboostUpgrade * 100 + "% Experience Boost";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveXPBoostUpgrade(xpboostUpgrade); });
                     break;
                 case "Health Regeneration":
-                    upgradeDescriptions[i].text = "Heal +" + healthRegenUpgrade + " every 2 seconds";
+                    upgradeDescriptions[i].text = "Heal for +" + healthRegenUpgrade + " every " + PlayerStats.playerHealthRegenTimeInterval + " seconds";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveHealthRegenUpgrade(healthRegenUpgrade); });
