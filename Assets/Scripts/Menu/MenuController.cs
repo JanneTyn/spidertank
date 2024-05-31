@@ -31,7 +31,10 @@ public class menuController : MonoBehaviour
             }
             else
             {
-                Resume();
+                if (!upgradeMenu.activeSelf)
+                {
+                    Resume();
+                }
             }
         }  
     }
@@ -62,7 +65,7 @@ public class menuController : MonoBehaviour
         pauseMenu.SetActive(false); // Hide the pause menu UI
         upgradeMenu.SetActive(false);      
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         crosshairCanvas.ClearDmgMarkers();
     }
 }

@@ -17,10 +17,15 @@ namespace StarterAssets
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
-        public float MoveSpeed = 2.0f;
+        public float MoveSpeed = 4.0f;
 
         [Tooltip("Sprint speed of the character in m/s")]
-        public float JumpSpeed = 5.335f;
+        public float JumpSpeed = 7.0f;
+
+        public float origMoveSpeed = 4.0f;
+
+        [Tooltip("Sprint speed of the character in m/s")]
+        public float origJumpSpeed = 7.0f;
 
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
@@ -395,6 +400,18 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        public void UpdateMovementSpeed()
+        {
+            MoveSpeed = origMoveSpeed * PlayerStats.playerMovementSpeed;
+            JumpSpeed = origJumpSpeed * PlayerStats.playerMovementSpeed;
+        }
+
+        public void ResetMovementSpeed()
+        {
+            MoveSpeed = origMoveSpeed;
+            JumpSpeed = origJumpSpeed;
         }
     }
 }

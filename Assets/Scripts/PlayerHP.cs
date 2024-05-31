@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,6 +51,7 @@ public class PlayerHP : MonoBehaviour
         if (curHP == 0)
         {
             PlayerStats.ResetDefaultValues();
+            GetComponent<ThirdPersonController>().UpdateMovementSpeed();
             SceneManager.LoadScene("MainMenu");
         }
 
