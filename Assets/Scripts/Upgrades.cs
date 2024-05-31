@@ -33,6 +33,17 @@ public class Upgrades : MonoBehaviour
     public Button upgradeButton2;
     public Button upgradeButton3;
     public List<Button> upgradeButtons;
+    public Image upgradeImage1;
+    public Image upgradeImage2;
+    public Image upgradeImage3;
+    public List<Image> upgradeImages;
+    public Sprite healthUpgradeIcon;
+    public Sprite damageUpgradeIcon;
+    public Sprite fireRateUpgradeIcon;
+    public Sprite movementSpeedUpgradeIcon;
+    public Sprite xpboostUpgradeIcon;
+    public Sprite healthRegenUpgradeIcon;
+    public Sprite criticalUpgradeIcon;
     private List<string> randomUpgrades = new List<string>();
     private List<string> upgradeList = new List<string>();
     private int rolledUpgrades = 0;
@@ -102,6 +113,10 @@ public class Upgrades : MonoBehaviour
         upgradeButtons.Add(upgradeButton1);
         upgradeButtons.Add(upgradeButton2);
         upgradeButtons.Add(upgradeButton3);
+        upgradeImages.Add(upgradeImage1);
+        upgradeImages.Add(upgradeImage2);
+        upgradeImages.Add(upgradeImage3);
+
 
         for (int i = 0; i < 3; i++)
         {
@@ -111,42 +126,49 @@ public class Upgrades : MonoBehaviour
                     upgradeDescriptions[i].text = "+" + healthUpgrade +  " Health";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeImages[i].sprite = healthUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveHealthUpgrade(healthUpgrade); });
                     break;
                 case "Damage":
                     upgradeDescriptions[i].text = "+" + damageUpgrade + "% Damage";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeImages[i].sprite = damageUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveDamageUpgrade(damageUpgrade); });
                     break;
                 case "Fire Rate":
                     upgradeDescriptions[i].text = "+" + fireRateUpgrade * 100 + "% Fire Rate";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeImages[i].sprite = fireRateUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade); });
                     break;
                 case "Movement Speed":
                     upgradeDescriptions[i].text = "+" + movementSpeedUpgrade * 100 + "% Movement Speed";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeImages[i].sprite = movementSpeedUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade); });
                     break;
                 case "Experience Boost":
                     upgradeDescriptions[i].text = "+" + xpboostUpgrade * 100 + "% Experience Boost";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeImages[i].sprite = xpboostUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveXPBoostUpgrade(xpboostUpgrade); });
                     break;
                 case "Health Regeneration":
                     upgradeDescriptions[i].text = "Heal for +" + healthRegenUpgrade + " every " + PlayerStats.playerHealthRegenTimeInterval + " seconds";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
+                    upgradeImages[i].sprite = healthRegenUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveHealthRegenUpgrade(healthRegenUpgrade); });
                     break;
                 case "Critical":
                     upgradeDescriptions[i].text = "+" + criticalUpgrade + "% chance for Critical (3x damage)";
                     upgradestankorweapon[i].text = "Weapons";
                     upgradestankorweapon[i].color = Color.blue;
+                    upgradeImages[i].sprite = criticalUpgradeIcon;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveCriticalUpgrade(criticalUpgrade); });
                     break;
                 default:
@@ -159,6 +181,7 @@ public class Upgrades : MonoBehaviour
 
         upgradeDescriptions.Clear();
         upgradestankorweapon.Clear();
+        upgradeImages.Clear();
     }
 
     public void GiveHealthUpgrade(float hpUpgrade)

@@ -54,6 +54,7 @@ public class menuController : MonoBehaviour
             //upgrades.SetUpgradeText();
             upgrade = false;
         }
+        crosshairCanvas.ClearDmgMarkers();
     }
 
     public void Resume()
@@ -65,7 +66,6 @@ public class menuController : MonoBehaviour
         pauseMenu.SetActive(false); // Hide the pause menu UI
         upgradeMenu.SetActive(false);      
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        crosshairCanvas.ClearDmgMarkers();
+        Cursor.lockState = CursorLockMode.Locked;        
     }
 }
