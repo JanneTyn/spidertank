@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,7 +14,7 @@ public class Upgrades : MonoBehaviour
     public float healthUpgrade = 15;
     public float damageUpgrade = 5;
     public float fireRateUpgrade = 0.1f;
-    public float movementSpeedUpgrade = 10;
+    public float movementSpeedUpgrade = 0.15f;
     public float xpboostUpgrade = 20;
     public float healthRegenUpgrade = 1;
     public float criticalUpgrade = 3;
@@ -125,7 +126,7 @@ public class Upgrades : MonoBehaviour
                     upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade); });
                     break;
                 case "Movement Speed":
-                    upgradeDescriptions[i].text = "+" + movementSpeedUpgrade + "% Movement Speed";
+                    upgradeDescriptions[i].text = "+" + movementSpeedUpgrade * 100 + "% Movement Speed";
                     upgradestankorweapon[i].text = "Tank";
                     upgradestankorweapon[i].color = Color.green;
                     upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade); });
@@ -182,6 +183,7 @@ public class Upgrades : MonoBehaviour
     {
         Debug.Log("movementspeed chosen");
         PlayerStats.playerMovementSpeed += speedUpgrade;
+        ChangeMovementSpeed();
         RemoveButtonListeners();
     }
     public void GiveXPBoostUpgrade(float xpboost)
@@ -201,6 +203,11 @@ public class Upgrades : MonoBehaviour
         Debug.Log("critical chosen");
         PlayerStats.playerCriticalChance += critical;
         RemoveButtonListeners();
+    }
+
+    public void ChangeMovementSpeed()
+    {
+        GetComponent<ThirdPersonController>().UpdateMovementSpeed();
     }
 
 

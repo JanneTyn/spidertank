@@ -25,16 +25,18 @@ class Spawner : MonoBehaviour
 
 	Transform player;
 
-
+	public int maxenemCount;
 	public int spawnedCount;
 	public int aliveEnemyCount;
 	public int spawnRange;
 	public int waitTime;
+	public int respawnTime;
 	
+
 	int index;
 
 
-	public static int maxEnemies = 5;
+	public static int maxEnemies = 6;
 	public static int enemyCount;
 	public static int spawnedEnemies;
 
@@ -52,7 +54,7 @@ class Spawner : MonoBehaviour
 	{
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		
-		//spawning();
+
 
 	}
 
@@ -77,21 +79,12 @@ class Spawner : MonoBehaviour
 			StartCoroutine(ReturnToMenu());
 		}
 
-	/*	if (timeRemaining < 120)
+		if (timeRemaining < 90)
         {
 			maxEnemies=12;
 		}
 
-		if (timeRemaining < 80)
-		{
-			maxEnemies = 19;
-		}
-
-		if (timeRemaining == 0)
-		{
-			return;
-		}
-	*/
+	
 	}
 
 	void DisplayTime(float timeToDisplay)
@@ -107,20 +100,21 @@ class Spawner : MonoBehaviour
 	{
 		aliveEnemyCount = enemyCount;
 		spawnedCount = spawnedEnemies;
-
+		maxenemCount = maxEnemies;
 
 		if (aliveEnemyCount == 0)
-		{
-			
+		{	
 			StartCoroutine("WaitAndSpawn");
-			
+			StopCoroutine("Respawn");
 		}
 
 		if (aliveEnemyCount == maxEnemies)
         {
 			StopCoroutine("WaitAndSpawn");
+			StartCoroutine("Respawn");
         }
 
+		
 	}
 
 
@@ -148,27 +142,28 @@ class Spawner : MonoBehaviour
 
 	}
 
-	private IEnumerator WaitAndSpawn()
-	{
+
+	private IEnumerator Respawn()
+    {
+		yield return new WaitForSeconds(respawnTime);
 		
-		yield return new WaitForSeconds(waitTime);
 		Spawn();
 		
-		
+	}
 
+	private IEnumerator WaitAndSpawn()
+	{
+			
+		yield return new WaitForSeconds(waitTime);
 		
+		Spawn();
+	
+
 	}
 	
 	void Spawn()
 	{
-		/*ArrayList gos = new ArrayList();
-		gos.AddRange(GameObject.FindGameObjectsWithTag("MeleeEnemy"));
-		gos.AddRange(GameObject.FindGameObjectsWithTag("RangeEnemy"));
-		gos.AddRange(GameObject.FindGameObjectsWithTag("TankEnemy"));
-
-		int enemyCount = gos.Count;
-		*/
-
+		
 		if (enemyCount < maxEnemies)
 		{
 			enemyCount++;

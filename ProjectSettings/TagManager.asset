@@ -12,6 +12,7 @@ TagManager:
   - RangeEnemy
   - TankEnemy
   - Point
+  - Explosion
   layers:
   - Default
   - TransparentFX
