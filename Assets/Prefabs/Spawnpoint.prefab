@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130b7b2a0179e8e42be80d7ebdc8cb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startspawndis: 50
+  startspawndis: 75
   currentdis: 0
+  tooclosedis: 25
