@@ -14,6 +14,8 @@ public class machineGunScript : MonoBehaviour
     float shotsfired = 0;
     public int side = 0;
     public ThirdPersonCam cam;
+    public TMP_Text shotDelayText1;
+    public TMP_Text shotDelayText2;
     public CrosshairRaycast crosshair;
     public CheckEnemyTag checkEnemyTag;
     private GameObject shotEnemy;
@@ -126,8 +128,10 @@ public class machineGunScript : MonoBehaviour
             //    shootingsound.PlayOneShot(clip);
             //    shootingsoundtoggle = false;
             //}
-            sound.MG_Sound_Off();
+            sound.MG_Sound_Off();                        
         }
+
+        DisplayRemainingShotDelay();       
     }
 
     Enemy GetEnemyParentScript()
@@ -188,6 +192,35 @@ public class machineGunScript : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void DisplayRemainingShotDelay()
+    {
+        float timeLeft = timestamp - Time.time;
+        if (side == 0)
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText1.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText1.gameObject.SetActive(true);
+                shotDelayText1.text = timeLeft.ToString("F1");
+            }
+        }
+        else
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText2.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText2.gameObject.SetActive(true);
+                shotDelayText2.text = timeLeft.ToString("F1");
+            }
+        }
     }
 
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,6 +20,8 @@ public class MissileLauncherScript : MonoBehaviour
     private float groundSlopeAngleX = 0f;
     private float groundSlopeAngleY = 0f;
     private float groundSlopeAngleZ = 0f;
+    public TMP_Text shotDelayText1;
+    public TMP_Text shotDelayText2;
     public Camera cam;
     public GameObject missilesTarget;
     public GameObject missilePrefab;
@@ -114,6 +117,8 @@ public class MissileLauncherScript : MonoBehaviour
             }
             missilesTarget.SetActive(false);
         }
+
+        DisplayRemainingShotDelay();
         
     }
 
@@ -358,6 +363,35 @@ public class MissileLauncherScript : MonoBehaviour
             Gizmos.DrawRay(ray.GetPoint(0), transform.forward * launcherTargetRange);
             //Draw a cube at the maximum distance
             Gizmos.DrawWireCube(crosshairWS + transform.forward * launcherTargetRange, transform.localScale);
+        }
+    }
+
+    public void DisplayRemainingShotDelay()
+    {
+        float timeLeft = timestamp - Time.time;
+        if (side == 0)
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText1.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText1.gameObject.SetActive(true);
+                shotDelayText1.text = timeLeft.ToString("F1");
+            }
+        }
+        else
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText2.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText2.gameObject.SetActive(true);
+                shotDelayText2.text = timeLeft.ToString("F1");
+            }
         }
     }
 }

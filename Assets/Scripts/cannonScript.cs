@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -31,6 +32,8 @@ public class cannonScript : MonoBehaviour
     public ThirdPersonCam cam;
     public GameObject cannonSpherePrefab;
     private List<GameObject> enemyList = new List<GameObject>();
+    public TMP_Text shotDelayText1;
+    public TMP_Text shotDelayText2;
 
     [SerializeField] CannonEffect cannonEffect;
 
@@ -109,6 +112,7 @@ public class cannonScript : MonoBehaviour
             }
         }
         else { cam.endShake(); }
+        DisplayRemainingShotDelay();
     }
 
     public void GetEnemiesInRange(Collider[] hitColliders, Vector3 explosionPos)
@@ -286,5 +290,34 @@ public class cannonScript : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void DisplayRemainingShotDelay()
+    {
+        float timeLeft = timestamp - Time.time;
+        if (side == 0)
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText1.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText1.gameObject.SetActive(true);
+                shotDelayText1.text = timeLeft.ToString("F1");
+            }
+        }
+        else
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText2.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText2.gameObject.SetActive(true);
+                shotDelayText2.text = timeLeft.ToString("F1");
+            }
+        }
     }
 }

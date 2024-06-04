@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class shotgun : MonoBehaviour
@@ -17,6 +18,8 @@ public class shotgun : MonoBehaviour
     public CrosshairRaycast crosshair;
     private GameObject shotEnemy;
     private List<GameObject> enemiesHit;
+    public TMP_Text shotDelayText1;
+    public TMP_Text shotDelayText2;
     private float timestamp = 0.0f;
     public float amplitudeGain = 0.1f;
     public float frequencyGain = 0.1f;
@@ -111,6 +114,8 @@ public class shotgun : MonoBehaviour
             }
         }       
         else { cam.endShake(); }
+
+        DisplayRemainingShotDelay();
     }
 
     Enemy GetEnemyParentScript()
@@ -171,5 +176,33 @@ public class shotgun : MonoBehaviour
             }
         }
         return null;
+    }
+    public void DisplayRemainingShotDelay()
+    {
+        float timeLeft = timestamp - Time.time;
+        if (side == 0)
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText1.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText1.gameObject.SetActive(true);
+                shotDelayText1.text = timeLeft.ToString("F1");
+            }
+        }
+        else
+        {
+            if (timeLeft < 0)
+            {
+                shotDelayText2.gameObject.SetActive(false);
+            }
+            else
+            {
+                shotDelayText2.gameObject.SetActive(true);
+                shotDelayText2.text = timeLeft.ToString("F1");
+            }
+        }
     }
 }
