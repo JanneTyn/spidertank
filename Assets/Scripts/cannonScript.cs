@@ -36,6 +36,8 @@ public class cannonScript : MonoBehaviour
 
     public ParticleSystem muzzle;
 
+    public SoundController sound; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,7 @@ public class cannonScript : MonoBehaviour
                 GameObject cannonSphere = Instantiate(cannonSpherePrefab, dmgUI, Quaternion.identity);
 
                 muzzle.Play();
+                sound.CannonSound();
 
                 if (Physics.Raycast(crosshairRay, out RaycastHit hit2, cannonRange, layerMask) || Physics.Raycast(crosshairRay, out hit2, cannonRange, layerMaskTerrain))
                 {                  

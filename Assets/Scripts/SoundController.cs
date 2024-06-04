@@ -10,6 +10,7 @@ public class SoundController : MonoBehaviour
     public AudioSource MG_active_sound;
     public AudioClip MG_finished_sound;
     public AudioClip Shotgun;
+    public AudioClip Cannon;
 
 
     // Start is called before the first frame update
@@ -52,5 +53,10 @@ public class SoundController : MonoBehaviour
     {
         audioSource.PlayOneShot(Shotgun);
         Debug.Log( "shotgun fired");
+    }
+
+    public void CannonSound()
+    {
+        audioSource.PlayOneShot(Cannon);
     }
 }

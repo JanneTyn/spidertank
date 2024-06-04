@@ -49,6 +49,8 @@ public class MissileLauncherScript : MonoBehaviour
 
     public ParticleSystem muzzle;
 
+    public SoundController sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -146,6 +148,7 @@ public class MissileLauncherScript : MonoBehaviour
 
         muzzle.Play();
 
+        sound.CannonSound();
     }
 
     public IEnumerator MissileSlerp(GameObject firedMissile, Vector3 missileStartpos, Vector3 missileTarget)
