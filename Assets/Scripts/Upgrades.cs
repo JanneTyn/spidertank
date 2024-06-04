@@ -11,13 +11,16 @@ public class Upgrades : MonoBehaviour
     public string[] upgradesListCommon = { "Health", "Damage", "Fire Rate", "Movement Speed", "Experience Boost" };
     public string[] upgradesListRare = { "Health Regeneration", "Critical" };
     public float rareUpgradeChance = 20;
-    public float healthUpgrade = 15;
-    public float damageUpgrade = 5;
-    public float fireRateUpgrade = 0.1f;
-    public float movementSpeedUpgrade = 0.15f;
-    public float xpboostUpgrade = 0.20f;
-    public float healthRegenUpgrade = 1;
-    public float criticalUpgrade = 3;
+    public float[] upgradeRarities = { 350, 100, 10 }; //välillä 1-1000, rare/epic/legendary
+    public string[] upgradeTitles = { "Common", "Rare", "Epic", "Legendary" };
+    public Color[] upgradeColors = { Color.white, Color.blue, new Color(0.6f, 0, 1.0f, 1f), new Color(1f, 0.7f, 0, 1f) }; 
+    public float[] healthUpgrade = { 15, 30, 45, 60 };
+    public float[] damageUpgrade = {10, 20, 30, 40 };
+    public float[] fireRateUpgrade = { 0.1f, 0.15f, 0.25f, 0.4f };
+    public float[] movementSpeedUpgrade = { 0.1f, 0.2f, 0.3f, 0.4f };
+    public float[] xpboostUpgrade = { 0.25f, 0.5f, 0.75f, 1.0f };
+    public float[] healthRegenUpgrade = { 1, 2, 3, 4 };
+    public float[] criticalUpgrade = { 3, 6, 9, 12 };
     public TMP_Text upgradetext1;
     public TMP_Text upgradetext2;
     public TMP_Text upgradetext3;
@@ -44,6 +47,7 @@ public class Upgrades : MonoBehaviour
     public Sprite xpboostUpgradeIcon;
     public Sprite healthRegenUpgradeIcon;
     public Sprite criticalUpgradeIcon;
+    public PlayerCurrentStats currentStats;
     private List<string> randomUpgrades = new List<string>();
     private List<string> upgradeList = new List<string>();
     private int rolledUpgrades = 0;
@@ -116,60 +120,62 @@ public class Upgrades : MonoBehaviour
         upgradeImages.Add(upgradeImage1);
         upgradeImages.Add(upgradeImage2);
         upgradeImages.Add(upgradeImage3);
+        currentStats.SetCurrentStatsText();
 
 
         for (int i = 0; i < 3; i++)
         {
+            int rarity = RollUpgradeRarity();
             switch (upgradeList[i])
             {
                 case "Health":
-                    upgradeDescriptions[i].text = "+" + healthUpgrade +  " Health";
-                    upgradestankorweapon[i].text = "Tank";
-                    upgradestankorweapon[i].color = Color.green;
+                    upgradeDescriptions[i].text = "+" + healthUpgrade[rarity] + " Health";
+                    upgradestankorweapon[i].text = "Tank/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = healthUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthUpgrade(healthUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthUpgrade(healthUpgrade[rarity]); });
                     break;
                 case "Damage":
-                    upgradeDescriptions[i].text = "+" + damageUpgrade + "% Damage";
-                    upgradestankorweapon[i].text = "Weapons";
-                    upgradestankorweapon[i].color = Color.blue;
+                    upgradeDescriptions[i].text = "+" + damageUpgrade[rarity] + "% Damage";
+                    upgradestankorweapon[i].text = "Weapons/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = damageUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveDamageUpgrade(damageUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveDamageUpgrade(damageUpgrade[rarity]); });
                     break;
                 case "Fire Rate":
-                    upgradeDescriptions[i].text = "+" + fireRateUpgrade * 100 + "% Fire Rate";
-                    upgradestankorweapon[i].text = "Weapons";
-                    upgradestankorweapon[i].color = Color.blue;
+                    upgradeDescriptions[i].text = "+" + fireRateUpgrade[rarity] * 100 + "% Fire Rate";
+                    upgradestankorweapon[i].text = "Weapons/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = fireRateUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveFireRateUpgrade(fireRateUpgrade[rarity]); });
                     break;
                 case "Movement Speed":
-                    upgradeDescriptions[i].text = "+" + movementSpeedUpgrade * 100 + "% Movement Speed";
-                    upgradestankorweapon[i].text = "Tank";
-                    upgradestankorweapon[i].color = Color.green;
+                    upgradeDescriptions[i].text = "+" + movementSpeedUpgrade[rarity] * 100 + "% Movement Speed";
+                    upgradestankorweapon[i].text = "Tank/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = movementSpeedUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveMovementSpeedUpgrade(movementSpeedUpgrade[rarity]); });
                     break;
                 case "Experience Boost":
-                    upgradeDescriptions[i].text = "+" + xpboostUpgrade * 100 + "% Experience Boost";
-                    upgradestankorweapon[i].text = "Tank";
-                    upgradestankorweapon[i].color = Color.green;
+                    upgradeDescriptions[i].text = "+" + xpboostUpgrade[rarity] * 100 + "% Experience Boost";
+                    upgradestankorweapon[i].text = "Tank/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = xpboostUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveXPBoostUpgrade(xpboostUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveXPBoostUpgrade(xpboostUpgrade[rarity]); });
                     break;
                 case "Health Regeneration":
-                    upgradeDescriptions[i].text = "Heal for +" + healthRegenUpgrade + " every " + PlayerStats.playerHealthRegenTimeInterval + " seconds";
-                    upgradestankorweapon[i].text = "Tank";
-                    upgradestankorweapon[i].color = Color.green;
+                    upgradeDescriptions[i].text = "Heal for +" + healthRegenUpgrade[rarity] + " every " + PlayerStats.playerHealthRegenTimeInterval + " seconds";
+                    upgradestankorweapon[i].text = "Tank/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = healthRegenUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthRegenUpgrade(healthRegenUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveHealthRegenUpgrade(healthRegenUpgrade[rarity]); });
                     break;
                 case "Critical":
-                    upgradeDescriptions[i].text = "+" + criticalUpgrade + "% chance for Critical (3x damage)";
-                    upgradestankorweapon[i].text = "Weapons";
-                    upgradestankorweapon[i].color = Color.blue;
+                    upgradeDescriptions[i].text = "+" + criticalUpgrade[rarity] + "% chance for Critical (3x damage)";
+                    upgradestankorweapon[i].text = "Weapons/" + upgradeTitles[rarity];
+                    upgradestankorweapon[i].color = upgradeColors[rarity];
                     upgradeImages[i].sprite = criticalUpgradeIcon;
-                    upgradeButtons[i].onClick.AddListener(delegate { GiveCriticalUpgrade(criticalUpgrade); });
+                    upgradeButtons[i].onClick.AddListener(delegate { GiveCriticalUpgrade(criticalUpgrade[rarity]); });
                     break;
                 default:
                     upgradeDescriptions[i].text = "Unknown";
@@ -231,6 +237,15 @@ public class Upgrades : MonoBehaviour
     public void ChangeMovementSpeed()
     {
         GetComponent<ThirdPersonController>().UpdateMovementSpeed();
+    }
+
+    public int RollUpgradeRarity()
+    {
+        int rarity = Random.Range(0, 1000);
+        if (rarity > upgradeRarities[0] ) { return 0; }
+        else if (rarity > upgradeRarities[1] ) { return 1; }
+        else if (rarity > upgradeRarities[2] ) {  return 2; }
+        else {  return 3; }
     }
 
 
