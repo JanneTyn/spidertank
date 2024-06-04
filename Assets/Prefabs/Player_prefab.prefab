@@ -17306,8 +17306,9 @@ MonoBehaviour:
   amplitudeGain: 0.8
   frequencyGain: 0.4
   shakeDuration: 0.1
-  muzzle: {fileID: 1538391308647190663}
+  muzzle: {fileID: 0}
   sound: {fileID: 0}
+  bulletEffect: {fileID: 2552810924769046583}
 --- !u!1 &1516094755954660524
 GameObject:
   m_ObjectHideFlags: 0
@@ -55981,6 +55982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4960332750869643763}
   - component: {fileID: 5621112849050573381}
+  - component: {fileID: 2552810924769046583}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -56023,6 +56025,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa8c56a8db9e244e84e59cbebd69b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2552810924769046583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691922227040725661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dbc12c531aa9c4699b3cd5c644085f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crosshair: {fileID: 6197805703090908205}
+  effect: {fileID: 5408549212654703286, guid: b94960900b9fe234d86f0766cd5af049, type: 3}
+  muzzle: {x: 0, y: 0, z: 0}
 --- !u!1 &3761382327999794036
 GameObject:
   m_ObjectHideFlags: 0
@@ -62720,6 +62737,7 @@ MonoBehaviour:
   shakeDuration: 1
   muzzle: {fileID: 4535322850943498558}
   sound: {fileID: 0}
+  bulletEffect: {fileID: 2552810924769046583}
 --- !u!1 &4601774791979475217
 GameObject:
   m_ObjectHideFlags: 0
@@ -68144,6 +68162,7 @@ MonoBehaviour:
   shakeDuration: 0.1
   muzzle: {fileID: 5396400298518064362}
   sound: {fileID: 0}
+  bulletEffect: {fileID: 2552810924769046583}
 --- !u!1 &4860201322769423619
 GameObject:
   m_ObjectHideFlags: 0
@@ -78661,8 +78680,9 @@ MonoBehaviour:
   amplitudeGain: 1
   frequencyGain: 1
   shakeDuration: 1
-  muzzle: {fileID: 2592624773348587988}
+  muzzle: {fileID: 0}
   sound: {fileID: 0}
+  bulletEffect: {fileID: 2552810924769046583}
 --- !u!1 &5527715151371645678
 GameObject:
   m_ObjectHideFlags: 0
@@ -105591,6 +105611,7 @@ MonoBehaviour:
   crosshairCanvas: {fileID: 8764915819037555830}
   textmsh: {fileID: 0}
   machinegunShooting: 0
+  bulletEffect: {fileID: 0}
 --- !u!114 &3872121203791870710
 MonoBehaviour:
   m_ObjectHideFlags: 0
