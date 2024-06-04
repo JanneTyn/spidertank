@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d6a30724d5f3e4e877ae35ad7f5435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherObject: {fileID: 7554794556690593308}
   MyState: 0
   Player: {fileID: 0}
   startfollowdistance: 20
@@ -469,7 +470,7 @@ MonoBehaviour:
   patrolspeed: 3.5
   chasespeed: 4
   prepareSpeed: 0.5
-  chargespeed: 20
+  chargespeed: 8
   maxEHealth: 100
   curEHealth: 100
   Damage: 30
@@ -490,7 +491,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.8
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 15
   avoidancePriority: 80
   m_AngularSpeed: 120
   m_StoppingDistance: 1.45
@@ -1308,6 +1309,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2698347776774392681}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1746959372709401153}
     - targetCorrespondingSourceObject: {fileID: 8397775052183303125, guid: a6b33e4afc7285d47b016f85fdfbe6cd,
         type: 3}
       insertIndex: -1
@@ -1550,6 +1555,27 @@ MonoBehaviour:
   legRayLength: 6
   sphereCastRadius: 1
   refreshTimingRate: 60
+--- !u!95 &1746959372709401153
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554794556690593308}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4889329f48db6b1478d806c8b5736e85, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &7978094201915096224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8453663154464524307, guid: a6b33e4afc7285d47b016f85fdfbe6cd,

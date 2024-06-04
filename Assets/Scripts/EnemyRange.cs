@@ -7,13 +7,15 @@ using UnityEngine.AI;
 
 public class EnemyRange : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    Collider e_Collider;
     private Animator anim;
+    private NavMeshAgent agent;
+
+    Collider e_Collider;
+    
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
-    
+    public GameObject otherObject;
 
     public enum enemystate
     {
@@ -55,11 +57,12 @@ public class EnemyRange : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        anim = otherObject.GetComponent<Animator>();
     }
     private void Start()
     {
-       
+
+        
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
         e_Collider = GetComponent<Collider>();
@@ -72,6 +75,7 @@ public class EnemyRange : MonoBehaviour
 
     private void Update()
     {
+
         currentdistance = Vector3.Distance(Player.transform.position, transform.position);
 
         if (this.gameObject != null)
@@ -209,15 +213,19 @@ public class EnemyRange : MonoBehaviour
 
     public IEnumerator attack1()
     {
+       
         Vector3 offset = new Vector3(0, 3, 0);
+
         startfollowdistance = 300;
         agent.speed = 1;
         
         yield return new WaitForSeconds(fireDelay);
+        anim.Play("spit_001");
         
         Instantiate(projectile, transform.position + offset, Quaternion.identity);
+        
         StopCoroutine("attack1");
-
+        
     }
 
 

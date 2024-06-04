@@ -7,7 +7,9 @@ using UnityEngine.AI;
 
 public class EnemyExploder : MonoBehaviour, IDamagable
 {
+    private Animator anim;
     private NavMeshAgent agent;
+
     Collider m_Collider;
 
     public delegate void EnemyKilled();
@@ -29,7 +31,9 @@ public class EnemyExploder : MonoBehaviour, IDamagable
 
     public GameObject Player;
     public GameObject explosionSphere;
+    public GameObject otherObject;
     public Coroutine CurrentBehaviour;
+   
 
     public float startfollowdistance;
     public float currentdistance;
@@ -54,7 +58,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        anim = otherObject.GetComponent<Animator>();
     }
     private void Start()
     {
@@ -86,12 +90,6 @@ public class EnemyExploder : MonoBehaviour, IDamagable
 
             }
 
-            if (trig)
-            {
-                UpdateBehaviour(enemystate.attack1);
-            }
-            
-
             if (curEHealth <= 99)
             {
 
@@ -107,40 +105,16 @@ public class EnemyExploder : MonoBehaviour, IDamagable
 
             if (currentdistance <= 3f)
             {
-                trig = true;
-                StartCoroutine("attwait");
-            }
-            else if (currentdistance >= 3f)
-            {
-                trig = false;
-                att = false;
-                StopCoroutine("attwait");
+                UpdateBehaviour(enemystate.attack1);
+                
+
             }
         }
     }
 
-    public bool trig;
+    
     public bool att;
 
-    /*void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            
-            trig = true;
-            StartCoroutine(attwait());
-        }
-    }
-    void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            trig = false;
-            att = false;
-            StopCoroutine(attwait());
-        }
-    }
-*/
     private void UpdateBehaviour(enemystate state)
     {
 
@@ -163,7 +137,8 @@ public class EnemyExploder : MonoBehaviour, IDamagable
             case enemystate.attack1:
                 CurrentBehaviour = StartCoroutine(attack1());
                 break;
-            
+           
+
         }
 
     }
@@ -182,23 +157,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
         StopCoroutine("Mercy");
     }
 
-    public IEnumerator attwait()
-    {
-        
-            yield return new WaitForSeconds(1f);
-            m_Collider.enabled = !m_Collider.enabled;
-            explosion.Play();
-            explosionSphere.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
-            explosionSphere.SetActive(false);
-            Spawner.enemyCount--;
-            Destroy(gameObject);
-
-
-            
-
-        
-    }
+    
 
     public IEnumerator idle()
     {
@@ -240,17 +199,24 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     {
 
         
-        
+        StartCoroutine("attwait");
 
-            
-            yield return null;
-            
-            
+        yield return null;
 
-            
-        
+       
     }
 
+    public IEnumerator attwait()
+    {
+        yield return new WaitForSeconds(1f);
+        m_Collider.enabled = !m_Collider.enabled;
+        explosion.Play();
+        explosionSphere.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        explosionSphere.SetActive(false);
+        Spawner.enemyCount--;
+        Destroy(gameObject);
+    }
 
 
 
