@@ -7,6 +7,7 @@ public class PlayerLeveling : MonoBehaviour
 {
     public float playerTotalExp = 0;
     public int playerLevel = 0;
+    public List<int> playerLevelThresholdsTest = new List<int> { 20, 40, 80, 120, 200, 350, 500, 800, 1200};
     public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200, 350, 500, 800, 1200};
     public Upgrades upgrades;
 
