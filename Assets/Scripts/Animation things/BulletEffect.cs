@@ -6,10 +6,10 @@ public class BulletEffect : MonoBehaviour
 {
     [SerializeField] CrosshairRaycast crosshair;
     [SerializeField] GameObject effect;
-    public Transform muzzle;
+    public Vector3 muzzle;
 
     public void CreateBullet(Vector3 direction)
     {
-        GameObject bullet = Instantiate(effect, muzzle.position, Quaternion.LookRotation(direction));
+        GameObject bullet = Instantiate(effect, muzzle, Quaternion.LookRotation(direction));
     }
 }

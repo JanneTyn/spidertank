@@ -26,6 +26,7 @@ public class CrosshairRaycast : MonoBehaviour
     List<GameObject> enemiesHit = new List<GameObject>();
     public bool machinegunShooting = false;
 
+    [SerializeField] BulletEffect bulletEffect;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class CrosshairRaycast : MonoBehaviour
         randomDir2 = Random.Range(-bulletSpread, bulletSpread);
         randomDir3 = Random.Range(-bulletSpread, bulletSpread);
         machineGunRay.direction = new Vector3(machineGunRay.direction.x + randomDir, machineGunRay.direction.y + randomDir2, machineGunRay.direction.z + randomDir3);
+        bulletEffect.CreateBullet(machineGunRay.direction);
         Debug.DrawRay(machineGunRay.origin, machineGunRay.direction * 100, Color.magenta, 10);
         if (Physics.Raycast(machineGunRay, out hit, 100, layerMaskEnemyPart) || Physics.Raycast(machineGunRay, out hit, 100, layerMask)) 
         {

@@ -26,6 +26,8 @@ public class shotgun : MonoBehaviour
 
     public SoundController sound;
 
+    [SerializeField] BulletEffect bulletEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class shotgun : MonoBehaviour
 
                 muzzle.Play();
                 sound.ShotgunSound();
+                bulletEffect.muzzle = muzzle.transform.position;
 
                 for (int i = 0; i < bullets; i++) {
                     //enemiesHit = new List<GameObject>();
