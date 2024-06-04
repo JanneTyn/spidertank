@@ -95,7 +95,7 @@ public class WeaponPicker : MonoBehaviour
         if (firstWeaponChosen == false)
         {
             weaponManager.SetWeapon(3, 0);
-            weaponImage2.gameObject.SetActive(true);
+            weaponImage1.gameObject.SetActive(true);
             weaponImage1.sprite = missileLauncherImage;
             pickText.text = "Choose your second weapon!";
             firstWeaponChosen = true;
