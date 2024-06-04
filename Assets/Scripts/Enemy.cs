@@ -11,12 +11,16 @@ public interface IDamagable
 
 public class Enemy : MonoBehaviour, IDamagable
 {
+    private Animator anim;
     private NavMeshAgent agent;
+
     Collider e_Collider;
 
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
+
+    public GameObject otherObject;
 
     public enum enemystate      
     {
@@ -32,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public GameObject Player;
     public Coroutine CurrentBehaviour;
+    
 
     public float startfollowdistance;
     public float currentdistance;
@@ -59,7 +64,7 @@ public class Enemy : MonoBehaviour, IDamagable
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        anim = otherObject.GetComponent<Animator>();
     }
     private void Start()
     {
@@ -69,7 +74,7 @@ public class Enemy : MonoBehaviour, IDamagable
         e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
         StartCoroutine("Mercy");
-
+        
         count = GameObject.Find("SpawnManager").GetComponent<Spawner>();
         
     }
@@ -197,10 +202,10 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true) 
         {
-            Vector3 offset = new Vector3(0, 0, 0);
-
+            
+            anim.Play("chase_001");
             agent.speed = chasespeed;
-            agent.SetDestination(Player.transform.position + offset);
+            agent.SetDestination(Player.transform.position);
             yield return null;
 
         }
@@ -229,9 +234,10 @@ public class Enemy : MonoBehaviour, IDamagable
             agent.speed = prepareSpeed;
             agent.SetDestination(Player.transform.position);
             float elapsedTime = 0;
-
+            
             while (elapsedTime < chargeTime)
             {
+                anim.Play("charge_001");
                 agent.SetDestination(Player.transform.position);
                 elapsedTime += Time.deltaTime;
                 yield return null;
@@ -248,16 +254,21 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         while (true)
         {
-            agent.speed = chargespeed;
-            agent.SetDestination(Player.transform.position);
-            float elapsedTime = 0;
+            
 
+            agent.speed = chargespeed;
+            
+            float elapsedTime = 0;
+            
             while (elapsedTime < chargeTime)
             {
+         
                 agent.SetDestination(Player.transform.position);
                 elapsedTime += Time.deltaTime;
+                anim.Play("bite_001");
                 yield return null;
             }
+            
             StartCoroutine(WaitAfterCharge()); break;
         }
     }

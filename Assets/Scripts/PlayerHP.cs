@@ -87,7 +87,7 @@ public class PlayerHP : MonoBehaviour
         if (collision.gameObject.tag == "Explosion")
         {
             curHP -= damageExplosion;
-            //StartCoroutine("Iframe");
+           // StartCoroutine("Iframe");
         }
     }
     void OnTriggerStay(Collider collision)
@@ -97,11 +97,23 @@ public class PlayerHP : MonoBehaviour
             StartCoroutine("DelayDmg");
 
         }
+        if (collision.gameObject.tag == "TankEnemy")
+        {
+            StopCoroutine("DelayDmg");
+        }
+    }
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.layer == 7)
+        {
+            StopCoroutine("DelayDmg");
+
+        }
     }
 
     private IEnumerator DelayDmg()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         curHP -= damage;
 
         StopCoroutine("DelayDmg");
