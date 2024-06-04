@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 99c4497a1cab316439bb3ed53c81c5be
+guid: 90d899c2030c3d44da08276b2280fd17
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: billboard
     second: {fileID: 2100000, guid: c30a219951e405e4fb8929607632627a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kuva
+    second: {fileID: 2100000, guid: fc0ca078f0378c749b20ba89f23c2393, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -53,7 +58,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
