@@ -11,7 +11,7 @@ public class BulletMove : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.forward * 750 * Time.deltaTime;
+        transform.position += transform.forward * 500 * Time.deltaTime;
     }
 
     IEnumerator LifeTime()
