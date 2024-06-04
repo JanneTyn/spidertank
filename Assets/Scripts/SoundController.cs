@@ -5,9 +5,9 @@ using UnityEngine;
 public class SoundController : MonoBehaviour
 {
     bool MG_active;
-    AudioSource audioSource;
-
-    public AudioClip MG_active_sound;
+    
+    public AudioSource audioSource;
+    public AudioSource MG_active_sound;
     public AudioClip MG_finished_sound;
     public AudioClip Shotgun;
 
@@ -15,7 +15,7 @@ public class SoundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+      //  audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,22 +27,22 @@ public class SoundController : MonoBehaviour
     public void MG_Sound_On()
     {
         MG_active = true;
-        Debug.Log(MG_active + "soundon");
-        if (!audioSource.isPlaying)
+    //    Debug.Log(MG_active + "soundon");
+        if (!MG_active_sound.isPlaying)
         {
-            audioSource.PlayOneShot(MG_active_sound);
+            MG_active_sound.Play();
 
-            Debug.Log(MG_active + "soundon loop");
+       //     Debug.Log(MG_active + "soundon loop");
         }
     }
 
     public void MG_Sound_Off()
     {
-        Debug.Log(MG_active + "soundoff");
-        audioSource.Stop();
+      //  Debug.Log(MG_active + "soundoff");
+        MG_active_sound.Stop();
         if (MG_active == true)
         {
-            Debug.Log(MG_active + "soundoff loop");
+           // Debug.Log(MG_active + "soundoff loop");
             audioSource.PlayOneShot(MG_finished_sound);
             MG_active = false;
         }
@@ -51,5 +51,6 @@ public class SoundController : MonoBehaviour
     public void ShotgunSound()
     {
         audioSource.PlayOneShot(Shotgun);
+        Debug.Log( "shotgun fired");
     }
 }
