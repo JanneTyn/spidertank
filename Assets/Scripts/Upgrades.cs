@@ -194,24 +194,28 @@ public class Upgrades : MonoBehaviour
     {
         Debug.Log("health chosen");
         PlayerStats.playerHealth += (int)hpUpgrade;
+        currentStats.UpdateColor(0);
         RemoveButtonListeners();
     }
     public void GiveDamageUpgrade(float dmgUpgrade)
     {
         Debug.Log("dmg chosen");
         PlayerStats.playerDamage += dmgUpgrade;
+        currentStats.UpdateColor(1);
         RemoveButtonListeners();
     }
     public void GiveFireRateUpgrade(float firerateUpg)
     {
         Debug.Log("firerate chosen");
         PlayerStats.playerFireRate += firerateUpg;
+        currentStats.UpdateColor(2);
         RemoveButtonListeners();
     }
     public void GiveMovementSpeedUpgrade(float speedUpgrade)
     {
         Debug.Log("movementspeed chosen");
         PlayerStats.playerMovementSpeed += speedUpgrade;
+        currentStats.UpdateColor(3);
         ChangeMovementSpeed();
         RemoveButtonListeners();
     }
@@ -219,18 +223,21 @@ public class Upgrades : MonoBehaviour
     {
         Debug.Log("xpboost chosen");
         PlayerStats.playerXPrate += xpboost;
+        currentStats.UpdateColor(4);
         RemoveButtonListeners();
     }
     public void GiveHealthRegenUpgrade(float hpregenUpgrade)
     {
         Debug.Log("healthregen chosen");
         PlayerStats.playerHealthRegen += hpregenUpgrade;
+        currentStats.UpdateColor(5);
         RemoveButtonListeners();
     }
     public void GiveCriticalUpgrade(float critical)
     {
         Debug.Log("critical chosen");
         PlayerStats.playerCriticalChance += critical;
+        currentStats.UpdateColor(6);
         RemoveButtonListeners();
     }
 

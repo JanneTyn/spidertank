@@ -32,6 +32,8 @@ public class menuController : MonoBehaviour
             }
             else
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 if (!upgradeMenu.activeSelf)
                 {
                     Resume();
