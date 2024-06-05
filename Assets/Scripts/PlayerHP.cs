@@ -9,6 +9,7 @@ public class PlayerHP : MonoBehaviour
 {
 
     Collider m_Collider;
+    public PlayerHitEffect hitEffect;
     public Slider HPSlider;
     public int curHP = 100;
 
@@ -67,12 +68,14 @@ public class PlayerHP : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             curHP -= damage;
+            hitEffect.PlayerDamagedEffect();
 
         }
         if (collision.gameObject.tag == "Projectile")
         {
             curHP -= damageProjectile;
-            
+            hitEffect.PlayerDamagedEffect();
+
         }
 
         if (collision.gameObject.tag == "HealthPack")
@@ -87,7 +90,8 @@ public class PlayerHP : MonoBehaviour
         if (collision.gameObject.tag == "Explosion")
         {
             curHP -= damageExplosion;
-           // StartCoroutine("Iframe");
+            hitEffect.PlayerDamagedEffect();
+            // StartCoroutine("Iframe");
         }
     }
     void OnTriggerStay(Collider collision)
@@ -115,6 +119,7 @@ public class PlayerHP : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         curHP -= damage;
+        hitEffect.PlayerDamagedEffect();
 
         StopCoroutine("DelayDmg");
     }
