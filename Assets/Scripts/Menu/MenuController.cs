@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class menuController : MonoBehaviour
 {
     private bool isPaused = false;
-    public bool upgrade = false;
     public GameObject pauseMenu;
     public GameObject cam;
     public GameObject upgradeMenu;
+    public GameObject dmgEffect;
     public Upgrades upgrades;
     public CrosshairRaycast crosshairCanvas;
 
@@ -18,7 +18,7 @@ public class menuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Pause();
+        Pause(false);
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class menuController : MonoBehaviour
         {
             if (!isPaused)
             {
-                Pause();
+                Pause(false);
             }
             else
             {
@@ -39,23 +39,26 @@ public class menuController : MonoBehaviour
             }
         }  
     }
-    public void Pause()
+    public void Pause(bool upgrade)
     {
         isPaused = true;
         pa.enabled = false;
+
         cam.gameObject.SetActive(false);
+        dmgEffect.gameObject.SetActive(false);
+        crosshairCanvas.ClearDmgMarkers();
+
         Time.timeScale = 0f; // Pause the game     
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
         if (upgrade == false) {
             pauseMenu.SetActive(true); // Show the pause menu UI
         }
         else { 
             upgradeMenu.SetActive(true);
             //upgrades.SetUpgradeText();
-            upgrade = false;
         }
-        crosshairCanvas.ClearDmgMarkers();
     }
 
     public void Resume()
