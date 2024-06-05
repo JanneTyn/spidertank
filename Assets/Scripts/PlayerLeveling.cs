@@ -77,7 +77,6 @@ public class PlayerLeveling : MonoBehaviour
         }
 
         StartCoroutine(upgrades.GetRandomLevelUpgrades());
-        menu.upgrade = true;
-        menu.Pause();
+        menu.Pause(true);
     }
 }
