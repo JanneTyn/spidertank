@@ -47,9 +47,16 @@ class Spawner : MonoBehaviour
 
 	void OnEnable()
 	{
-
+		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
+	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		maxEnemies = 6;
+		enemyCount = 0;
+		spawnedEnemies = 0;
+
+	}
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").transform;
