@@ -18,9 +18,14 @@ public class PlayerHP : MonoBehaviour
     public int healAmount = 25;
 
     public int damage = 5;
+    public float damagedelayIframe = 0.1f;
     public int damageProjectile = 10;
     public int damageExplosion = 20;
+    public float explosionDamageDelay = 0.5f;
+    bool explosionIFrames = false;
+    bool damageIFrames = false;
     public int playerDeathScreenTime = 4;
+    
 
     public SoundController sound;
 
@@ -70,8 +75,12 @@ public class PlayerHP : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
-            curHP -= damage;
-            hitEffect.PlayerDamagedEffect();
+            if (!damageIFrames)
+            {
+                damageIFrames = true;
+                StartCoroutine(DamageIframe());
+            }
+            
 
         }
         if (collision.gameObject.tag == "Projectile")
@@ -94,8 +103,12 @@ public class PlayerHP : MonoBehaviour
 
         if (collision.gameObject.tag == "Explosion")
         {
-            curHP -= damageExplosion;
-            hitEffect.PlayerDamagedEffect();
+
+            if (!explosionIFrames) 
+            {
+                explosionIFrames = true;
+                StartCoroutine(explosionIFrame());
+            }           
             // StartCoroutine("Iframe");
         }
     }
@@ -136,6 +149,23 @@ public class PlayerHP : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         m_Collider.enabled = !m_Collider.enabled;
         StopCoroutine("Iframe");
+    }
+
+    private IEnumerator DamageIframe()
+    {
+
+        curHP -= damage;
+        hitEffect.PlayerDamagedEffect();
+        yield return new WaitForSeconds(damagedelayIframe);
+        damageIFrames = false;
+    }
+
+    private IEnumerator explosionIFrame()
+    {
+        curHP -= damageExplosion;
+        hitEffect.PlayerDamagedEffect();
+        yield return new WaitForSeconds(explosionDamageDelay);
+        explosionIFrames = false;
     }
 
     public IEnumerator HealthRegeneration()
