@@ -187,6 +187,8 @@ public class MissileLauncherScript : MonoBehaviour
         cannonSphere.transform.localScale = new Vector3(explosionRange, explosionRange, explosionRange);
         cannonSphere.SetActive(true);
 
+        sound.ExplosionSound();
+
         Destroy(firedMissile);
 
         Collider[] hitColliders = Physics.OverlapSphere(cannonSphere.transform.position, explosionRange / 2, layerMask);

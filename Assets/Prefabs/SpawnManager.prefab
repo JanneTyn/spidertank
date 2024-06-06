@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98badbedc91719b47ae312a464faa6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 150
+  timeRemaining: 300
+  originalTime: 300
   timerIsRunning: 0
   timeText: {fileID: 3336557475015595767}
   m_EnemyPrefab: {fileID: 7648036435851416421, guid: b025f86fb433eeb4a9febff8ddef0558,

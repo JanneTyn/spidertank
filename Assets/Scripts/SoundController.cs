@@ -5,12 +5,16 @@ using UnityEngine;
 public class SoundController : MonoBehaviour
 {
     bool MG_active;
+    int CurrExpl;
     
     public AudioSource audioSource;
     public AudioSource MG_active_sound;
     public AudioClip MG_finished_sound;
     public AudioClip Shotgun;
     public AudioClip Cannon;
+    public AudioClip Explosion0;
+    public AudioClip Explosion1;
+    public AudioClip Explosion2;
 
 
     // Start is called before the first frame update
@@ -58,5 +62,30 @@ public class SoundController : MonoBehaviour
     public void CannonSound()
     {
         audioSource.PlayOneShot(Cannon);
+    }
+
+    public void ExplosionSound()
+    {
+        switch (CurrExpl)
+        {
+            case 1:
+                audioSource.PlayOneShot(Explosion1);
+            //    Debug.Log(CurrExpl + "expl1");
+                break;
+            case 2:
+                audioSource.PlayOneShot(Explosion2);
+            //    Debug.Log(CurrExpl + "expl2");
+                break;
+            default:
+                audioSource.PlayOneShot(Explosion0);
+            //    Debug.Log(CurrExpl + "expl0");
+                break;
+        }
+        CurrExpl++;
+
+        if (CurrExpl > 2)
+        {
+            CurrExpl = 0;
+        }
     }
 }
