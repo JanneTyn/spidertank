@@ -94,6 +94,7 @@ public class PlayerHP : MonoBehaviour
 
         if (collision.gameObject.tag == "Explosion")
         {
+            sound.EnemyExplosionSound();
             curHP -= damageExplosion;
             hitEffect.PlayerDamagedEffect();
             // StartCoroutine("Iframe");
