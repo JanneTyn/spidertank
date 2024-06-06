@@ -471,7 +471,7 @@ MonoBehaviour:
     type: 3}
   fireDelay: 1.417
   Player: {fileID: 0}
-  startfollowdistance: 25
+  startfollowdistance: 30
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 7
