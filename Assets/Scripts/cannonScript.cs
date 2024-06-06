@@ -84,6 +84,8 @@ public class cannonScript : MonoBehaviour
                 cannonSphere.SetActive(true);
                 Collider[] hitColliders = Physics.OverlapSphere(cannonSphere.transform.position, explosionRange / 2, layerMask);
 
+                sound.ExplosionSound();
+
                 if (hitColliders != null)
                 {
                     GetEnemiesInRange(hitColliders, cannonSphere.transform.position);
