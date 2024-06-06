@@ -10,6 +10,7 @@ public class menuController : MonoBehaviour
     public GameObject cam;
     public GameObject upgradeMenu;
     public GameObject dmgEffect;
+    public GameObject startOptions;
     public Upgrades upgrades;
     public CrosshairRaycast crosshairCanvas;
 
@@ -34,7 +35,7 @@ public class menuController : MonoBehaviour
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                if (!upgradeMenu.activeSelf)
+                if (!upgradeMenu.activeSelf && !startOptions.gameObject.activeSelf)
                 {
                     Resume();
                 }

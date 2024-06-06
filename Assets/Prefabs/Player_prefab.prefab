@@ -5102,7 +5102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: -100}
+  m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &318053387657392189
@@ -5863,13 +5863,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Max damage 70
+  m_text: 'Base damage 70
 
     Min damage 5
 
-    Per shot delay 5
+    Shot delay 5s
 
-    Limited range'
+    Area Damage
+
+    Limited
+    range'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6188,13 +6191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1953338ba187793499862392b67086a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 50
+  baseDamage: 70
   minimumDamage: 5
-  perShotDelay: 1
+  perShotDelay: 5
   missileAmount: 4
   explosionRange: 5
   explosionMaxDamageRange: 1
-  launcherTargetRange: 35
+  launcherTargetRange: 40
   missileTravelTime: 2
   timeBetweenMissiles: 0.5
   side: 0
@@ -17900,7 +17903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick Missile laucher
+  m_text: Pick Missile Launcher
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18402,7 +18405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick Machinegun
+  m_text: Pick Machine Gun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18896,7 +18899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -100}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2265019732070773060
@@ -26373,7 +26376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -100}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3363973086074627678
@@ -26638,6 +26641,7 @@ MonoBehaviour:
   cam: {fileID: 7345287147636611866}
   upgradeMenu: {fileID: 4960057215022840395}
   dmgEffect: {fileID: 6095057576856060834}
+  startOptions: {fileID: 7541276534550385481}
   upgrades: {fileID: 2150912702325831874}
   crosshairCanvas: {fileID: 6197805703090908205}
   pa: {fileID: 1044466722267542213}
@@ -32443,11 +32447,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Base damage 50
+  m_text: 'Base damage 60
 
-    Per shot delay 5
+    Shot delay 4s
 
     Missiles per shot 4
+
+    Area Damage
 
     Limited
     range'
@@ -32567,13 +32573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1953338ba187793499862392b67086a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 50
+  baseDamage: 60
   minimumDamage: 5
-  perShotDelay: 1
+  perShotDelay: 4
   missileAmount: 4
   explosionRange: 5
   explosionMaxDamageRange: 1
-  launcherTargetRange: 35
+  launcherTargetRange: 40
   missileTravelTime: 2
   timeBetweenMissiles: 0.5
   side: 0
@@ -38421,9 +38427,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Base damage 5
+  m_text: 'Base damage 6
 
-    Per shot delay 1
+    Shot delay 1s
 
     Scattered shots 6'
   m_isRightToLeft: 0
@@ -70895,7 +70901,7 @@ MonoBehaviour:
   playerTotalExp: 0
   playerLevel: 0
   playerLevelThresholdsTest: 14000000280000005000000078000000c80000005e010000f401000020030000b0040000
-  playerLevelThresholds: 14000000280000005000000078000000c80000005e010000f4010000ee020000e8030000dc050000
+  playerLevelThresholds: 50000000c80000005e010000f4010000ee020000dc050000d0070000be0a0000ac0d000088130000
   upgrades: {fileID: 2150912702325831874}
   menu: {fileID: 5395799510669210485}
   expSlider: {fileID: 9182167915081997367}
@@ -87446,10 +87452,25 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Welcome to Spidertank
+  m_text: 'Welcome to Arachnid Assault Unit
 
 
-    Controls:'
+    Controls:
+
+
+    Movement - WASD
+
+    Jump
+    - Space
+
+    Fire Left Weapon - Left Mouse
+
+    Fire Right Weapon - Right Mouse
+
+    Pause
+    - Escape
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -87483,7 +87504,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -89959,7 +89980,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -768, y: 402}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1485240310259551581
 CanvasRenderer:
@@ -89989,7 +90010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spider tank
+  m_text: Arachnid Assault Unit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -95389,7 +95410,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Base damage 10
 
-    Per shot delay 0.25'
+    Shot delay 0.25s'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

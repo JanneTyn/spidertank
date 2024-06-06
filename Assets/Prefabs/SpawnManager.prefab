@@ -55,10 +55,12 @@ MonoBehaviour:
   m_EnemyExploderPrefab: {fileID: 1820625751522156529, guid: bf5c033e53a1e8042874a1bb8387f66f,
     type: 3}
   demoFin: {fileID: 7662447591109465462}
+  maxenemCount: 0
   spawnedCount: 0
   aliveEnemyCount: 0
   spawnRange: 10
   waitTime: 5
+  respawnTime: 0
 --- !u!1 &427252305914815528
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 760, y: -180}
+  m_AnchoredPosition: {x: 400, y: -420}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8173094951352753589
@@ -335,10 +337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'timer
-
-
-'
+  m_text: "Survive until: \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
