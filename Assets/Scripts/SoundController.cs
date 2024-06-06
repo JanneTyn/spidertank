@@ -15,6 +15,8 @@ public class SoundController : MonoBehaviour
     public AudioClip Explosion0;
     public AudioClip Explosion1;
     public AudioClip Explosion2;
+    public AudioClip RangedDamage;
+    public AudioClip EnemyExplosion;
 
 
     // Start is called before the first frame update
@@ -87,5 +89,15 @@ public class SoundController : MonoBehaviour
         {
             CurrExpl = 0;
         }
+    }
+
+    public void RangedDamageSound()
+    {
+        audioSource.PlayOneShot(RangedDamage);
+    }
+
+    public void EnemyExplosionSound()
+    {
+        audioSource.PlayOneShot(EnemyExplosion);
     }
 }

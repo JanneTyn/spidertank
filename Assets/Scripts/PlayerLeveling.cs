@@ -7,6 +7,10 @@ public class PlayerLeveling : MonoBehaviour
 {
     public float playerTotalExp = 0;
     public int playerLevel = 0;
+    int playerLevelOldThreshold;
+    float playerLevelDifference;
+    float playerLevelCurrentExpDifference;
+    float expPercent;
     public List<int> playerLevelThresholdsTest = new List<int> { 20, 40, 80, 120, 200, 350, 500, 800, 1200};
     public List<int> playerLevelThresholds = new List<int> { 20, 40, 80, 120, 200, 350, 500, 800, 1200};
     public Upgrades upgrades;
@@ -35,9 +39,27 @@ public class PlayerLeveling : MonoBehaviour
         if (playerLevel < playerLevelThresholds.Count)
         {
             int playerLevelTresholdInt = playerLevelThresholds[playerLevel];
-            float playerLevelTresholdFloat = playerLevelTresholdInt;
-            float playerTotalExpFloat = playerTotalExp;
-            float expPercent = playerTotalExpFloat / playerLevelTresholdFloat * 100;
+            if (playerLevel > 0)
+            {
+                playerLevelOldThreshold = playerLevelThresholds[playerLevel - 1];
+            }
+            else
+            {
+                playerLevelOldThreshold = 0;
+            }
+            playerLevelDifference = playerLevelTresholdInt - playerLevelOldThreshold;
+            playerLevelCurrentExpDifference = playerTotalExp - playerLevelOldThreshold;
+            if (playerLevelCurrentExpDifference > 0)
+            {
+                expPercent = playerLevelCurrentExpDifference / playerLevelDifference * 100;
+            }
+            else
+            {
+                expPercent = 0;
+            }
+            //float playerLevelTresholdFloat = playerLevelTresholdInt;
+            //float playerTotalExpFloat = playerTotalExp;
+            //expPercent = playerTotalExpFloat / playerLevelTresholdFloat * 100;
 
             if (playerLevel < playerLevelThresholds.Count)
             {

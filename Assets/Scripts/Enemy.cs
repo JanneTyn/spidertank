@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour, IDamagable
             
            
 
-            if (curEHealth <= 99)
+            if (curEHealth < maxEHealth)
             {
 
                 startfollowdistance = 300;
@@ -182,8 +182,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public IEnumerator Mercy()
     {
-        yield return new WaitForSeconds(25);
-        startfollowdistance = 300;
+        yield return new WaitForSeconds(18);
+        startfollowdistance = 500;
         StopCoroutine("Mercy");
     }
 
