@@ -97,7 +97,7 @@ public class EnemyRange : MonoBehaviour
             }
            
 
-            if (curEHealth <= 99)
+            if (curEHealth < maxEHealth)
             {
 
                 startfollowdistance = 300;
@@ -168,8 +168,8 @@ public class EnemyRange : MonoBehaviour
 
     public IEnumerator Mercy()
     {
-        yield return new WaitForSeconds(25);
-        startfollowdistance = 300;
+        yield return new WaitForSeconds(18);
+        startfollowdistance = 500;
         StopCoroutine("Mercy");
     }
 
