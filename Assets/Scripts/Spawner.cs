@@ -191,7 +191,9 @@ class Spawner : MonoBehaviour
 
 	public IEnumerator ReturnToMenu()
 	{
-        yield return new WaitForSeconds(5);
+		Time.timeScale = 0;
+		yield return new WaitForSecondsRealtime(5);
+		Time.timeScale = 1;
 		PlayerStats.ResetDefaultValues();
 		SceneManager.LoadScene("MainMenu");
     }

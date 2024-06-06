@@ -10,6 +10,7 @@ public class PlayerHP : MonoBehaviour
 
     Collider m_Collider;
     public PlayerHitEffect hitEffect;
+    public GameObject gameoverScreen;
     public Slider HPSlider;
     public int curHP = 100;
 
@@ -19,6 +20,7 @@ public class PlayerHP : MonoBehaviour
     public int damage = 5;
     public int damageProjectile = 10;
     public int damageExplosion = 20;
+    public int playerDeathScreenTime = 4;
 
     public SoundController sound;
 
@@ -54,8 +56,7 @@ public class PlayerHP : MonoBehaviour
 
         if (curHP == 0)
         {
-            PlayerStats.ResetDefaultValues();
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine(PlayerDeath());
         }
 
         HPSlider.value = curHP;
@@ -148,6 +149,22 @@ public class PlayerHP : MonoBehaviour
                 curHP = PlayerStats.playerHealth;
             }
         }
+    }
+
+    public IEnumerator PlayerDeath()
+    {
+        float elapsedTime = 0;
+        gameoverScreen.SetActive(true);
+        Time.timeScale = 0f;
+        while (elapsedTime < playerDeathScreenTime)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        Time.timeScale = 1f;
+        gameoverScreen.SetActive(false);
+        PlayerStats.ResetDefaultValues();
+        SceneManager.LoadScene("MainMenu");
     }
    
 }
