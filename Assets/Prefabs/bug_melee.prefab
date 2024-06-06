@@ -465,7 +465,7 @@ MonoBehaviour:
   otherObject: {fileID: 7554794556690593308}
   MyState: 0
   Player: {fileID: 0}
-  startfollowdistance: 20
+  startfollowdistance: 30
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 4

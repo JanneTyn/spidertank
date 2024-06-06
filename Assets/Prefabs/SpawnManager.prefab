@@ -61,7 +61,7 @@ MonoBehaviour:
   aliveEnemyCount: 0
   spawnRange: 10
   waitTime: 5
-  respawnTime: 0
+  respawnTime: 30
 --- !u!1 &427252305914815528
 GameObject:
   m_ObjectHideFlags: 0
