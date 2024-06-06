@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 class Spawner : MonoBehaviour
 {
 
-	public float timeRemaining = 150;
+	public float timeRemaining = 300;
+	public float originalTime = 300;
 	public bool timerIsRunning = false;
     public TMPro.TMP_Text timeText;
 	
@@ -36,7 +37,7 @@ class Spawner : MonoBehaviour
 	int index;
 
 
-	public static int maxEnemies = 6;
+	public static int maxEnemies = 10;
 	public static int enemyCount;
 	public static int spawnedEnemies;
 
@@ -52,7 +53,7 @@ class Spawner : MonoBehaviour
 
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
-		maxEnemies = 6;
+		maxEnemies = 10;
 		enemyCount = 0;
 		spawnedEnemies = 0;
 
@@ -76,7 +77,9 @@ class Spawner : MonoBehaviour
 		{
 			timeRemaining -= Time.deltaTime;
 			DisplayTime(timeRemaining);
-		}
+
+            maxEnemies = 10 + (((int)(originalTime - timeRemaining) / 10)); //maxenemies alkaa 10:ll‰, lis‰‰ntyy yhdell‰ joka 10. sekunti
+        }
 		else
 		{
 			Debug.Log("time ran out");
@@ -86,10 +89,7 @@ class Spawner : MonoBehaviour
 			StartCoroutine(ReturnToMenu());
 		}
 
-		if (timeRemaining < 90)
-        {
-			maxEnemies=12;
-		}
+		
 
 	
 	}
