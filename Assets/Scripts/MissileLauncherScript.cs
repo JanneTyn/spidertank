@@ -185,6 +185,7 @@ public class MissileLauncherScript : MonoBehaviour
 
         cannonSphere.transform.position = firedMissile.transform.position;
         cannonSphere.transform.localScale = new Vector3(explosionRange, explosionRange, explosionRange);
+        cannonSphere.SetActive(true);
 
         Destroy(firedMissile);
 
