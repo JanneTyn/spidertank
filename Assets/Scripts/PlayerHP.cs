@@ -162,6 +162,8 @@ public class PlayerHP : MonoBehaviour
 
     private IEnumerator explosionIFrame()
     {
+        sound.EnemyExplosionSound();
+
         curHP -= damageExplosion;
         hitEffect.PlayerDamagedEffect();
         yield return new WaitForSeconds(explosionDamageDelay);
