@@ -5102,7 +5102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 0}
+  m_AnchoredPosition: {x: 80, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &318053387657392189
@@ -18899,7 +18899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -100, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2265019732070773060
@@ -25831,8 +25831,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3204791285808132654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02653269, y: 0.0000000038760404, z: -1.0287798e-10, w: 0.999648}
-  m_LocalPosition: {x: 0, y: 3.25, z: -10}
+  m_LocalRotation: {x: 0.02653269, y: -0.0000000038760404, z: 1.0287798e-10, w: 0.999648}
+  m_LocalPosition: {x: 0, y: 3.2500005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26376,7 +26376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -100, y: -100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3363973086074627678
@@ -38427,7 +38427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Base damage 6
+  m_text: 'Base damage 8
 
     Shot delay 1s
 
@@ -43674,7 +43674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbb5a147c65b2449b0ab408a0db66e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 6
+  baseDamage: 8
   perShotDelay: 1
   bulletSpread: 0.075
   bullets: 6
@@ -64925,7 +64925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbb5a147c65b2449b0ab408a0db66e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 6
+  baseDamage: 8
   perShotDelay: 1
   bulletSpread: 0.075
   bullets: 6
@@ -71040,12 +71040,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 3919537214481991625}
+  gameoverScreen: {fileID: 0}
   HPSlider: {fileID: 7032444458300110713}
   curHP: 100
   healAmount: 25
   damage: 5
   damageProjectile: 10
   damageExplosion: 20
+  playerDeathScreenTime: 3
   imageReference: {fileID: 5375830189145118578}
   gradient:
     serializedVersion: 2
@@ -71388,7 +71390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6428443204885392254}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026532687, y: 0.0000000010750201, z: -2.8533216e-11, w: 0.999648}
+  m_LocalRotation: {x: 0.026532687, y: -0.0000000010750201, z: 2.8533216e-11, w: 0.999648}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -81895,7 +81897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7003969275487006269}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049813703, y: 0.000000002148128, z: -1.07139214e-10, w: 0.99875855}
+  m_LocalRotation: {x: 0.049813703, y: -0.000000002148128, z: 1.07139214e-10, w: 0.99875855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -87210,7 +87212,7 @@ Transform:
   m_GameObject: {fileID: 7345287147636611866}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.25, z: -10}
+  m_LocalPosition: {x: 0, y: 3.2500005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
