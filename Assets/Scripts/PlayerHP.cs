@@ -20,6 +20,8 @@ public class PlayerHP : MonoBehaviour
     public int damageProjectile = 10;
     public int damageExplosion = 20;
 
+    public SoundController sound;
+
     [SerializeField] public Image imageReference;
     [SerializeField] private Gradient gradient;
 
@@ -73,8 +75,10 @@ public class PlayerHP : MonoBehaviour
         }
         if (collision.gameObject.tag == "Projectile")
         {
+            sound.RangedDamageSound();
             curHP -= damageProjectile;
             hitEffect.PlayerDamagedEffect();
+
 
         }
 
