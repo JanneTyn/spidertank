@@ -22,4 +22,10 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("world");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        
+    }
 }
