@@ -89,6 +89,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2016696076355317996}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4166729604034948580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2463341565038189832, guid: 80c74aba50b34514188eeabc2450036b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2016696076355317996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8494846618242741818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnTime: 60
   rotateSpeed: 80
+  effect: {fileID: 4166729604034948580}
 --- !u!65 &2870491797986104099
 BoxCollider:
   m_ObjectHideFlags: 0

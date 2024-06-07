@@ -6,12 +6,12 @@ public class HealthPack : MonoBehaviour
 {
     public float respawnTime;
     public float rotateSpeed;
-    public Transform effect;
+    public GameObject effect;
 
 
     private void Start()
     {
-        effect = transform.Find("HPitemeffect");
+        
     }
     private void FixedUpdate()
     {
