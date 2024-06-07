@@ -469,7 +469,7 @@ MonoBehaviour:
   startfollowdistance: 30
   currentdistance: 0
   patrolspeed: 3.5
-  chasespeed: 4
+  chasespeed: 5.5
   prepareSpeed: 0.5
   chargespeed: 8
   maxEHealth: 100
