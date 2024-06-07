@@ -13,6 +13,7 @@ TagManager:
   - TankEnemy
   - Point
   - Explosion
+  - Wall
   layers:
   - Default
   - TransparentFX

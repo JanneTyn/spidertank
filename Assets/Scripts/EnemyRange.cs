@@ -42,8 +42,9 @@ public class EnemyRange : MonoBehaviour
     public float chasespeed;
 
     Spawner count;
-    
 
+    int rayLengthMeters = 3;
+    RaycastHit hitInfo;
 
     public int maxEHealth = 100;
     public int curEHealth = 100;
@@ -58,8 +59,9 @@ public class EnemyRange : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = otherObject.GetComponent<Animator>();
+        //anim.Play("rangespawn");
     }
-    private void Start()
+    void Start()
     {
 
         
@@ -73,8 +75,27 @@ public class EnemyRange : MonoBehaviour
         
     }
 
-    private void Update()
+    void Update()
     {
+
+
+
+
+        Ray ray = new Ray(transform.position, Player.transform.position - transform.position);
+        RaycastHit hit;
+
+        Debug.DrawRay(transform.position, Player.transform.position - transform.position, Color.red);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.gameObject.tag == "Wall")
+            {
+                UpdateBehaviour(enemystate.chase);
+                anim.Play("idle_001");
+                StopCoroutine("attack1");
+            }
+            
+        }
 
         currentdistance = Vector3.Distance(Player.transform.position, transform.position);
 
@@ -217,7 +238,7 @@ public class EnemyRange : MonoBehaviour
         Vector3 offset = new Vector3(0, 3, 0);
 
         startfollowdistance = 300;
-        agent.speed = 1;
+        agent.speed = 2;
         
         yield return new WaitForSeconds(fireDelay);
         anim.Play("spit_001");
