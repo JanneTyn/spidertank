@@ -5784,7 +5784,7 @@ MonoBehaviour:
 
     Min damage 5
 
-    Shot delay 5s
+    Shot delay 4s
 
     Area Damage
 
@@ -32236,7 +32236,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Base damage 60
 
-    Shot delay 4s
+    Shot delay 5s
 
     Missiles per shot 4
 
