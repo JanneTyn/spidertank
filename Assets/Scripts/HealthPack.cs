@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
-
+    public float respawnTime;
     public float rotateSpeed;
-    
+    public Transform effect;
 
+
+    private void Start()
+    {
+        effect = transform.Find("HPitemeffect");
+    }
     private void FixedUpdate()
     {
+        
         transform.Rotate(0, rotateSpeed * Time.fixedDeltaTime, 0);
     }
 
@@ -17,8 +23,23 @@ public class HealthPack : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
-            Destroy(this.gameObject);
+            GetComponent<Collider>().enabled = false;
+            GetComponent<MeshRenderer>().enabled = false;
+            effect.gameObject.SetActive(false);
+            StartCoroutine("Reactivate");
         }
     }
+
+    private IEnumerator Reactivate()
+    {
+        yield return new WaitForSeconds(respawnTime);
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<Collider>().enabled = true;
+        effect.gameObject.SetActive(true);
+    }
+
+    
+
+    
+    
 }
