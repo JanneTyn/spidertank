@@ -11,12 +11,12 @@ public class proceduralAnimation : MonoBehaviour
     [Tooltip("Step distance is used to calculate step height. When character makes a short step there is no need to rase foot all the way up so if the current step distance is less then this step distance value step height will be lover then usual.")]
     [SerializeField] private float stepDistance = 1f;
     [SerializeField] private float stepHeight = 1f;
-    [SerializeField] private float stepSpeed = 5f;
+    [SerializeField] public float stepSpeed = 5f;
     [Tooltip("Velocity multiplier used to make step wider when moving on high speed (if you toggle the show gizmoz below and move your model around you could clearly see what this does. The blue spheres represent the target step points and will move further ahead if you increase velocity multiplier)")]
     [SerializeField] private float velocityMultiplier = .4f;
-    [SerializeField] private float cycleSpeed = 1;
+    [SerializeField] public float cycleSpeed = 1;
     [Tooltip("how often in seconds legs will move (every one second by default)")]
-    [SerializeField] private float cycleLimit = 1;
+    [SerializeField] public float cycleLimit = 1;
     [Tooltip("•	If you want some legs to move together enable the Set Timings Manually. And add as many timings as your model has legs. The first Manual Timing is relative to the first leg in the leg IK targets array etc. For example: if your character has four legs and you want two left legs move first and two right to move second you need to set timings to [0.5, 0.5, 0, 0]. That means that first two legs will move and only 0.5 second later the second two will move. ")]
     [SerializeField] private bool SetTimingsManually;
     [SerializeField] private float[] manualTimings;
