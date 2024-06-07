@@ -78,13 +78,13 @@ public class EnemyRange : MonoBehaviour
     void Update()
     {
 
+        Vector3 offset = new Vector3(0, 3, 0);
 
 
-
-        Ray ray = new Ray(transform.position, Player.transform.position - transform.position);
+        Ray ray = new Ray(transform.position + offset, Player.transform.position - transform.position);
         RaycastHit hit;
 
-        Debug.DrawRay(transform.position, Player.transform.position - transform.position, Color.red);
+        Debug.DrawRay(transform.position + offset, Player.transform.position - transform.position, Color.red);
 
         if (Physics.Raycast(ray, out hit))
         {
