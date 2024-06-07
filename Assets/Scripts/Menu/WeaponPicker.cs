@@ -12,6 +12,7 @@ public class WeaponPicker : MonoBehaviour
     public GameObject missileLauncher;
     public GameObject starterOptions;
     public GameObject startButton;
+    public GameObject backtoMenuButton;
     public GameObject gameInfo;
     public Image weaponImage1;
     public Image weaponImage2;
@@ -114,6 +115,7 @@ public class WeaponPicker : MonoBehaviour
     void choseOption() {   
         starterOptions.SetActive(false);
         startButton.SetActive(true);
+        backtoMenuButton.SetActive(true);
         gameInfo.SetActive(true);
     }
 }
