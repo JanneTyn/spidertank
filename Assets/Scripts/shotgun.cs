@@ -8,6 +8,8 @@ public class shotgun : MonoBehaviour
 
     public int baseDamage = 5;
     private int trueDamage = 0;
+    private int beforeCritDamage = 0;
+    private bool criticalHit = false;
     public float perShotDelay = 1f;
     public float bulletSpread = 1f;
     public int bullets = 6;
@@ -60,7 +62,9 @@ public class shotgun : MonoBehaviour
                     {
                         shotEnemy = hit.collider.gameObject;
                         trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                        beforeCritDamage = trueDamage;
                         trueDamage = PlayerStats.RollCriticalChance(trueDamage);
+                        if (trueDamage > beforeCritDamage) { criticalHit = true; } else { criticalHit = false; }
                         //vihuun osuttu, v‰hennet‰‰n healthia
                         Debug.Log("Enemy hit");
 
@@ -71,7 +75,7 @@ public class shotgun : MonoBehaviour
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
                                 enemyScript.TakeDamage(trueDamage);
-                                crosshair.createDamageMarker(trueDamage, hit.point);
+                                crosshair.createDamageMarker(trueDamage, hit.point, criticalHit);
                             }
                             else
                             {
@@ -85,7 +89,7 @@ public class shotgun : MonoBehaviour
                             {
                                 //CalculateDamageByDistance(baseDamage, range, shotEnemy);
                                 enemyScriptRange.TakeDamage(trueDamage);
-                                crosshair.createDamageMarker(trueDamage, hit.point);
+                                crosshair.createDamageMarker(trueDamage, hit.point, criticalHit);
                             }
                             else
                             {
@@ -98,7 +102,7 @@ public class shotgun : MonoBehaviour
                             if (enemyScriptExploder != null)
                             {
                                 enemyScriptExploder.TakeDamage(trueDamage);
-                                crosshair.createDamageMarker(trueDamage, hit.point);
+                                crosshair.createDamageMarker(trueDamage, hit.point, criticalHit);
                             }
                             else
                             {

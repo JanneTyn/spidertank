@@ -8,6 +8,8 @@ public class MissileLauncherScript : MonoBehaviour
 {
     public int baseDamage = 50;
     private int trueDamage = 50;
+    private int beforeCritDamage = 0;
+    private bool criticalHit = false;
     public int minimumDamage = 5;
     public float perShotDelay = 1f;
     public float missileAmount = 4;
@@ -74,7 +76,9 @@ public class MissileLauncherScript : MonoBehaviour
             if (Time.time > timestamp)
             {
                 trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                beforeCritDamage = trueDamage;
                 trueDamage = PlayerStats.RollCriticalChance(trueDamage);
+                if (trueDamage > beforeCritDamage) { criticalHit = true; } else { criticalHit = false; }
 
                 targeting = true;
                 if (Physics.Raycast(ray, out hitInfo, launcherTargetRange, layerMaskTerrain))
@@ -230,7 +234,7 @@ public class MissileLauncherScript : MonoBehaviour
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
                     enemyScript.TakeDamage(finalDamage);
-                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position, criticalHit);
 
                 }
                 else
@@ -245,7 +249,7 @@ public class MissileLauncherScript : MonoBehaviour
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
                     enemyScriptRange.TakeDamage(finalDamage);
-                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position, criticalHit);
 
                 }
                 else
@@ -260,7 +264,7 @@ public class MissileLauncherScript : MonoBehaviour
                 {
                     finalDamage = CalculateDamageByDistance(shotEnemy.transform.position, explosionPos);
                     enemyScriptExploder.TakeDamage(finalDamage);
-                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position);
+                    crosshair.createDamageMarker(finalDamage, shotEnemy.transform.position, criticalHit);
 
                 }
                 else

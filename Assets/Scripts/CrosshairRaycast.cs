@@ -80,7 +80,7 @@ public class CrosshairRaycast : MonoBehaviour
         return enemiesHit;
     } */
 
-    public void createDamageMarker(float damage, Vector3 shotenemy)
+    public void createDamageMarker(float damage, Vector3 shotenemy, bool criticalHit = false)
     {
         GameObject dmgMarker = Instantiate(dmgMarkerPrefab, dmgUI, Quaternion.identity);
         dmgMarkerList.Add(dmgMarker);
@@ -91,7 +91,11 @@ public class CrosshairRaycast : MonoBehaviour
         rect.position = enemypos;
         
         textmsh = dmgMarker.GetComponent<TMP_Text>();
-        textmsh.text = damage.ToString();
+        textmsh.text = damage.ToString();      
+        if (criticalHit) 
+        {
+            textmsh.color = Color.yellow; textmsh.fontSize = 55;
+        }
         dmgMarker.SetActive(true);
         StartCoroutine(SmoothLerp(dmgMarker, 0.5f));
         
