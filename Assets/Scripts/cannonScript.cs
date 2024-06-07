@@ -9,6 +9,8 @@ public class cannonScript : MonoBehaviour
 
     public int baseDamage = 70;
     private int trueDamage = 70;
+    private int beforeCritDamage = 0;
+    private bool criticalHit = false;
     public int minimumDamage = 5;
     public float perShotDelay = 5f;
     public float bulletSpread = 0.01f;
@@ -58,7 +60,9 @@ public class cannonScript : MonoBehaviour
                 timestamp = Time.time + (perShotDelay * (1 / PlayerStats.playerFireRate));
 
                 trueDamage = Mathf.RoundToInt(baseDamage * (1 + (PlayerStats.playerDamage / 100)));
+                beforeCritDamage = trueDamage;
                 trueDamage = PlayerStats.RollCriticalChance(trueDamage);
+                if (trueDamage > beforeCritDamage) { criticalHit = true; } else { criticalHit = false; }
 
                 //enemiesHit = new List<GameObject>();
                 //shotEnemy = crosshair.checkEnemyRaycast(out hit, bulletSpread);
@@ -137,7 +141,7 @@ public class cannonScript : MonoBehaviour
                     {
                         finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
                         enemyScript.TakeDamage(finalDamage);
-                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position, criticalHit);
                         enemyList.Add(shotEnemy);
                     }
                     else
@@ -160,7 +164,7 @@ public class cannonScript : MonoBehaviour
                     {
                         finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
                         enemyScriptRange.TakeDamage(finalDamage);
-                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position, criticalHit);
                         enemyList.Add(shotEnemy);
                     }
                     else
@@ -183,7 +187,7 @@ public class cannonScript : MonoBehaviour
                     {
                         finalDamage = CalculateDamageByDistance(hitCollider.gameObject.transform.position, explosionPos);
                         enemyScriptExploder.TakeDamage(finalDamage);
-                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position);
+                        crosshair.createDamageMarker(finalDamage, hitCollider.gameObject.transform.position, criticalHit);
                         enemyList.Add(shotEnemy);
                     }
                     else
