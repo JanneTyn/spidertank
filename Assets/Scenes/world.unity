@@ -5612,17 +5612,17 @@ PrefabInstance:
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.049813703
+      value: 0.0498137
       objectReference: {fileID: 0}
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000002148128
+      value: 0.0000000021481275
       objectReference: {fileID: 0}
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.07139214e-10
+      value: -1.0713917e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6661861701082796945, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}

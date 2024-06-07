@@ -6109,7 +6109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 60
   minimumDamage: 5
-  perShotDelay: 4
+  perShotDelay: 5
   missileAmount: 4
   explosionRange: 7
   explosionMaxDamageRange: 1
@@ -6395,7 +6395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 70
   minimumDamage: 5
-  perShotDelay: 5
+  perShotDelay: 4
   bulletSpread: 0.01
   cannonRange: 400
   explosionRange: 7
@@ -32361,7 +32361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 60
   minimumDamage: 5
-  perShotDelay: 4
+  perShotDelay: 5
   missileAmount: 4
   explosionRange: 7
   explosionMaxDamageRange: 1
@@ -87376,7 +87376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 70
   minimumDamage: 5
-  perShotDelay: 5
+  perShotDelay: 4
   bulletSpread: 0.01
   cannonRange: 400
   explosionRange: 7
