@@ -53,6 +53,8 @@ public class Upgrades : MonoBehaviour
     private int rolledUpgrades = 0;
     private int rollAttempts = 0;
     private int upgradeNumber= 0;
+
+    [SerializeField] AnimationAdjuster adjuster;
     // Start is called before the first frame update
     void Start()
     {
@@ -217,6 +219,7 @@ public class Upgrades : MonoBehaviour
         PlayerStats.playerMovementSpeed += speedUpgrade;
         currentStats.UpdateColor(3);
         ChangeMovementSpeed();
+        adjuster.AdjustAnimation();
         RemoveButtonListeners();
     }
     public void GiveXPBoostUpgrade(float xpboost)
