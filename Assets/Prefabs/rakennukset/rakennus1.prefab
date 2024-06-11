@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rakennus1_collider
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d60a6fae94ae93d4d913c9153b62db35,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: d60a6fae94ae93d4d913c9153b62db35, type: 3}
     m_RemovedGameObjects: []
@@ -230,7 +235,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3587652082943227802}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 8.609, y: 21.924002, z: 9.690001}
