@@ -59,12 +59,12 @@ public class EnemyRange : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         anim = otherObject.GetComponent<Animator>();
-        //anim.Play("rangespawn");
+        
     }
     void Start()
     {
+        anim.Play("spawn_001");
 
-        
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
         e_Collider = GetComponent<Collider>();

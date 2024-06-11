@@ -65,16 +65,20 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         agent = GetComponent<NavMeshAgent>();
         anim = otherObject.GetComponent<Animator>();
+        
     }
     private void Start()
     {
-        
+
+        anim.Play("spawn_001");
+
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
         e_Collider = GetComponent<Collider>();
         MyState = enemystate.idle;
         StartCoroutine("Mercy");
-        
+       
+
         count = GameObject.Find("SpawnManager").GetComponent<Spawner>();
         
     }

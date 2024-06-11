@@ -62,7 +62,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     }
     private void Start()
     {
-
+        anim.Play("spawn_001");
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
         m_Collider = GetComponent<Collider>(); 
