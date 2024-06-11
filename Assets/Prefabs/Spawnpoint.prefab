@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startspawndis: 75
   currentdis: 0
-  tooclosedis: 25
+  tooclosedis: 32
