@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public int chargeTime = 1;
     public PlayerLeveling playerlevel;
 
-    public ParticleSystem blood;
+    public ParticleController particle;
     private bool test = true;
 
     void Awake()
@@ -71,6 +71,8 @@ public class Enemy : MonoBehaviour, IDamagable
     {
 
         anim.Play("spawn_001");
+
+        particle.CreateDust();
 
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
@@ -176,7 +178,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         curEHealth -= damage;
 
-        blood.Play();
+        particle.BleedSingleSpot();
         Debug.Log(test);
     }
 

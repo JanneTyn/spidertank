@@ -37,5 +37,9 @@ public class ParticleController : MonoBehaviour
         blood1.Play();
         blood2.Play();
     }
+    public void BleedSingleSpot()
+    {
+        blood1.Play();
+    }
 
 }

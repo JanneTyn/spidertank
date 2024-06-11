@@ -64,6 +64,7 @@ public class EnemyRange : MonoBehaviour
     void Start()
     {
         anim.Play("spawn_001");
+        particle.CreateDust();
 
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
@@ -167,7 +168,6 @@ public class EnemyRange : MonoBehaviour
         switch (MyState)
         {
             case enemystate.idle:
-                particle.PauseDust();
                 CurrentBehaviour = StartCoroutine(idle());
                 break;
             case enemystate.patrol:

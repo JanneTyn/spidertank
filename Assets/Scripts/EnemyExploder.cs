@@ -51,8 +51,8 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     public int experience = 20;
     public PlayerLeveling playerlevel;
 
-    public ParticleSystem blood;
     public ParticleSystem explosion;
+    public ParticleController particle;
     private bool test = true;
 
     void Awake()
@@ -63,6 +63,8 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     private void Start()
     {
         anim.Play("spawn_001");
+        particle.CreateDust();
+
         Player = GameObject.FindWithTag("Player");
         playerlevel = Player.GetComponent<PlayerLeveling>();
         m_Collider = GetComponent<Collider>(); 
@@ -147,7 +149,7 @@ public class EnemyExploder : MonoBehaviour, IDamagable
     {
         curEHealth -= damage;
 
-        blood.Play();
+        particle.BleedSingleSpot();
     }
 
     public IEnumerator Mercy()
