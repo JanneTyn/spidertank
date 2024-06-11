@@ -5562,12 +5562,12 @@ PrefabInstance:
     - target: {fileID: 6661861701082796945, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000010750201
+      value: 0.0000000010750202
       objectReference: {fileID: 0}
     - target: {fileID: 6661861701082796945, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.8533216e-11
+      value: -2.8533217e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7948488739446461398, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
@@ -5612,12 +5612,12 @@ PrefabInstance:
     - target: {fileID: 8767899841392332168, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000038760404
+      value: 0.0000000038760404
       objectReference: {fileID: 0}
     - target: {fileID: 8767899841392332168, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.0287798e-10
+      value: -1.0287798e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8994040988200242324, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
@@ -5932,6 +5932,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 947591521}
     m_Modifications:
+    - target: {fileID: 2930931311592161906, guid: 1546678be01cb2442a939a782e4bc7c2,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1152611045}
     - target: {fileID: 8244253086771843537, guid: 1546678be01cb2442a939a782e4bc7c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11383,6 +11388,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 947591521}
     m_Modifications:
+    - target: {fileID: 2930931311592161906, guid: 1546678be01cb2442a939a782e4bc7c2,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1152611045}
     - target: {fileID: 8244253086771843537, guid: 1546678be01cb2442a939a782e4bc7c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15823,6 +15833,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: gunsounds
       objectReference: {fileID: 0}
+    - target: {fileID: 4028404927370899689, guid: 5afd49836ad489741b1e85919bc12853,
+        type: 3}
+      propertyPath: HealthPack
+      value: 
+      objectReference: {fileID: 8300000, guid: 74e66bc498f4c7240961b8d4d21aa6ea, type: 3}
     - target: {fileID: 5726947605032307642, guid: 5afd49836ad489741b1e85919bc12853,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19500,6 +19515,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 947591521}
     m_Modifications:
+    - target: {fileID: 2930931311592161906, guid: 1546678be01cb2442a939a782e4bc7c2,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1152611045}
     - target: {fileID: 8244253086771843537, guid: 1546678be01cb2442a939a782e4bc7c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19703,6 +19723,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 947591521}
     m_Modifications:
+    - target: {fileID: 2930931311592161906, guid: 1546678be01cb2442a939a782e4bc7c2,
+        type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 1152611045}
     - target: {fileID: 8244253086771843537, guid: 1546678be01cb2442a939a782e4bc7c2,
         type: 3}
       propertyPath: m_LocalPosition.x

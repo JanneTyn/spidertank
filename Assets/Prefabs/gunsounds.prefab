@@ -56,6 +56,7 @@ MonoBehaviour:
   Explosion2: {fileID: 8300000, guid: 10ed746a13abbfc489411c5a476a140c, type: 3}
   RangedDamage: {fileID: 8300000, guid: 5a71aca91bde33f4dba2edb862ee026a, type: 3}
   EnemyExplosion: {fileID: 8300000, guid: 86a0997692996754eb3df30682925e5a, type: 3}
+  HealthPack: {fileID: 8300000, guid: 74e66bc498f4c7240961b8d4d21aa6ea, type: 3}
 --- !u!82 &4440784772822068845
 AudioSource:
   m_ObjectHideFlags: 0

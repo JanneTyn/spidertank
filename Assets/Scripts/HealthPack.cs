@@ -8,6 +8,7 @@ public class HealthPack : MonoBehaviour
     public float rotateSpeed;
     public GameObject effect;
 
+    public SoundController sound;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class HealthPack : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            sound.HealthPackSound();
             GetComponent<Collider>().enabled = false;
             GetComponent<MeshRenderer>().enabled = false;
             effect.gameObject.SetActive(false);

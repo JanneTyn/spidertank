@@ -222,6 +222,7 @@ MonoBehaviour:
   respawnTime: 60
   rotateSpeed: 80
   effect: {fileID: 4166729604034948580}
+  sound: {fileID: 4028404927370899689, guid: 5afd49836ad489741b1e85919bc12853, type: 3}
 --- !u!65 &2870491797986104099
 BoxCollider:
   m_ObjectHideFlags: 0
