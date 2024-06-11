@@ -71385,7 +71385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stepDistance: 1.5
   stepHeight: 1
-  stepSpeed: 5
+  stepSpeed: 6
   velocityMultiplier: 0.4
   cycleSpeed: 1.75
   cycleLimit: 1
