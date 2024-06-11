@@ -41,6 +41,7 @@ public class WeaponPicker : MonoBehaviour
         {
             weaponManager.SetWeapon(0, 0);
             pickText.text = "Choose your second weapon!";
+            pickText.color = Color.cyan;
             firstWeaponChosen = true;
             weaponImage1.gameObject.SetActive(true);
             weaponImage1.sprite = machinegunImage;
@@ -62,6 +63,7 @@ public class WeaponPicker : MonoBehaviour
             weaponImage1.gameObject.SetActive(true);
             weaponImage1.sprite = shotgunImage;
             pickText.text = "Choose your second weapon!";
+            pickText.color = Color.cyan;
             firstWeaponChosen = true;
         }
         else
@@ -81,6 +83,7 @@ public class WeaponPicker : MonoBehaviour
             weaponImage1.gameObject.SetActive(true);
             weaponImage1.sprite = cannonImage;
             pickText.text = "Choose your second weapon!";
+            pickText.color = Color.cyan;
             firstWeaponChosen = true;
         }
         else
@@ -99,6 +102,7 @@ public class WeaponPicker : MonoBehaviour
             weaponImage1.gameObject.SetActive(true);
             weaponImage1.sprite = missileLauncherImage;
             pickText.text = "Choose your second weapon!";
+            pickText.color = Color.cyan;
             firstWeaponChosen = true;
         }
         else
