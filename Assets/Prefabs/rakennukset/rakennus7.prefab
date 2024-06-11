@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rakennus7_collider
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 710e03174cbed564896ed81a72c489e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: 710e03174cbed564896ed81a72c489e7, type: 3}
     m_RemovedGameObjects: []
@@ -202,6 +207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b172ceed937805f469840aab84a6cb35,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b172ceed937805f469840aab84a6cb35,
+        type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -217,6 +227,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -5815279734277641149}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b172ceed937805f469840aab84a6cb35,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3196427503690520379}
   m_SourcePrefab: {fileID: 100100000, guid: b172ceed937805f469840aab84a6cb35, type: 3}
 --- !u!1 &5163515724962020123 stripped
 GameObject:
@@ -245,6 +259,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12, y: 49.15797, z: 12}
   m_Center: {x: 0, y: 23.95331, z: 0.000004053116}
+--- !u!114 &3196427503690520379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5163515724962020123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 12, y: 49.15797, z: 12}
+  m_Center: {x: 0, y: 23.95331, z: 0.000004053116}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!4 &5540463957408571809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b172ceed937805f469840aab84a6cb35,

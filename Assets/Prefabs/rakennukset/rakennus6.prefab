@@ -95,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46fbb012a96050642b61ba61c800922b,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46fbb012a96050642b61ba61c800922b,
+        type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -110,6 +115,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 665593580559076854}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46fbb012a96050642b61ba61c800922b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7822791279577569531}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 46fbb012a96050642b61ba61c800922b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8912541155295061611}
   m_SourcePrefab: {fileID: 100100000, guid: 46fbb012a96050642b61ba61c800922b, type: 3}
 --- !u!4 &423558143943383954 stripped
 Transform:
@@ -144,6 +157,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 14.020064, y: 49.15797, z: 14.020064}
   m_Center: {x: 0.00000017846607, y: 23.95331, z: 0.0000038146973}
+--- !u!114 &7822791279577569531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056964169339257128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 14.020064, y: 45.17749, z: 14.020064}
+  m_Center: {x: 0, y: 25.94355, z: 0.0000038146973}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
+--- !u!114 &8912541155295061611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056964169339257128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 11.0911045, y: 3.968561, z: 11.292327}
+  m_Center: {x: -0.0013084412, y: 1.2039527, z: -0.023933887}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &2529735735102796739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rakennus6_collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad4ea164eca33654cba47edea527746a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -7511558181221131132, guid: ad4ea164eca33654cba47edea527746a, type: 3}

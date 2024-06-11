@@ -2625,10 +2625,6 @@ PrefabInstance:
       propertyPath: m_StaticShadowCaster
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5451,27 +5447,27 @@ PrefabInstance:
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.049813703
+      value: 0.0498137
       objectReference: {fileID: 0}
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000002148128
+      value: 0.0000000021481275
       objectReference: {fileID: 0}
     - target: {fileID: 6523331744519095300, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.07139214e-10
+      value: -1.0713917e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6661861701082796945, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000010750202
+      value: -0.0000000010750201
       objectReference: {fileID: 0}
     - target: {fileID: 6661861701082796945, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -2.8533217e-11
+      value: 2.8533216e-11
       objectReference: {fileID: 0}
     - target: {fileID: 7948488739446461398, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
@@ -5501,12 +5497,12 @@ PrefabInstance:
     - target: {fileID: 8767899841392332168, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000038760404
+      value: -0.0000000038760404
       objectReference: {fileID: 0}
     - target: {fileID: 8767899841392332168, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.0287798e-10
+      value: 1.0287798e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8994040988200242324, guid: 00c5645c18c9e37488b328366bfe3416,
         type: 3}
@@ -23334,6 +23330,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4976818431128241777, guid: aea55e5f9ae536f46b23fa0535f6daa9,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 45.118
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976818431128241777, guid: aea55e5f9ae536f46b23fa0535f6daa9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 22.557837
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23498,10 +23504,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1423128195}
     m_Modifications:
+    - target: {fileID: -5815279734277641149, guid: 9b6343085fad3b041ba85abd99307b1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 346679590031161341, guid: 9b6343085fad3b041ba85abd99307b1c,
         type: 3}
       propertyPath: m_Convex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 346679590031161341, guid: 9b6343085fad3b041ba85abd99307b1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196427503690520379, guid: 9b6343085fad3b041ba85abd99307b1c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 49.99554
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196427503690520379, guid: 9b6343085fad3b041ba85abd99307b1c,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 24.372095
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196427503690520379, guid: 9b6343085fad3b041ba85abd99307b1c,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 5163515724962020123, guid: 9b6343085fad3b041ba85abd99307b1c,
         type: 3}
@@ -24119,6 +24150,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rakennus6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822791279577569531, guid: d7e6ef4cc71c4ec4dbea893da41e9ef8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 46.215626
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822791279577569531, guid: d7e6ef4cc71c4ec4dbea893da41e9ef8,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 26.462618
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

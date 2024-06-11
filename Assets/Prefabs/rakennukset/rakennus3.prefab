@@ -100,6 +100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3de7d815681584d4ba37e94e17fdc84f,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3de7d815681584d4ba37e94e17fdc84f,
+        type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -115,6 +120,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7025788227487948746}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3de7d815681584d4ba37e94e17fdc84f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4976818431128241777}
   m_SourcePrefab: {fileID: 100100000, guid: 3de7d815681584d4ba37e94e17fdc84f, type: 3}
 --- !u!1 &1512784951652817381 stripped
 GameObject:
@@ -143,6 +152,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16, y: 43.849, z: 17}
   m_Center: {x: -1.1558943, y: 21.923336, z: 0}
+--- !u!114 &4976818431128241777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512784951652817381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 16, y: 43.849, z: 17}
+  m_Center: {x: -1.1558943, y: 21.923336, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!4 &2284922921889743711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3de7d815681584d4ba37e94e17fdc84f,
@@ -216,6 +241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rakennus3_collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 632cfec7553126a44915701aed7d6ada,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 632cfec7553126a44915701aed7d6ada,
         type: 3}
