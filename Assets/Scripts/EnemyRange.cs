@@ -90,9 +90,11 @@ public class EnemyRange : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Wall")
             {
+                
                 UpdateBehaviour(enemystate.chase);
                 anim.Play("idle_001");
                 StopCoroutine("attack1");
+                
             }
             
         }
@@ -106,7 +108,7 @@ public class EnemyRange : MonoBehaviour
                 UpdateBehaviour(enemystate.patrol);
 
             }
-            else if (currentdistance <= startfollowdistance && MyState != enemystate.chase)
+            else if (currentdistance <= startfollowdistance && MyState != enemystate.attack1)
             {
                 UpdateBehaviour(enemystate.chase);
 
@@ -131,22 +133,27 @@ public class EnemyRange : MonoBehaviour
                 EnemyDeath();
             }
 
-            if (currentdistance <= 30f)
+            if (currentdistance <= 25f)
             {
                 trig = true;
                 StartCoroutine("attack1");
+                
             }
-
-            if (currentdistance > 30f)
+            
+            if (currentdistance > 25f && MyState == enemystate.attack1)
             {
+                UpdateBehaviour(enemystate.chase);
+                StopCoroutine("attack1");
                 agent.speed = 4f;
             }
+
+            
 
         }
     }
 
     public bool trig;
-    public bool att;
+    
 
     private void UpdateBehaviour(enemystate state)
     {
@@ -207,9 +214,11 @@ public class EnemyRange : MonoBehaviour
 
 
     public IEnumerator chase()
-    { 
+    {
+        
         while (true)
         {
+            anim.Play("charge_001");
             agent.speed = chasespeed;
             agent.SetDestination(Player.transform.position);
             yield return null;
@@ -231,18 +240,20 @@ public class EnemyRange : MonoBehaviour
             yield return null;
         }
     }
-
+   
     public IEnumerator attack1()
     {
-       
-        Vector3 offset = new Vector3(0, 3, 0);
 
         
+
+        Vector3 offset = new Vector3(0, 3, 0);
+
+        agent.SetDestination(Player.transform.position);
+
         agent.speed = 2;
-        
         yield return new WaitForSeconds(fireDelay);
         anim.Play("spit_001");
-        
+
         Instantiate(projectile, transform.position + offset, Quaternion.identity);
         
         StopCoroutine("attack1");
