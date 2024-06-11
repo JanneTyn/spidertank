@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0c76153efdeda924e9a3fbd7699b27ca,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c76153efdeda924e9a3fbd7699b27ca,
         type: 3}
       propertyPath: m_Name
@@ -80,14 +85,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c76153efdeda924e9a3fbd7699b27ca,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3736689814818845618}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c76153efdeda924e9a3fbd7699b27ca,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7021194517980917245}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0c76153efdeda924e9a3fbd7699b27ca,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5842251885176819242}
   m_SourcePrefab: {fileID: 100100000, guid: 0c76153efdeda924e9a3fbd7699b27ca, type: 3}
 --- !u!1 &3693596610164748077 stripped
@@ -96,43 +93,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4576540531906695804}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &3736689814818845618
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3693596610164748077}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.8002028, y: 3.0211341, z: 2.0788822}
-  m_Center: {x: -0.09028542, y: 1.5105668, z: 0.11736417}
---- !u!208 &7021194517980917245
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3693596610164748077}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.4000001, y: 1.511, z: 1.039}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.09, y: 1.511, z: 0.117000006}
-  m_TimeToStationary: 0.5
 --- !u!64 &5842251885176819242
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d34b5939d41d248449a42f9e488d5f8b,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d34b5939d41d248449a42f9e488d5f8b,
         type: 3}
       propertyPath: m_Name
@@ -86,10 +91,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8716369672937895671}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d34b5939d41d248449a42f9e488d5f8b,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 497177920420264339}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d34b5939d41d248449a42f9e488d5f8b,
         type: 3}
       insertIndex: -1
@@ -118,26 +119,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 3.3545618, y: 5.990123, z: 3.1104476}
   m_Center: {x: 0.010735035, y: 2.8774843, z: -0.2172736}
---- !u!208 &497177920420264339
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8793293518767214013}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.677, y: 2.9950001, z: 1.5550001}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.011000001, y: 2.877, z: -0.21700001}
-  m_TimeToStationary: 0.5
 --- !u!64 &-1684510912743706663
 MeshCollider:
   m_ObjectHideFlags: 0
