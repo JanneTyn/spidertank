@@ -131,13 +131,13 @@ public class EnemyRange : MonoBehaviour
                 EnemyDeath();
             }
 
-            if (currentdistance <= 40f)
+            if (currentdistance <= 30f)
             {
                 trig = true;
                 StartCoroutine("attack1");
             }
 
-            if (currentdistance >= 40f)
+            if (currentdistance > 30f)
             {
                 agent.speed = 4f;
             }
@@ -237,7 +237,7 @@ public class EnemyRange : MonoBehaviour
        
         Vector3 offset = new Vector3(0, 3, 0);
 
-        startfollowdistance = 300;
+        
         agent.speed = 2;
         
         yield return new WaitForSeconds(fireDelay);

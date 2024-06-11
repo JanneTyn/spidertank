@@ -226,8 +226,8 @@ MonoBehaviour:
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 10
-  maxEHealth: 70
-  curEHealth: 70
+  maxEHealth: 50
+  curEHealth: 50
   Damage: 10
   experience: 20
   playerlevel: {fileID: 0}

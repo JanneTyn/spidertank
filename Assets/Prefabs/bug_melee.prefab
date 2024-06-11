@@ -472,8 +472,8 @@ MonoBehaviour:
   chasespeed: 5.5
   prepareSpeed: 0.5
   chargespeed: 8
-  maxEHealth: 100
-  curEHealth: 100
+  maxEHealth: 75
+  curEHealth: 75
   Damage: 30
   experience: 20
   chargeDistance: 7
