@@ -35,6 +35,7 @@ public class machineGunScript : MonoBehaviour
     public SoundController sound;
 
     [SerializeField] BulletEffect bulletEffect;
+    [SerializeField] Animation anim;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,7 @@ public class machineGunScript : MonoBehaviour
                 sound.MG_Sound_On();
 
                 muzzle.Play();
+                anim.Play();
                 bulletEffect.muzzle = muzzle.transform.position;
 
                 //shotEnemy = crosshair.checkEnemyRaycast(bulletSpread);
