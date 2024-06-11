@@ -8,6 +8,7 @@ public class ResolutionDropdown : MonoBehaviour
     [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     private Resolution[] resolutions;
+    int currentResolutionIndex = 0;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class ResolutionDropdown : MonoBehaviour
 
         // Create a list of resolution strings
         List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
+        currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -41,12 +42,23 @@ public class ResolutionDropdown : MonoBehaviour
 
         // Refresh the displayed value
         resolutionDropdown.RefreshShownValue();
+
+       
+    }
+
+    private void Update()
+    {
+        if (resolutionDropdown.value != currentResolutionIndex)
+        {
+            SetResolution(resolutionDropdown.value);
+            currentResolutionIndex = resolutionDropdown.value;
+        }
     }
 
     // Call this method when the user selects a resolution from the dropdown
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        Screen.SetResolution(resolution.width, resolution.height, false);
     }
 }
