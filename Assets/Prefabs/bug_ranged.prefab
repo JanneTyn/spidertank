@@ -476,14 +476,13 @@ MonoBehaviour:
   currentdistance: 0
   patrolspeed: 3.5
   chasespeed: 7
-  maxEHealth: 100
-  curEHealth: 100
+  maxEHealth: 65
+  curEHealth: 65
   Damage: 10
   experience: 20
   playerlevel: {fileID: 0}
   particle: {fileID: 6868754721607820401}
   trig: 0
-  att: 0
 --- !u!195 &3209368307154339821
 NavMeshAgent:
   m_ObjectHideFlags: 0
