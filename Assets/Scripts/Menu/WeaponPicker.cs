@@ -14,6 +14,7 @@ public class WeaponPicker : MonoBehaviour
     public GameObject startButton;
     public GameObject backtoMenuButton;
     public GameObject gameInfo;
+    public GameObject secondCanvas;
     public Image weaponImage1;
     public Image weaponImage2;
     public Sprite machinegunImage;
@@ -121,5 +122,6 @@ public class WeaponPicker : MonoBehaviour
         startButton.SetActive(true);
         backtoMenuButton.SetActive(true);
         gameInfo.SetActive(true);
+        secondCanvas.SetActive(true);
     }
 }
